@@ -4,15 +4,15 @@
 
 Access is determined at Team level (Teams can be shared with other members). Own Team is for personal use.
 
-![Tercen home page: Projects view with recent and personal projects](da_08.png)
+![Tercen home page: Projects view with recent and personal projects](Attachments/da_08.png)
 
-![Tercen Teams page for pamgene: Members tab](da_09.png)
+![Tercen Teams page for pamgene: Members tab](Attachments/da_09.png)
 
 ---
 
 ### Upload Data to a Project
 
-![Tercen project page: Tercen training with project actions and README](da_10.jpg)
+![Tercen project page: Tercen training with project actions and README](Attachments/da_10.jpg)
 
 The zip file to upload should contain:
 - `ImageResults/` folder (can contain multiple PS12 runs)
@@ -23,7 +23,7 @@ The zip file to upload should contain:
 
 #### Uploading Sample Annotation: Set Column Types
 
-![Column type dialog: Barcode must be changed from numeric to character](da_11.png)
+![Column type dialog: Barcode must be changed from numeric to character](Attachments/da_11.png)
 
 - **Barcode** is numeric by default → must be set to **character** to join with IA output
 - Check all other columns too — MS Excel sometimes changes column types
@@ -36,7 +36,7 @@ The zip file to upload should contain:
 New worfklow → search for image_analysis templates. 
 You can rename the template - useful if multiple of the same type exist in a project.
 
-![New workflow dialog: selecting image_analysis_PTK_afterwash_template](da_13.jpg)
+![New workflow dialog: selecting image_analysis_PTK_afterwash_template](Attachments/da_13.jpg)
 ### Image Analysis Overview - part 1.
 
 A template contains different types of steps (indicated by icon in top left corner), e.g. 
@@ -44,7 +44,7 @@ A template contains different types of steps (indicated by icon in top left corn
 * operator, which changes the input data and produces an output. 
 
 
-![IA workflow part 1: data file to ps12image + Image overview, then Grid afterwash, Gather, ReGrid](da_14.jpg)
+![IA workflow part 1: data file to ps12image + Image overview, then Grid afterwash, Gather, ReGrid](Attachments/da_14.jpg)
 
 Overview of steps (details below)
 1. Click data file → Run → select zip file
@@ -54,7 +54,7 @@ Overview of steps (details below)
 ---
 ### Image Overview
 
-![Image overview operator](da_15.png)
+![Image overview operator](Attachments/da_15.png)
 The Image overview is run by a **Shiny operator** (reactive — expects user interaction). Shiny operators are computation-intensive; if no interaction occurs, the operator stops (turns grey) after ~30 seconds.
 Grey appearance means that the shiny operator has stopped. → just restart it.
 
@@ -69,21 +69,21 @@ If there is something concerning, look at prewash in the same image overview. If
 
 Stopping the PTK or STK experiment run and rerunning it causes a difference in cycle numbers. In IA, **filters must be adjusted in Grid, Regrid, and Select steps**. Filters are saved in workflows and can be brought into later steps ("Clone Project Filter").
 
-![Working with filters](da_21.png)
+![Working with filters](Attachments/da_21.png)
 
 ---
 #### Examples of issues
 Bubble on the side (still usable)
-![Bubble on the side](da_19.png)
+![Bubble on the side](Attachments/da_19.png)
 Broken array → discard 
-![Broken array](da_20.png)
+![Broken array](Attachments/da_20.png)
 
 
 ---
 
 ### Special Peptides on the Array Layouts
 
-![PamChip fluorescence image: Functional peptides, Reference spots, Positive control labeled](da_12.png)
+![PamChip fluorescence image: Functional peptides, Reference spots, Positive control labeled](Attachments/da_12.png)
 
 | Type                 | Description                                                                                                  | Peptide names                   |
 | -------------------- | ------------------------------------------------------------------------------------------------------------ | ------------------------------- |
@@ -97,7 +97,7 @@ Broken array → discard
 
 ### Gridding
 
-![ReGrid interface](video_01.mp4)
+![ReGrid interface](Attachments/video_01.mp4)
 
 The purpose of gridding is to find incorrectly placed grids and manually correct them.
 
@@ -107,7 +107,7 @@ The purpose of gridding is to find incorrectly placed grids and manually correct
 
 ### Image Analysis Overview — Part 2
 
-![IA workflow part 2: ReGrid, Gather, Quantitation Type, Join, select, Export](da_16.png)
+![IA workflow part 2: ReGrid, Gather, Quantitation Type, Join, select, Export](Attachments/da_16.png)
 
 Just **click Run All**.
 - The **Join** step merges the IA output with the peptide enrichment (annotation) file
@@ -118,9 +118,9 @@ Just **click Run All**.
 ### The Peptide Enrichment File and the Join Step
 
 
-![Peptide enrichment file](da_17.png)
+![Peptide enrichment file](Attachments/da_17.png)
 
 Each peptide sequence has 1 or more BLAST matches to a target protein with a `SeqSimilarity` value. `UniprotName` is the primary gene name (unique). Protein matches to peptides are not directly used in downstream data analysis but can be used to make hypotheses about which proteins could have been phosphorylated in the sample. 
-![Join step: ds1.ID matched to enrichment ID, namespace js0](da_18.png)
+![Join step: ds1.ID matched to enrichment ID, namespace js0](Attachments/da_18.png)
 
 The **Join** step combines two datasets using a common key column (here: `ID`). The resulting table contains all factors (columns, rows and values) from both datasets.
