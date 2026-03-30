@@ -588,18 +588,18 @@
 <h2 id="tercen-structure">Tercen Structure</h2>
 <h3 id="teams-projects">Teams &gt; Projects</h3>
 <p>Access is determined at Team level (Teams can be shared with other members). Own Team is for personal use.</p>
-<p><img alt="Tercen home page: Projects view with recent and personal projects" src="da_08.png" /></p>
-<p><img alt="Tercen Teams page for pamgene: Members tab" src="da_09.png" /></p>
+<p><img alt="Tercen home page: Projects view with recent and personal projects" src="../Attachments/da_08.png" /></p>
+<p><img alt="Tercen Teams page for pamgene: Members tab" src="../Attachments/da_09.png" /></p>
 <hr />
 <h3 id="upload-data-to-a-project">Upload Data to a Project</h3>
-<p><img alt="Tercen project page: Tercen training with project actions and README" src="da_10.jpg" /></p>
+<p><img alt="Tercen project page: Tercen training with project actions and README" src="../Attachments/da_10.jpg" /></p>
 <p>The zip file to upload should contain:
 - <code>ImageResults/</code> folder (can contain multiple PS12 runs)
 - <code>Array Layout.txt</code> (correct file, do not change name)
 - Zip file name must <strong>not contain a dot (.)</strong></p>
 <hr />
 <h4 id="uploading-sample-annotation-set-column-types">Uploading Sample Annotation: Set Column Types</h4>
-<p><img alt="Column type dialog: Barcode must be changed from numeric to character" src="da_11.png" /></p>
+<p><img alt="Column type dialog: Barcode must be changed from numeric to character" src="../Attachments/da_11.png" /></p>
 <ul>
 <li><strong>Barcode</strong> is numeric by default → must be set to <strong>character</strong> to join with IA output</li>
 <li>Check all other columns too — MS Excel sometimes changes column types</li>
@@ -609,19 +609,19 @@
 <h3 id="add-new-image-analysis-template">Add New Image analysis template</h3>
 <p>New worfklow → search for image_analysis templates. 
 You can rename the template - useful if multiple of the same type exist in a project.</p>
-<p><img alt="New workflow dialog: selecting image_analysis_PTK_afterwash_template" src="da_13.jpg" /></p>
+<p><img alt="New workflow dialog: selecting image_analysis_PTK_afterwash_template" src="../Attachments/da_13.jpg" /></p>
 <h3 id="image-analysis-overview-part-1">Image Analysis Overview - part 1.</h3>
 <p>A template contains different types of steps (indicated by icon in top left corner), e.g. 
 * data upload step,
 * operator, which changes the input data and produces an output. </p>
-<p><img alt="IA workflow part 1: data file to ps12image + Image overview, then Grid afterwash, Gather, ReGrid" src="da_14.jpg" /></p>
+<p><img alt="IA workflow part 1: data file to ps12image + Image overview, then Grid afterwash, Gather, ReGrid" src="../Attachments/da_14.jpg" /></p>
 <p>Overview of steps (details below)
 1. Click data file → Run → select zip file
 2. Run <strong>Image overview</strong> to see if everything is OK (see below)
 3. Run <strong>ReGrid</strong> (previous steps run automatically) and do gridding </p>
 <hr />
 <h3 id="image-overview">Image Overview</h3>
-<p><img alt="Image overview operator" src="da_15.png" />
+<p><img alt="Image overview operator" src="../Attachments/da_15.png" />
 The Image overview is run by a <strong>Shiny operator</strong> (reactive — expects user interaction). Shiny operators are computation-intensive; if no interaction occurs, the operator stops (turns grey) after ~30 seconds.
 Grey appearance means that the shiny operator has stopped. → just restart it.</p>
 <p>Look at the image overview <strong>afterwash</strong> to see if there is anything concerning:</p>
@@ -633,16 +633,16 @@ Grey appearance means that the shiny operator has stopped. → just restart it.<
 </ul>
 <p>If there is something concerning, look at prewash in the same image overview. If the issues are not present there, in the data analysis template, change the cycle number for afterwash (e.g. from 94 to 92 for PTK; in STK from 124 to 122 or earlier). Change it in all apps up to and including the QC_PTK / QC_STK step where there is a filter.</p>
 <p>Stopping the PTK or STK experiment run and rerunning it causes a difference in cycle numbers. In IA, <strong>filters must be adjusted in Grid, Regrid, and Select steps</strong>. Filters are saved in workflows and can be brought into later steps ("Clone Project Filter").</p>
-<p><img alt="Working with filters" src="da_21.png" /></p>
+<p><img alt="Working with filters" src="../Attachments/da_21.png" /></p>
 <hr />
 <h4 id="examples-of-issues">Examples of issues</h4>
 <p>Bubble on the side (still usable)
-<img alt="Bubble on the side" src="da_19.png" />
+<img alt="Bubble on the side" src="../Attachments/da_19.png" />
 Broken array → discard 
-<img alt="Broken array" src="da_20.png" /></p>
+<img alt="Broken array" src="../Attachments/da_20.png" /></p>
 <hr />
 <h3 id="special-peptides-on-the-array-layouts">Special Peptides on the Array Layouts</h3>
-<p><img alt="PamChip fluorescence image: Functional peptides, Reference spots, Positive control labeled" src="da_12.png" /></p>
+<p><img alt="PamChip fluorescence image: Functional peptides, Reference spots, Positive control labeled" src="../Attachments/da_12.png" /></p>
 <table>
 <thead>
 <tr>
@@ -678,22 +678,22 @@ Broken array → discard
 <p><strong>Note:</strong> If a sample shows overall lower intensity, check the positive control. High signal in prephosphorylated peptides = enough antibody → lower intensity is biological. Low signal in prephosphorylated peptides = technical problem (insufficient antibody).</p>
 </blockquote>
 <h3 id="gridding">Gridding</h3>
-<p><img alt="ReGrid interface" src="video_01.mp4" /></p>
+<p><img alt="ReGrid interface" src="../Attachments/video_01.mp4" /></p>
 <p>The purpose of gridding is to find incorrectly placed grids and manually correct them.</p>
 <blockquote>
 <p>⚠️ Gridding is done by a Shiny operator. <strong>Always finish it and do not leave the page</strong> — if it stops, all reviewed grids are lost!</p>
 </blockquote>
 <hr />
 <h3 id="image-analysis-overview-part-2">Image Analysis Overview — Part 2</h3>
-<p><img alt="IA workflow part 2: ReGrid, Gather, Quantitation Type, Join, select, Export" src="da_16.png" /></p>
+<p><img alt="IA workflow part 2: ReGrid, Gather, Quantitation Type, Join, select, Export" src="../Attachments/da_16.png" /></p>
 <p>Just <strong>click Run All</strong>.
 - The <strong>Join</strong> step merges the IA output with the peptide enrichment (annotation) file
 - The <strong>Export</strong> step: exported data is saved in the project folder and used as input for the next workflow</p>
 <hr />
 <h3 id="the-peptide-enrichment-file-and-the-join-step">The Peptide Enrichment File and the Join Step</h3>
-<p><img alt="Peptide enrichment file" src="da_17.png" /></p>
+<p><img alt="Peptide enrichment file" src="../Attachments/da_17.png" /></p>
 <p>Each peptide sequence has 1 or more BLAST matches to a target protein with a <code>SeqSimilarity</code> value. <code>UniprotName</code> is the primary gene name (unique). Protein matches to peptides are not directly used in downstream data analysis but can be used to make hypotheses about which proteins could have been phosphorylated in the sample. 
-<img alt="Join step: ds1.ID matched to enrichment ID, namespace js0" src="da_18.png" /></p>
+<img alt="Join step: ds1.ID matched to enrichment ID, namespace js0" src="../Attachments/da_18.png" /></p>
 <p>The <strong>Join</strong> step combines two datasets using a common key column (here: <code>ID</code>). The resulting table contains all factors (columns, rows and values) from both datasets.</p>
 
 
