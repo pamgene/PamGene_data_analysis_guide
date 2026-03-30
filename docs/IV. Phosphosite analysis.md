@@ -9,6 +9,7 @@
 The **Limma_app** compares all test and control conditions to each other. Controls are determined by alphabetic or numerical order (e.g. when conditions named as Test and Control, Control serves as control).
 
 Depending on experiment design, 1 or 2 limma runs are needed. The templates contain 2 limma apps after log or VSN normalization: 
+
 - **Limma – Test cond**: compares Test conditions for each Supergroup (e.g. Sg1-Test vs Sg1-Control)
 - **Limma – Sgroup**: compares Sg2 to Sg1 for each Test condition (e.g. Sg2-Control vs Sg1-Control)
 
