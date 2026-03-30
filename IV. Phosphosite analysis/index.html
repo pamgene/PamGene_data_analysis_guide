@@ -1,0 +1,706 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../III.%20Basic%20processing/">
+      
+      
+        <link rel="next" href="../V.%20Kinase%20analysis/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>IV. Phosphosite Analysis - Tercen Data Analysis Guide</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#overview" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Tercen Data Analysis Guide" class="md-header__button md-logo" aria-label="Tercen Data Analysis Guide" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Tercen Data Analysis Guide
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              IV. Phosphosite Analysis
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Tercen Data Analysis Guide" class="md-nav__button md-logo" aria-label="Tercen Data Analysis Guide" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Tercen Data Analysis Guide
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../I.%20Experiment%20Design/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    I. Experiment Design
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../II.%20Image%20analysis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    II. Image Analysis
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../III.%20Basic%20processing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    III. Basic Processing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    IV. Phosphosite Analysis
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    IV. Phosphosite Analysis
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Overview
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#limma-with-without-pairing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Limma with / without pairing?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#do-limma-before-or-after-batch-correction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Do Limma before or after batch correction?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#limma-decisions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Limma Decisions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#interpretation-of-pamgene-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Interpretation of PamGene Data
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introduction-to-versioning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Introduction to versioning
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../V.%20Kinase%20analysis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    V. Kinase Analysis
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../VI.%20Further%20insights/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    VI. Further Insights
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Workflow%20Decisions%20in%20PamGene%20Data%20Analysis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Workflow Decisions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+  <h1>IV. Phosphosite Analysis</h1>
+
+<h2 id="overview">Overview</h2>
+<ul>
+<li>Phosphosite analysis aims to assess whether there is a difference between Test and Control, and the sign of the difference (activation or inhibition of kinases).</li>
+<li>If the number of differentially phosphorylated phosphosites is<ul>
+<li>High → conclusion: the comparison is biologically relevant.</li>
+<li>Low → conclusion: consider UKA to be a preliminary or trend analysis that needs further exploration, potentially with increased number of replicates.</li>
+</ul>
+</li>
+<li>Since peptides map to proteins, this data can be used to infer the regulation of proteins but do this carefully, see “Further insights” section.</li>
+</ul>
+<p>The <strong>Limma_app</strong> compares all test and control conditions to each other. Controls are determined by alphabetic or numerical order (e.g. when conditions named as Test and Control, Control serves as control).</p>
+<p>Depending on experiment design, 1 or 2 limma runs are needed. The templates contain 2 limma apps after log or VSN normalization: </p>
+<ul>
+<li><strong>Limma – Test cond</strong>: compares Test conditions for each Supergroup (e.g. Sg1-Test vs Sg1-Control)</li>
+<li><strong>Limma – Sgroup</strong>: compares Sg2 to Sg1 for each Test condition (e.g. Sg2-Control vs Sg1-Control)</li>
+</ul>
+<p><strong>LIMMA</strong> (Linear Models for Microarrays):
+- Uses information from <strong>all</strong> peptides and conditions to improve analysis (rather than testing each in isolation)
+- Increased statistical power over individual t-tests
+- Can detect small differences — especially valuable with limited data</p>
+<p><strong>Outputs of limma</strong>: </p>
+<p><img alt="Limma outputs" src="../Attachments/da_34.png" /></p>
+<p><strong>Phosphosite analysis should generally be done on log / VSN data, not on ComBat-corrected data.</strong></p>
+<p><strong>Why not use ComBat-corrected data?</strong>
+- ComBat estimates the mean → the dataset loses a degree of freedom
+- Limma cannot account for this → inflated significance (more false positives)</p>
+<p><strong>Exception:</strong> With many replicates (e.g. 2 runs × 6 replicates), ComBat is acceptable if the batch effect is large, but use stricter thresholds (e.g. P &lt; 0.001 or FDR threshold of 0.2).</p>
+<hr />
+<h2 id="limma-with-without-pairing">Limma with / without pairing?</h2>
+<table>
+<thead>
+<tr>
+<th>Type of pairing</th>
+<th>Description</th>
+<th>Paired / unpaired analysis?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Biological pairing</strong></td>
+<td>Control and Test are from the same replicate (e.g. same cell line). Pairing factor is typically <code>barcode</code> (= Replicate).</td>
+<td><strong>Paired analysis</strong> is better than unpaired— it is more powerful and sensitive because it accounts for technical variability.</td>
+</tr>
+<tr>
+<td><strong>Technical pairing</strong></td>
+<td>Comparing cell line 1 to cell line 2 on the same chip.</td>
+<td><strong>Unpaired analysis.</strong></td>
+</tr>
+<tr>
+<td><img alt="When batch effect is high, pairing  analysis probably yields more significant results" src="../Attachments/workflow_decisions_03.jpg" /></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="do-limma-before-or-after-batch-correction">Do Limma before or after batch correction?</h2>
+<p><strong>Phosphosite analysis should generally be done on log / VSN data, not on ComBat-corrected data.</strong></p>
+<ul>
+<li>ComBat corrects by estimating the mean, which removes a degree of freedom from the dataset.</li>
+<li>In limma, this lost degree of freedom cannot be accounted for.</li>
+<li>This leads to inflated significance (more false positives).</li>
+</ul>
+<p><strong>Exception:</strong> When there are many replicates (e.g. 2 runs × 6 replicates), and / or no pairing can be done, and the batch effect is large, ComBat is acceptable. But stricter significance thresholds must be set (e.g. P &lt; 0.001, or set FDR threshold).</p>
+<hr />
+<h2 id="limma-decisions">Limma Decisions</h2>
+<div class="highlight"><pre><span></span><code>Is there biological pairing?
+│
+├── Yes → Paired Limma
+│
+└── No → Is there batch effect?
+         │
+         ├── Yes → ComBat → Unpaired Limma
+         │                  (set stricter significance threshold)
+         └── No  → Unpaired Limma
+</code></pre></div>
+<h2 id="interpretation-of-pamgene-data">Interpretation of PamGene Data</h2>
+<table>
+<thead>
+<tr>
+<th>Data type</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Phosphosite data</strong></td>
+<td>The protein may not be present in the lysate. Phosphorylation can have different outcomes (induction or inhibition). Autophosphorylation sites are very valuable!</td>
+</tr>
+<tr>
+<td><strong>Kinase data</strong></td>
+<td>Main output. Positive FC = activation, negative = inhibition. Many-to-many kinase-phosphosite relationships → use predictions with high specificity scores.</td>
+</tr>
+</tbody>
+</table>
+<p>When phosphosite and kinase data overlap, prefer kinase-level data.</p>
+<hr />
+<h2 id="introduction-to-versioning">Introduction to versioning</h2>
+<p>PamGene continuously improves data analysis. Each improvement is recorded as a new version of the operator or app. When major improvements are done, the templates are also updated, so the new versions are automatically available.</p>
+<p>If you would like to learn about the operator, click on the version number under the operator name in the crosstab view. This takes you to a github page, where the code of the operators and apps are stored.</p>
+<p><img alt="Version_numbers" src="../Attachments/da_35.png" /></p>
+<p>Operators and apps have a short <code>README</code> file which explains how the operator works, how to setup the crosstab view, what are the parameters and outputs.</p>
+<p><img alt="Limma readme" src="../Attachments/da_36.png" /></p>
+<p>PamGene data analysis specific operators are found on <a href="https://github.com/pamgene">PamGene's github</a> and general operators are usually found on <a href="https://github.com/tercen">Tercen's github page</a>.
+Find apps, operators and templates with the following pattern on github:  <code>X_app</code>, <code>X_operator</code>, <code>X_template</code>.</p>
+<p>Sometimes, previous versions of operators are also available from the library, but in general, the newest versions should be used. </p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "navigation.expand", "navigation.top", "toc.integrate"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

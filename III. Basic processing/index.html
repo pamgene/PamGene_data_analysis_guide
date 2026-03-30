@@ -1,0 +1,928 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../II.%20Image%20analysis/">
+      
+      
+        <link rel="next" href="../IV.%20Phosphosite%20analysis/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>III. Basic Processing - Tercen Data Analysis Guide</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#basic-processing-overview" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Tercen Data Analysis Guide" class="md-header__button md-logo" aria-label="Tercen Data Analysis Guide" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Tercen Data Analysis Guide
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              III. Basic Processing
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Tercen Data Analysis Guide" class="md-nav__button md-logo" aria-label="Tercen Data Analysis Guide" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Tercen Data Analysis Guide
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../I.%20Experiment%20Design/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    I. Experiment Design
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../II.%20Image%20analysis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    II. Image Analysis
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    III. Basic Processing
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    III. Basic Processing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#basic-processing-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Basic Processing Overview
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ets-exposure-time-scaling-app" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ETS: Exposure Time Scaling App
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sample-quality-control-the-mean-cv-operator" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sample quality control: the Mean &amp; CV operator
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#qc-apps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        QC Apps
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="QC Apps">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ptk-qc-app" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PTK QC app
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stk-qc-lod-app" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        STK QC LOD app
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stk-qc-app-use-when-all-peptides-pass-the-lod-app" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        STK QC App: Use When All Peptides Pass the LOD App
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#removal-of-low-signal-peptides" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Removal of low signal peptides
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quality-control-criteria-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quality Control criteria table
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#normalizations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Normalizations
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Normalizations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#log-normalization-log-of-qc-peptides" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Log normalization (Log of QC Peptides)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Data flow
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vsn-normalization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        VSN normalization
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#log-or-vsn" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Log or VSN?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#combat-batch-effect-correction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ComBat: Batch Effect Correction
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../IV.%20Phosphosite%20analysis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    IV. Phosphosite Analysis
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../V.%20Kinase%20analysis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    V. Kinase Analysis
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../VI.%20Further%20insights/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    VI. Further Insights
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Workflow%20Decisions%20in%20PamGene%20Data%20Analysis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Workflow Decisions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+  <h1>III. Basic Processing</h1>
+
+<p>We have run the image analysis workflow.
+Its output file contains:
+- Median_SigmBg per peptide-barcode-row-cycle-exposure time
+- Peptide annotation (Sequence, SwissProtID, gene name, sequence similarity)</p>
+<p>Next, add the PTK_template or STK_template to do the data analysis using the output file of the image analysis.
+<img alt="overview2" src="../Attachments/da_22.png" /></p>
+<h2 id="basic-processing-overview">Basic Processing Overview</h2>
+<p>The result of Image Analysis contains the <strong>Median signal minus background (Median_SigmBg)</strong> value for each peptide-barcode-row-cycle-exposure time datapoint.</p>
+<ol>
+<li>data step: add image analysis output files (for PTK: add both <strong>prewash</strong> and <strong>afterwash</strong> at the same time)</li>
+<li>Join with sample annotation</li>
+<li>Run <strong>ETS</strong> (Exposure Time Scaling) app.
+   ETS combines Median_SigmBg at multiple exposure times to create a single value per cycle: <strong>S100</strong> (AU).</li>
+<li>Check Mean and CV (CV is the data quality metric)</li>
+<li>Check positive control (pre-phosphorylated peptides). Expectation: <strong>S100 &gt; 1000</strong></li>
+<li>Run the QC app (PTK or STK QC app)</li>
+</ol>
+<hr />
+<h2 id="ets-exposure-time-scaling-app">ETS: Exposure Time Scaling App</h2>
+<p>The ETS is the first app in PamGene data analysis. An <strong>app</strong> is a subworkflow: left click "Open" to inspect the structure to familiarize yourself with how an app looks like in general. It always starts with an <em>Input step</em>, which takes the data from the main workflow. Then there is a <em>wizard step</em> which helps the users to select data. Then there are data transformation steps and finally:
+- <em>View step(s)</em> to visualize data
+- <em>Output step</em> to bring data back to the main workflow</p>
+<p><img alt="ETS app internal workflow" src="../Attachments/da_23.png" /></p>
+<p>However, usually we do not have to interact with the app from inside. When we run the app from the main workflow, the <em>wizard</em> pops up, where we have to select correct data input by answering questions.  </p>
+<p>In ETS, the correct factors are set by default — just click Run.</p>
+<p><img alt="ETS app internal workflow" src="../Attachments/da_24.png" /></p>
+<h2 id="sample-quality-control-the-mean-cv-operator">Sample quality control: the Mean &amp; CV operator</h2>
+<p>We examine the sample quality by assessing the variance in the individual conditions / samples. Each condition has usually 3+ biological or techncial replicates. An example of technical replicate is 1 sample lysate on 3+ arrays; An example of biological replicate is 1 sample lysate per array).</p>
+<p><strong>How to configure the crosstab view</strong>
+- Each column should contain all replicates of a condition.
+- Colors should be set per condition (e.g. drag and drop Supergroup and/or Test condition to colors)</p>
+<p><img alt="Mean &amp; CV crosstab view" src="../Attachments/da_25.png" /></p>
+<p><strong>Running the operator switches to operator view; you can switch back to crosstab view.</strong></p>
+<p><img alt="Mean &amp; CV operator view" src="../Attachments/da_26.png" />
+- If CV for high signals is NA → adjust the curve fit parameters shown in the panel
+- Result: CV high signals per condition. To interpret results (whether the variation is high or low), use the quality control criteria table below.</p>
+<hr />
+<h2 id="qc-apps">QC Apps</h2>
+<p>QC apps calculate which peptides have low signal. Phosphorylation on these peptides is not detected, and these peptides should be removed. Peptide removal does not happen inside the app - it will be removed at a later step.</p>
+<h3 id="ptk-qc-app">PTK QC app</h3>
+<ul>
+<li>
+<ol>
+<li>calculates <code>presence</code> value per peptide-array: positive if peptide signal shows positive trend over cycles</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Calculates <code>fractionPresent</code>: the fraction of arrays with a positive trend per peptide.</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>At a later step, the <code>fractionPresent</code> factor is used to remove peptides which are only present in a fraction of all the samples (default: 25% which can be lowered.)</li>
+</ol>
+</li>
+</ul>
+<p>Run the app and view the visualization to assess peptide presence:</p>
+<p><img alt="PTK QC heatmap: fractionPresent per peptide (blue=low, orange=high)" src="../Attachments/da_27.png" /></p>
+<h3 id="stk-qc-lod-app">STK QC LOD app</h3>
+<ul>
+<li>This app calculates the same factors as the PTK QC, but in a different way. The reason is that the prewash steps cannot be used in the STK assay to assess the trend over the cycles.</li>
+<li><code>Presence</code> is calculated based on the Limit of Detection (LOD). Peptides with S100 above the LOD are considered <strong>present</strong>.</li>
+<li>Per peptide, the ratio of samples that are present is calculated in the <code>qc_stk_thr.ratio</code> factor.</li>
+</ul>
+<p><img alt="STK QC heatmap" src="../Attachments/da_28.png" /></p>
+<p>Next, at the first normalization, the peptides which are present in <strong>&lt; 25%</strong> of samples are excluded. 25% is the default threshold but it should be always checked and adjusted. 
+25% stems from the following rational: If there are 4 conditions, 25% = 1 condition. It is usually acceptable if peptides are missing in max 1 condition. </p>
+<p><strong>Always review this threshold during analysis!</strong> Sometimes, we can accept lower threshold, e.g. if there are not enough peptides passing QC or with potent inhibitors which inhibit kinases so that signal is only present in the control sample.</p>
+<h3 id="stk-qc-app-use-when-all-peptides-pass-the-lod-app">STK QC App: Use When All Peptides Pass the LOD App</h3>
+<p>If pre-phosphorylated peptides have very low signal, all peptides will pass the STK_QC_LOD app. In this case, use the <strong>STK_QC app</strong> (based on CV).</p>
+<ul>
+<li>Calculates nominal CV</li>
+<li>At normalization, remove peptides with high CV (= low signal). Use the <code>pep.cv.estimate</code> factor. The default threshold is &lt; 0.5, but revise this.</li>
+</ul>
+<p><img alt="STK QC CV heatmap: pep.cv.estimate" src="../Attachments/da_29.png" /></p>
+<h3 id="removal-of-low-signal-peptides">Removal of low signal peptides</h3>
+<p>Removal of low signal peptides is done by a Filter in the log step or, if VSN normalization is done, then in the Filter QC peptides step after VSN.
+These filters are set up with the defaults in the templates. The QC heatmaps should be used to visually assess if these thresholds should be adjusted.</p>
+<h2 id="quality-control-criteria-table">Quality Control criteria table</h2>
+<p>The following criteria can be used to assess quality of the experiment. The quality control does not serve to exclude samples - it rather manages our expectations. For example, if the number of QC passed phosphosites is high and the samples have low biological CV, we can expect that there is a differential signal between conditions. On the contrary, if the flags indicate fair or poor sample quality, probably differential effects won't be highly significant . </p>
+<table>
+<thead>
+<tr>
+<th>Level</th>
+<th>Flag</th>
+<th>Number of QC-passed phosphosites PTK (of 195)</th>
+<th>Number of QC-passed phosphosites STK (of 142)</th>
+<th>Technical CV</th>
+<th>Biological CV</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Good</td>
+<td>🟢</td>
+<td>&gt; 123</td>
+<td>&gt; 90</td>
+<td>&lt; 20%</td>
+<td>&lt; 30%</td>
+</tr>
+<tr>
+<td>Fair</td>
+<td>🟡</td>
+<td>78–123</td>
+<td>56–90</td>
+<td>20–30%</td>
+<td>30–40%</td>
+</tr>
+<tr>
+<td>Poor</td>
+<td>🔴</td>
+<td>&lt; 78</td>
+<td>&lt; 56</td>
+<td>&gt; 30%</td>
+<td>&gt; 40%</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="normalizations">Normalizations</h2>
+<p>Two basic normalizations:
+- <strong>Log</strong> (default), or
+- <strong>VSN</strong>: Variance Stabilizing Normalization</p>
+<p>Optional: <strong>ComBat</strong> batch correction — if needed for UKA, applied after Log or VSN.</p>
+<blockquote>
+<p>Note: Log normalization &amp; filtering for QC-passed peptides is done in 1 step. For VSN, first VSN is done without filtering, then filtering for QC peptides in the next step. The reason is that log works per individual value, while VSN considers all peptides simultaneously - even peptides not passing QC are needed to carry it out.</p>
+</blockquote>
+<hr />
+<h3 id="log-normalization-log-of-qc-peptides">Log normalization (Log of QC Peptides)</h3>
+<ul>
+<li>Filter for peptides that passed QC. Defaults:<ul>
+<li>PTK: <code>fractionPresent &gt; 0.249</code></li>
+<li>STK: <code>qc_stk_thr.ratio &gt; 0.25</code></li>
+</ul>
+</li>
+<li>The log_cutoff operator assignes 1 to values &lt; 1 before log transformation.</li>
+</ul>
+<hr />
+<h3 id="data-flow">Data flow</h3>
+<p>In general the data flows in the following way. An operator transforms the data (e.g. log transform). It creates an output factor. Each step has a namespace which is the name of the step. </p>
+<p>Output construction follows the pattern: <code>&lt;namespace&gt;.&lt;output_name_from_operator&gt;</code></p>
+<p>In the next step, the output of the previous step is taken as input values. It is represented on the y axis of the crosstab view.</p>
+<p><img alt="workfow logic" src="../Attachments/da_30.png" /></p>
+<p>Example:
+- Namespace: <code>STKQC</code>
+- Output name: <code>logTransformed</code>
+- → Full reference: <code>STKQC.logTransformed</code></p>
+<hr />
+<h3 id="vsn-normalization">VSN normalization</h3>
+<p>In log data, low-signal peptides have higher variance. The same fold change of a low-mean peptide is less significant than for a high-mean peptide.</p>
+<p><strong>VSN</strong> counteracts this by making variance independent of the mean → facilitates discovery of significant phosphosites with low signals.</p>
+<p><img alt="VSN|657" src="../Attachments/da_31.png" /></p>
+<p><strong>When to use VSN:</strong> data shows low signal or noise.</p>
+<h4 id="vsn-reveals-relative-differences-compared-to-the-data-mean-not-absolute-differences"><strong>VSN reveals relative differences compared to the data mean, not absolute differences.</strong></h4>
+<p><strong>VSN in detail:</strong>
+1. Centers data to the mean and scales the data.
+2. Log transformation → VSN result is equivalent to log transformation</p>
+<p>→ Due to the data centering, the interpretation changes!</p>
+<p><img alt="Volcano plot in log vs VSN" src="../Attachments/da_32.png" /></p>
+<p>If with log data, we observe general upregulation of phosphosites in T vs C at phosphosite analysis, after VSN there will probably be down and upregulation as well. The interpretation: the absolute changes are positive, but the negative signals are the ones which have relatively lower signals compared to the mean of all samples. </p>
+<h3 id="log-or-vsn">Log or VSN?</h3>
+<p>As default we do log transformation, since VSN transforms the data in a way that fold change directions are harder to interpret. </p>
+<p><strong>Scenario 1, when VSN can be better than log: when there is significant differential signal only with VSN.</strong> </p>
+<p>After log2, if there is no differential signal between Test and Control conditions, and especially when the signal is overall low, VSN could work better. The reason can be the presence of differential low signal peptides which have a greater chance to be significant in VSN than in log2 data. </p>
+<p>If there are more significant phosphosites or kinases after VSN than log2, and / or conditions cluster better in PCA, we can conclude that VSN works better for the given data. </p>
+<p><em>Interpretation</em>: the kinase directions (fold changes) are relative to the data mean.</p>
+<p><strong>Scenario 2: Log data results in a global up or down shift of kinases, but other experiments have shown that some kinases show the opposite pattern.</strong> </p>
+<p>An example:</p>
+<ol>
+<li>we observe global upregulation with log</li>
+<li>we don’t trust this because some kinases should show the opposite pattern. We can set the hypothesis: there is an overactive kinase family which masks the real effects, meaning that we can’t detect downregulated kinases.</li>
+<li>VSN results in kinases that are down relative to the mean.</li>
+<li>Can we interpret this as downregulated kinases in the sample? → Assess:<ol>
+<li>whether downregulated kinases follow expectations: e.g. they map to a specific pathways.</li>
+<li>Whether downregulated kinases have a high specificity score. </li>
+</ol>
+</li>
+</ol>
+<p><em>Interpretation</em>:
+- VSN shows kinase changes relative to the data mean.
+- If kinases follow expectations and they have a high specificity score, probably the hypothesis was correct. We can consider downregulated kinases as probably downregulated in the sample.
+- However, if downregulated kinases are scattered and have low specificity score, we must conclude that this was just a normalization artifact. We must think of other hypotheses why PamGene experiments resulted in global upregulation.</p>
+<hr />
+<h3 id="combat-batch-effect-correction">ComBat: Batch Effect Correction</h3>
+<ol>
+<li><strong>Crosstab view</strong>: color by expected technical batch (Barcode for single PS12 run; Run for multi-run projects)</li>
+<li><strong>Operator view</strong>: assess batch effect removal — check if before-ComBat PCA shows batch clusters and after-ComBat PCA has resolved them</li>
+<li>If resolved, click <strong>Done</strong> — leave the page <strong>only when the dot appears under Done</strong></li>
+</ol>
+<p><img alt="Combat operator" src="../Attachments/workflow_decisions_04.jpg" /></p>
+<h4 id="check-pca-and-heatmap-before-and-after-combat">Check PCA and Heatmap Before and After ComBat</h4>
+<p><img alt="Heatmap and PCA before and after ComBat" src="../Attachments/da_33.png" /></p>
+<p>After ComBat:
+- Replicates within a condition are usually more similar
+- Conditions are usually more separated</p>
+<p><strong>Important: for multi-run experiments</strong>: check Run effect first (usually larger than Barcode). Correcting for too many batch types can introduce bias — if Run effect exists, correcting for Barcode as well is usually unnecessary.</p>
+<hr />
+<h2 id="references">References</h2>
+<p><strong>VSN:</strong>
+- Huber, W., et al. (2002). Variance stabilization applied to microarray data calibration and to the quantification of differential expression. <em>Bioinformatics</em>, 18(S1), S96–S104.</p>
+<p><strong>ComBat and batch correction:</strong>
+- Chen, C., et al. (2011). Removing batch effects in analysis of expression microarray data: An evaluation of six batch adjustment methods. <em>PLoS One</em>, 6, e17238.
+- Johnson, W.E., Li, C. &amp; Rabinovic, A. (2007). Adjusting batch effects in microarray expression data using empirical Bayes methods. <em>Biostatistics</em>, 8, 118–127.
+- Leek, J.T., et al. (2010). Tackling the widespread and critical impact of batch effects in high-throughput data. <em>Nature Reviews Genetics</em>, 11(10), 733–739.
+- Zindler, T., et al. (2020). Simulating ComBat: how batch correction can lead to the systematic introduction of false positive results in DNA methylation microarray studies. <em>BMC Bioinformatics</em>, 21(1), 1–15.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "navigation.expand", "navigation.top", "toc.integrate"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
