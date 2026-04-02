@@ -537,7 +537,9 @@
 <p>The UKA is run on <strong>all peptides after QC</strong> — not only significant peptides.</p>
 <p><strong>Output</strong>: kinases changed between two conditions (T vs C): <strong>LFC &amp; Significance</strong></p>
 <p><img alt="UKA outputs" src="../Attachments/da_37.png" /></p>
-<p>** Another functional class scoring method is GSEA, Gene Set Enrichment Analysis. For GSEA, a pathway is considered a functional class of members - in UKA, a kinase is considered as a functional class of phosphosites.</p>
+<ul>
+<li>Another functional class scoring method is GSEA, Gene Set Enrichment Analysis. For GSEA, a pathway is considered a functional class of members - in UKA, a kinase is considered as a functional class of phosphosites.</li>
+</ul>
 <hr />
 <h2 id="the-uka-algorithm-in-a-nutshell">The UKA Algorithm in a Nutshell</h2>
 <p><img alt="UKA algorithm" src="../Attachments/da_38.png" /></p>
@@ -636,13 +638,27 @@
 </tr>
 </tbody>
 </table>
-<p><strong>Usage notes:</strong>
-- Use <strong>Median Kinase Statistic</strong> as a proxy for LFC between T vs C. &lt; 0 = inhibition, &gt; 0 = activation.
-    - The Kinase statistic is signal-to-noise ratio: the LFC scaled by noise. This is more relevant than simple LFC for predicted data.
-- <strong>Median Kinase Change</strong> is the actual LFC
-- Kinases with <strong>small peptide sets</strong> are usually more specific
-- For stricter thresholds: set a cutoff on <strong>Specificity Score</strong>
-- Scores are Mean or Median because the algorithm considers multiple peptide sets per kinase (of varying size based on interaction strength). See <code>uka_description.pdf</code> for details.</p>
+<p><strong>Usage notes:</strong></p>
+<ul>
+<li>
+<p>Use <strong>Median Kinase Statistic</strong> as a proxy for LFC between T vs C. &lt; 0 = inhibition, &gt; 0 = activation.</p>
+<ul>
+<li>The Kinase statistic is signal-to-noise ratio: the LFC scaled by noise. This is more relevant than simple LFC for predicted data.</li>
+</ul>
+</li>
+<li>
+<p><strong>Median Kinase Change</strong> is the actual LFC</p>
+</li>
+<li>
+<p>Kinases with <strong>small peptide sets</strong> are usually more specific</p>
+</li>
+<li>
+<p>For stricter thresholds: set a cutoff on <strong>Specificity Score</strong></p>
+</li>
+<li>
+<p>Scores are Mean or Median because the algorithm considers multiple peptide sets per kinase (of varying size based on interaction strength). See <code>uka_description.pdf</code> for details.</p>
+</li>
+</ul>
 <hr />
 <h3 id="uka-scores-detailed-definitions">UKA Scores — Detailed Definitions</h3>
 <table>
@@ -673,9 +689,15 @@
 </table>
 <h2 id="batch-correction-for-uka">Batch Correction for UKA?</h2>
 <p>In UKA, there is <strong>no pairing option</strong> available.</p>
-<p>ComBat should only be done for UKA (or PCA, class prediction) <strong>if:</strong>
-1. The design is <strong>balanced</strong> (conditions balanced over technical batches)
-2. There is a batch effect <strong>and</strong> ComBat can remove it</p>
+<p>ComBat should only be done for UKA (or PCA, class prediction) <strong>if:</strong></p>
+<ol>
+<li>
+<p>The design is <strong>balanced</strong> (conditions balanced over technical batches)</p>
+</li>
+<li>
+<p>There is a batch effect <strong>and</strong> ComBat can remove it</p>
+</li>
+</ol>
 <p>If ComBat cannot remove the batch effect → UKA on log/VSN data.</p>
 <div class="highlight"><pre><span></span><code>Is there batch effect?
 │
