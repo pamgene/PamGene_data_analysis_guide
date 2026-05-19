@@ -14,7 +14,7 @@ nav:
     - Workflow Decisions: "Tercen Data Analysis Guide/Workflow Decisions in PamGene Data Analysis.md"
     - X. BioNavigator to Tercen: "Tercen Data Analysis Guide/X_How to bring data from BioNavigator to Tercen.md"
   - Part 2 - PamDx Methods:
-    - Overview: "PamDx methods/index.md"
+    - Index: "PamDx methods/index.md"
     - Differential Phosphosite Analysis (Limma): "PamDx methods/Differential Phosphosite Analysis with Limma.md"
     - UKA: "PamDx methods/UKA.md"
 
