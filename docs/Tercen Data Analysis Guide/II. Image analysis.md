@@ -97,7 +97,9 @@ Broken array → discard
 
 ### Gridding
 
-![ReGrid interface](Attachments/video_01.mp4)
+<video controls width="100%">
+  <source src="../Attachments/video_01.mp4" type="video/mp4">
+</video>
 
 The purpose of gridding is to find incorrectly placed grids and manually correct them.
 

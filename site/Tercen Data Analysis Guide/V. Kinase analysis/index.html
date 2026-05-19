@@ -9,23 +9,25 @@
       
       
       
+        <link rel="prev" href="../IV.%20Phosphosite%20analysis/">
       
-        <link rel="next" href="Tercen%20Data%20Analysis%20Guide/">
+      
+        <link rel="next" href="../VI.%20Further%20insights/">
       
       
         
       
       
-      <link rel="icon" href="assets/images/favicon.png">
+      <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
       
-        <title>PamDx Data Analysis Guide</title>
+        <title>V. Kinase Analysis - PamDx Data Analysis Guide</title>
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
       
       
 
@@ -44,7 +46,7 @@
       
     
     
-    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -62,7 +64,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#part-1-tercen-data-analysis-guide" class="md-skip">
+        <a href="#introduction-to-upstream-kinase-analysis" class="md-skip">
           Skip to content
         </a>
       
@@ -78,7 +80,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="." title="PamDx Data Analysis Guide" class="md-header__button md-logo" aria-label="PamDx Data Analysis Guide" data-md-component="logo">
+    <a href="../.." title="PamDx Data Analysis Guide" class="md-header__button md-logo" aria-label="PamDx Data Analysis Guide" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -98,7 +100,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Home
+              V. Kinase Analysis
             
           </span>
         </div>
@@ -178,7 +180,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="." title="PamDx Data Analysis Guide" class="md-nav__button md-logo" aria-label="PamDx Data Analysis Guide" data-md-component="logo">
+    <a href="../.." title="PamDx Data Analysis Guide" class="md-nav__button md-logo" aria-label="PamDx Data Analysis Guide" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -193,35 +195,10 @@
       
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Home
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="." class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
         
   
   
@@ -237,46 +214,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#part-1-tercen-data-analysis-guide" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Part 1 — Tercen Data Analysis Guide
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#part-2-pamdx-methods" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Part 2 — PamDx Methods
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -285,8 +222,10 @@
       
   
   
+    
   
   
+  
     
     
     
@@ -297,13 +236,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
         
           
           <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
@@ -324,7 +261,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             
@@ -342,7 +279,7 @@
   
   
     <li class="md-nav__item">
-      <a href="Tercen%20Data%20Analysis%20Guide/" class="md-nav__link">
+      <a href="../" class="md-nav__link">
         
   
   
@@ -370,7 +307,7 @@
   
   
     <li class="md-nav__item">
-      <a href="Tercen%20Data%20Analysis%20Guide/I.%20Experiment%20Design/" class="md-nav__link">
+      <a href="../I.%20Experiment%20Design/" class="md-nav__link">
         
   
   
@@ -398,7 +335,7 @@
   
   
     <li class="md-nav__item">
-      <a href="Tercen%20Data%20Analysis%20Guide/II.%20Image%20analysis/" class="md-nav__link">
+      <a href="../II.%20Image%20analysis/" class="md-nav__link">
         
   
   
@@ -426,7 +363,7 @@
   
   
     <li class="md-nav__item">
-      <a href="Tercen%20Data%20Analysis%20Guide/III.%20Basic%20processing/" class="md-nav__link">
+      <a href="../III.%20Basic%20processing/" class="md-nav__link">
         
   
   
@@ -454,7 +391,7 @@
   
   
     <li class="md-nav__item">
-      <a href="Tercen%20Data%20Analysis%20Guide/IV.%20Phosphosite%20analysis/" class="md-nav__link">
+      <a href="../IV.%20Phosphosite%20analysis/" class="md-nav__link">
         
   
   
@@ -479,10 +416,35 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="Tercen%20Data%20Analysis%20Guide/V.%20Kinase%20analysis/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    V. Kinase Analysis
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -498,6 +460,85 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction-to-upstream-kinase-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Introduction to Upstream Kinase Analysis
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-uka-algorithm-in-a-nutshell" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The UKA Algorithm in a Nutshell
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The UKA Algorithm in a Nutshell">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-uka-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The UKA Table
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uka-scores-detailed-definitions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        UKA Scores — Detailed Definitions
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#batch-correction-for-uka" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Batch Correction for UKA?
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -510,7 +551,7 @@
   
   
     <li class="md-nav__item">
-      <a href="Tercen%20Data%20Analysis%20Guide/VI.%20Further%20insights/" class="md-nav__link">
+      <a href="../VI.%20Further%20insights/" class="md-nav__link">
         
   
   
@@ -538,7 +579,7 @@
   
   
     <li class="md-nav__item">
-      <a href="Tercen%20Data%20Analysis%20Guide/Workflow%20Decisions%20in%20PamGene%20Data%20Analysis/" class="md-nav__link">
+      <a href="../Workflow%20Decisions%20in%20PamGene%20Data%20Analysis/" class="md-nav__link">
         
   
   
@@ -627,7 +668,7 @@
   
   
     <li class="md-nav__item">
-      <a href="PamDx%20methods/" class="md-nav__link">
+      <a href="../../PamDx%20methods/" class="md-nav__link">
         
   
   
@@ -655,7 +696,7 @@
   
   
     <li class="md-nav__item">
-      <a href="PamDx%20methods/Limma/" class="md-nav__link">
+      <a href="../../PamDx%20methods/Limma/" class="md-nav__link">
         
   
   
@@ -683,7 +724,7 @@
   
   
     <li class="md-nav__item">
-      <a href="PamDx%20methods/UKA/" class="md-nav__link">
+      <a href="../../PamDx%20methods/UKA/" class="md-nav__link">
         
   
   
@@ -728,11 +769,183 @@
 
 
 
-  <h1>Home</h1>
+  <h1>V. Kinase Analysis</h1>
 
-<h2 id="part-1-tercen-data-analysis-guide">Part 1 — Tercen Data Analysis Guide</h2>
-<p>Analysis in Tercen, from image analysis through phosphosite and kinase interpretation.Contents to be added.</p>
-<h2 id="part-2-pamdx-methods">Part 2 — PamDx Methods</h2>
+<h2 id="introduction-to-upstream-kinase-analysis">Introduction to Upstream Kinase Analysis</h2>
+<p>Kinase prediction (Upstream Kinase Analysis, UKA) is the main output of PamGene analysis.</p>
+<p>The UKA relies on public databases of kinase–to–phosphosite relationships.</p>
+<p>UKA is a <strong>functional class scoring method</strong>: it predicts kinase activity by analyzing changes in the sets of phosphosites belonging to each kinase.* Scores indicate how strongly a kinase is associated with the observed changes in peptide signal.</p>
+<p>The UKA is run on <strong>all peptides after QC</strong> — not only significant peptides.</p>
+<p><strong>Output</strong>: kinases changed between two conditions (T vs C): <strong>LFC &amp; Significance</strong></p>
+<p><img alt="UKA outputs" src="../Attachments/da_37.png" /></p>
+<ul>
+<li>Another functional class scoring method is GSEA, Gene Set Enrichment Analysis. For GSEA, a pathway is considered a functional class of members - in UKA, a kinase is considered as a functional class of phosphosites.</li>
+</ul>
+<hr />
+<h2 id="the-uka-algorithm-in-a-nutshell">The UKA Algorithm in a Nutshell</h2>
+<p><img alt="UKA algorithm" src="../Attachments/da_38.png" /></p>
+<ol>
+<li>Calculate <strong>Kinase FC</strong> from the FCs of its phosphosites.</li>
+<li><strong>Significance score</strong>: permute samples 500 times and recalculate kinase FC. This gives the probability that the observed kinase FC could not have been obtained from random samples. This tells: <em>“Is this kinase signal reliably different?”</em></li>
+<li><strong>Specificity score</strong>: permute phosphosites and recalculate kinase FC. This gives the probability that the observed FC could not have been obtained from a random peptide set. This tells: _“Is this kinase specifically responsible for these phosphorylation changes?”</li>
+<li><strong>Final score</strong> = Significance Score + Specificity Score</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>Score</th>
+<th>Permutation</th>
+<th>High score means</th>
+<th>Comments</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Significance</strong></td>
+<td>Samples</td>
+<td>High probability that the kinase FC is not due to sample noise.</td>
+<td>Can be biased toward <strong>promiscuous kinases</strong> or abundant activity. With a limited number of replicates (such as n=3), the statistical power is relatively low, which can make the significance score less robust and more prone to variability. In addition, it tends to favour kinases that act on many substrates. These “hub” kinases (like MAPKs or CDKs) often rank highly simply because they affect a large number of peptides..</td>
+</tr>
+<tr>
+<td><strong>Specificity</strong></td>
+<td>Phosphosites</td>
+<td>High probability that the kinase FC is not due to a random peptide set. Accounts for overlap of substrates between kinases</td>
+<td><strong>This is the most important score.</strong> It helps identify kinases whose activity is more likely to <em>specifically explain</em> the data, rather than those that are broadly active.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Permutation Test Results</strong></p>
+<p><img alt="Permutation test distribution" src="../Attachments/da_39.png" /></p>
+<hr />
+<h3 id="the-uka-table">The UKA Table</h3>
+<p><strong>Most important columns:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Sgroup_contrast</th>
+<th>Kinase Name</th>
+<th>Median Kinase Statistic</th>
+<th>Mean Significance Score</th>
+<th>Mean Specificity Score</th>
+<th>Median Final Score</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sgroup1_T vs C</td>
+<td>ROR1</td>
+<td>1.06</td>
+<td>0.97</td>
+<td>1.34</td>
+<td>2.31</td>
+</tr>
+<tr>
+<td>Sgroup1_T vs C</td>
+<td>MAP2K3</td>
+<td>0.77</td>
+<td>0.52</td>
+<td>1.01</td>
+<td>1.53</td>
+</tr>
+<tr>
+<td>Sgroup1_T vs C</td>
+<td>MAP2K6</td>
+<td>0.77</td>
+<td>0.52</td>
+<td>1.01</td>
+<td>1.53</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Usage:</strong></p>
+<ul>
+<li>
+<p><strong>Use Median Kinase Statistic as a proxy for LFC between T vs C.</strong> </p>
+<ul>
+<li>&lt; 0 means inhibition, &gt; 0 means activation.</li>
+<li>The Kinase statistic is signal-to-noise ratio: the LFC scaled by noise. This is more relevant than simple LFC for predicted data. (Median Kinase Change is the actual LFC.)</li>
+</ul>
+</li>
+<li>
+<p>To find significant results, set a cutoff on <strong>Specificity Score</strong>. We suggest &gt; 1 (p&lt;0.1) or 1.3 (p&lt;0.05)</p>
+</li>
+<li>
+<p>Scores are Mean or Median because the algorithm considers multiple peptide sets per kinase (of varying size based on interaction strength). </p>
+</li>
+</ul>
+<p><strong>Additional columns:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Kinase Name</th>
+<th>Median Kinase Change</th>
+<th>Mean Peptide Set Size</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ROR1</td>
+<td>0.25</td>
+<td>3</td>
+</tr>
+<tr>
+<td>MAP2K3</td>
+<td>0.34</td>
+<td>5</td>
+</tr>
+<tr>
+<td>- Kinases with <strong>small peptide sets</strong> are usually more specific</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="uka-scores-detailed-definitions">UKA Scores — Detailed Definitions</h3>
+<table>
+<thead>
+<tr>
+<th>Score</th>
+<th>Definition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Kinase Statistic</strong></td>
+<td>Direction of effect: change in kinase activity in T vs C. <br>Calculated as the median of Peptide Statistics (signal-to-noise ratio between T and C) of the kinase's peptide set.</td>
+</tr>
+<tr>
+<td><strong>Significance Score</strong></td>
+<td>Based on a sample-permutation test. High score = high probability of differential activity between T and C.</td>
+</tr>
+<tr>
+<td><strong>Specificity Score</strong></td>
+<td>Based on a peptide-permutation test. High score = high probability the effect was not obtained by a random peptide set.</td>
+</tr>
+<tr>
+<td><strong>Kinase Score (Median Final Score)</strong></td>
+<td>Significance Score + Specificity Score</td>
+</tr>
+</tbody>
+</table>
+<h2 id="batch-correction-for-uka">Batch Correction for UKA?</h2>
+<p>In UKA, there is <strong>no pairing option</strong> available.</p>
+<p>ComBat should only be done for UKA (or PCA, class prediction) <strong>if:</strong></p>
+<ol>
+<li>
+<p>The design is <strong>balanced</strong> (conditions balanced over technical batches)</p>
+</li>
+<li>
+<p>There is a batch effect <strong>and</strong> ComBat can remove it</p>
+</li>
+</ol>
+<p>If ComBat cannot remove the batch effect → UKA on log/VSN data.</p>
+<div class="highlight"><pre><span></span><code>Is there batch effect?
+│
+├── Yes → ComBat → UKA on log/VSN + ComBat-corrected data
+│
+└── No  → UKA on log/VSN data
+</code></pre></div>
 
 
 
@@ -788,10 +1001,10 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["navigation.sections", "navigation.expand", "navigation.top", "toc.integrate"], "search": "assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.sections", "navigation.expand", "navigation.top", "toc.integrate"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
       
     
   </body>

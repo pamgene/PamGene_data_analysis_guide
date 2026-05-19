@@ -1,20 +1,3 @@
-## Prerequisites
-
-Complete this training after watching (and optionally working through) the general Tercen tutorial. You should already know:
-
-- How Tercen is organized (Teams, Projects, clone, upload, download from project page)
-- What workflows are
-- How to upload data tables
-- How a workflow step crosstab view looks
-- Row factors, column factors, y and x factors
-- How to use filters and Boolean logic
-- How to use colors
-- Data visualizations: points / heatmap / bar
-- Operators: input projection, output relations, run and reset, namespace, README
-- Special steps: join, gather, export (short and long format)
-
----
-
 ## Overview
 
 ![Pipeline: data analysis](Attachments/da_01.jpg)
@@ -38,7 +21,9 @@ Complete this training after watching (and optionally working through) the gener
 ![Design 2: C1T1-C2T2 chip layout](Attachments/da_03.png)
 
 **Number of replicates needed:**
+
 - Cell lines: minimum **3 replicates / condition**
+
 - Primary cell culture: minimum **6 replicates / condition**
 
 ---

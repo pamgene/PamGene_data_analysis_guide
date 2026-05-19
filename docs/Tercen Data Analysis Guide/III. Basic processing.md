@@ -57,9 +57,9 @@ We examine the sample quality by assessing the variance in the individual condit
 QC apps calculate which peptides have low signal. Phosphorylation on these peptides is not detected, and these peptides should be removed. Peptide removal does not happen inside the app - it will be removed at a later step.
 
 ### PTK QC app
-- 1. calculates `presence` value per peptide-array: positive if peptide signal shows positive trend over cycles
-- 2. Calculates `fractionPresent`: the fraction of arrays with a positive trend per peptide.
-- 3. At a later step, the `fractionPresent` factor is used to remove peptides which are only present in a fraction of all the samples (default: 25% which can be lowered.)
+1. Calculates `presence` value per peptide-array: positive if peptide signal shows positive trend over cycles.
+2. Calculates `fractionPresent`: the fraction of arrays with a positive trend per peptide.
+3. At a later step, the `fractionPresent` factor is used to remove peptides which are only present in a fraction of all the samples (default: 25% which can be lowered.)
 
 Run the app and view the visualization to assess peptide presence:
 
@@ -106,7 +106,9 @@ The following criteria can be used to assess quality of the experiment. The qual
 ## Normalizations
 
 Two basic normalizations:
+
 - **Log** (default), or
+
 - **VSN**: Variance Stabilizing Normalization
 
 Optional: **ComBat** batch correction — if needed for UKA, applied after Log or VSN.
@@ -216,10 +218,15 @@ After ComBat:
 ## References
 
 **VSN:**
+
 - Huber, W., et al. (2002). Variance stabilization applied to microarray data calibration and to the quantification of differential expression. *Bioinformatics*, 18(S1), S96–S104.
 
 **ComBat and batch correction:**
+
 - Chen, C., et al. (2011). Removing batch effects in analysis of expression microarray data: An evaluation of six batch adjustment methods. *PLoS One*, 6, e17238.
+
 - Johnson, W.E., Li, C. & Rabinovic, A. (2007). Adjusting batch effects in microarray expression data using empirical Bayes methods. *Biostatistics*, 8, 118–127.
+
 - Leek, J.T., et al. (2010). Tackling the widespread and critical impact of batch effects in high-throughput data. *Nature Reviews Genetics*, 11(10), 733–739.
+
 - Zindler, T., et al. (2020). Simulating ComBat: how batch correction can lead to the systematic introduction of false positive results in DNA methylation microarray studies. *BMC Bioinformatics*, 21(1), 1–15.

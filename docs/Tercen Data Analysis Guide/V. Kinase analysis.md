@@ -12,7 +12,7 @@ The UKA is run on **all peptides after QC** — not only significant peptides.
 
 ![UKA outputs](Attachments/da_37.png)
 
-*\* Another functional class scoring method is GSEA, Gene Set Enrichment Analysis. For GSEA, a pathway is considered a functional class of members - in UKA, a kinase is considered as a functional class of phosphosites.
+* Another functional class scoring method is GSEA, Gene Set Enrichment Analysis. For GSEA, a pathway is considered a functional class of members - in UKA, a kinase is considered as a functional class of phosphosites.
 
 ---
 
@@ -27,8 +27,8 @@ The UKA is run on **all peptides after QC** — not only significant peptides.
 
 | Score            | Permutation  | High score means                                                                                                  | Comments                                                                                                                                                                                                                                                                                                                                                                                                                                |
 | ---------------- | ------------ | ----------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Significance** | Samples      | High probability kinase FC is real (not due to sample noise)                                                      | Can be biased toward **promiscuous kinases** or abundant activity. With a limited number of replicates (such as n=3), the statistical power is relatively low, which can make the significance score less robust and more prone to variability. In addition, it tends to favour kinases that act on many substrates. These “hub” kinases (like MAPKs or CDKs) often rank highly simply because they affect a large number of peptides.. |
-| **Specificity**  | Phosphosites | High probability kinase FC is not due to a random peptide set. Accounts for overlap of substrates between kinases | This is the most important score. It helps identify kinases whose activity is more likely to _specifically explain_ the data, rather than those that are broadly active.                                                                                                                                                                                                                                                                |
+| **Significance** | Samples      | High probability that the kinase FC is not due to sample noise.                                                      | Can be biased toward **promiscuous kinases** or abundant activity. With a limited number of replicates (such as n=3), the statistical power is relatively low, which can make the significance score less robust and more prone to variability. In addition, it tends to favour kinases that act on many substrates. These “hub” kinases (like MAPKs or CDKs) often rank highly simply because they affect a large number of peptides.. |
+| **Specificity**  | Phosphosites | High probability that the kinase FC is not due to a random peptide set. Accounts for overlap of substrates between kinases | **This is the most important score.** It helps identify kinases whose activity is more likely to _specifically explain_ the data, rather than those that are broadly active.                                                                                                                                                                                                                                                                |
 
 **Permutation Test Results**
 
@@ -39,11 +39,21 @@ The UKA is run on **all peptides after QC** — not only significant peptides.
 
 **Most important columns:**
 
-| Test Condition | Kinase Name | Median Kinase Statistic | Mean Significance Score | Mean Specificity Score | Median Final Score |
-|---|---|---|---|---|---|
-| T1 | ROR1 | 1.06 | 0.97 | 1.34 | 2.31 |
-| T1 | MAP2K3 | 0.77 | 0.52 | 1.01 | 1.53 |
-| T1 | MAP2K6 | 0.77 | 0.52 | 1.01 | 1.53 |
+| Sgroup_contrast | Kinase Name | Median Kinase Statistic | Mean Significance Score | Mean Specificity Score | Median Final Score |
+| --------------- | ----------- | ----------------------- | ----------------------- | ---------------------- | ------------------ |
+| Sgroup1_T vs C  | ROR1        | 1.06                    | 0.97                    | 1.34                   | 2.31               |
+| Sgroup1_T vs C  | MAP2K3      | 0.77                    | 0.52                    | 1.01                   | 1.53               |
+| Sgroup1_T vs C  | MAP2K6      | 0.77                    | 0.52                    | 1.01                   | 1.53               |
+
+**Usage:**
+
+- **Use Median Kinase Statistic as a proxy for LFC between T vs C.** 
+	- < 0 means inhibition, > 0 means activation.
+	- The Kinase statistic is signal-to-noise ratio: the LFC scaled by noise. This is more relevant than simple LFC for predicted data. (Median Kinase Change is the actual LFC.)
+
+- To find significant results, set a cutoff on **Specificity Score**. We suggest > 1 (p<0.1) or 1.3 (p<0.05)
+
+- Scores are Mean or Median because the algorithm considers multiple peptide sets per kinase (of varying size based on interaction strength). 
 
 **Additional columns:**
 
@@ -51,14 +61,7 @@ The UKA is run on **all peptides after QC** — not only significant peptides.
 | ----------- | -------------------- | --------------------- |
 | ROR1        | 0.25                 | 3                     |
 | MAP2K3      | 0.34                 | 5                     |
-
-**Usage notes:**
-- Use **Median Kinase Statistic** as a proxy for LFC between T vs C. < 0 = inhibition, > 0 = activation.
-	- The Kinase statistic is signal-to-noise ratio: the LFC scaled by noise. This is more relevant than simple LFC for predicted data.
-- **Median Kinase Change** is the actual LFC
 - Kinases with **small peptide sets** are usually more specific
-- For stricter thresholds: set a cutoff on **Specificity Score**
-- Scores are Mean or Median because the algorithm considers multiple peptide sets per kinase (of varying size based on interaction strength). See `uka_description.pdf` for details.
 
 ---
 ### UKA Scores — Detailed Definitions
@@ -75,7 +78,9 @@ The UKA is run on **all peptides after QC** — not only significant peptides.
 In UKA, there is **no pairing option** available.
 
 ComBat should only be done for UKA (or PCA, class prediction) **if:**
+
 1. The design is **balanced** (conditions balanced over technical batches)
+
 2. There is a batch effect **and** ComBat can remove it
 
 If ComBat cannot remove the batch effect → UKA on log/VSN data.
