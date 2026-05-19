@@ -597,7 +597,7 @@
   <span class="md-ellipsis">
     
   
-    Overview
+    Index
   
 
     
@@ -1054,7 +1054,7 @@
 <h3 id="step-2-construction-of-the-ukadb-from-public-kinase-to-substrate-databases">Step 2.  Construction of the UKAdb from public kinase-to-substrate databases</h3>
 <p>The main differences between csUKA and legacy UKA lie in how the UKAdb is constructed. </p>
 <ul>
-<li>Kinase-to-substrate data from public databases such as PhosphoNet and Kinase Library (KL) contain Kinase Ranks. The Kinase rank is, for each substrate (peptide), the rank of the phosphorylating kinase based on the likelihood of phosphorylation. Lower ranks mean that the kinase is more likely to phosphorylate the peptide. Ranks from 0-12 are used.</li>
+<li>Kinase-to-substrate data from public databases such as PhosphoNet and Kinase Library (KL) contain Kinase Ranks. For each substrate (peptide), the rank of the phosphorylating kinase is based on the likelihood of phosphorylation. Lower ranks mean that the kinase is more likely to phosphorylate the peptide. The first 12 kinases (ranks 0-12) per peptide are used.</li>
 <li>From the data, Kinase-to-Substrate matrices are constructed in different ways.<ul>
 <li><strong>The legacy UKA</strong> constructs multiple matrices based on Kinase Rank thresholds. Thus for each kinase, multiple peptide sets are considered – by decreasing the stringency of the cutoff, the size of the peptide set increases. The basic set includes the peptides of ranks 0 to 4 and subsequent peptide sets are formed by including the lower ranks from 5 to 12, one-by-one.</li>
 <li><strong>The confidence scoring UKA</strong> constructs only 1 matrix. It synthetizes information using all Kinase Ranks in a transparent way. Additional to the legacy UKA, it does a correction for peptide specificity.</li>
@@ -1068,9 +1068,9 @@
 <li>It is straightforward to extend the approach to additional databases.</li>
 <li>Faster computation than legacy UKA, as no rank scanning is done.</li>
 </ul>
-<h4 id="confidence-values-for-kinase-to-peptide-relations">Confidence values for kinase-to-peptide relations</h4>
+<h4 id="step2-csuka-db-construction">Step2 / csUKA db construction</h4>
 <ol>
-<li><strong>Assign confidence values</strong></li>
+<li><strong>Assigning confidence values for Kinase-Substrate Relations</strong></li>
 </ol>
 <p>First step is to assign probability-like confidence values <span class="arithmatex">\(p\)</span> to kinase to substrate relations (KSR) based on entries found in various PTM databases. I.e. these values are assigned based on our belief about what a database entry means for the probability of a kinase phosphorylating a certain peptide on our chip.</p>
 <p>The following confidence values are used:</p>
@@ -1142,9 +1142,9 @@
 <p>The peptide–kinase confidence matrix provides a biologically interpretable way to relate peptides to upstream kinases. It combines evidence from multiple databases, accounts for peptide specificity, and has a clear Bayesian interpretation, making it a generic and extensible tool for kinase activity analysis.</p>
 <p><img alt="UKA confidence matrix PTK" src="../Attachments/uka_05.png" /></p>
 <p><img alt="UKA confidence matrix STK" src="../Attachments/uka_06.png" /></p>
-<h4 id="construction-of-the-ukadb-in-legacy-uka">Construction of the UKAdb in legacy UKA.</h4>
-<p>The kinase-to-peptide matrix, <span class="arithmatex">\(U\)</span>, is binarized where zeroes represent no connection between peptides and Upstream Kinases and ones represent a connection.</p>
-<p><img alt="A picture containing text, font, white, design Description automatically generated" src="../Attachments/uka_07.png" /></p>
+<h4 id="step-2-legacy-ukadb-construction">Step 2 / legacy UKAdb construction</h4>
+<p>The kinase-to-peptide matrix, <span class="arithmatex">\(M\)</span>, is binarized where zeroes represent no connection between peptides and Upstream Kinases and ones represent a connection.</p>
+<p><img alt="legacy UKA matrix" src="../Attachments/uka_07.png" /></p>
 <p>There is a connection (a peptide is enriched with an UK) if:</p>
 <ul>
 <li>
@@ -1162,16 +1162,18 @@
 <p>The Kinase Statistic represents the direction of effect: the change in kinase activity in a Test condition (T) compared to a Control condition (C). \&lt; 0 means inhibition, &gt; 0 means activation in T versus C. </p>
 <p>The Kinase Statistic is the median of the Peptide Statistics of the set of peptides that a kinase can phosphorylate. Thus, the Kinase Statistic represents the log fold change scaled by the noise.</p>
 <p>For each <span class="arithmatex">\(U\)</span>  matrix (for each peptide set per kinase), the normalized Kinase Statistic is calculated:</p>
-<p><span class="arithmatex">\(\mathbf{s = b\ *}\left( \mathbf{U}^{\mathbf{T}}\mathbf{p} \right)\)</span></p>
+<p><span class="arithmatex">\(\mathbf{s = b\ *}\left( \mathbf{M}^{\mathbf{T}}\mathbf{p} \right)\)</span></p>
 <p><span class="arithmatex">\(\mathbf{b}_{\mathbf{i}}\mathbf{= 1/}\mathbf{a}_{\mathbf{i}}\)</span>, where</p>
-<p><span class="arithmatex">\(\mathbf{s}\)</span>: the Kinase Statistic is the weighted average of <span class="arithmatex">\(\mathbf{p}\)</span>, the peptide difference statistic. <span class="arithmatex">\(\mathbf{b}\)</span> is a normalization vector, <span class="arithmatex">\(\mathbf{a}_{\mathbf{i}}\)</span> is the number of nonzero elements in column <span class="arithmatex">\(i\)</span> of <span class="arithmatex">\(U\)</span> (the number of peptides that a kinase phosphorylates).</p>
+<p><span class="arithmatex">\(\mathbf{s}\)</span>: the Kinase Statistic is the weighted average of <span class="arithmatex">\(\mathbf{p}\)</span>, the peptide difference statistic. 
+<span class="arithmatex">\(\mathbf{b}\)</span> is a normalization vector,
+<span class="arithmatex">\(\mathbf{a}_{\mathbf{i}}\)</span> is the number of nonzero elements in column <span class="arithmatex">\(i\)</span> of <span class="arithmatex">\(M\)</span> (the number of peptides that a kinase phosphorylates).</p>
 <p>An example calculation:
 <img alt="UKA example calculation" src="../Attachments/uka_08.png" /></p>
 <p>Formulated in a different way: for kinase i,</p>
 <div class="arithmatex">\[s_{i} = \ \frac{1}{a_{i}}*\sum_{j = 1}^{k}p_{j}\]</div>
 <p>For each peptide set considered for a kinase, the Kinase Statistic is calculated, and in the results, the Median Kinase Statistic across different peptide sets is given.</p>
 <p>The <strong>Kinase Change</strong> is calculated similarly as the Kinase Statistic, but using the <span class="arithmatex">\(p_{change}\)</span> values:</p>
-<div class="arithmatex">\[\mathbf{s}_{\mathbf{MKC}}\mathbf{= b\ *}\left( \mathbf{U}^{\mathbf{T}}\mathbf{p}_{\mathbf{change}} \right)\]</div>
+<div class="arithmatex">\[\mathbf{s}_{\mathbf{MKC}}\mathbf{= b\ *}\left( \mathbf{M}^{\mathbf{T}}\mathbf{p}_{\mathbf{change}} \right)\]</div>
 <p>The Kinase Statistic, in contrast to Kinase Change, is a value that also describes the significance of the change, i.e. whether the change is higher than the noise.</p>
 <h3 id="step-4-calculation-of-significance-and-specificity-scores">Step 4. Calculation of Significance and Specificity scores</h3>
 <p><strong>Significance score</strong>: permute samples 500 times and recalculate kinase FC. This gives the probability that the observed kinase FC could not have been obtained from random samples. This tells: <em>“Is this kinase signal reliably different?”</em></p>
