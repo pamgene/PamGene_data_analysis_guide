@@ -115,7 +115,7 @@ The Peptide Statistic is the Signal to Noise Ratio (SNR) of the difference betwe
 $$\mathbf{p =}\frac{\overline{\mathbf{x}_{\mathbf{T}}}\mathbf{- \ }\overline{\mathbf{x}_{\mathbf{C = 0}}}}{\sqrt{\mathbf{\sigma}_{\mathbf{T}}^{\mathbf{2}}\mathbf{+}\mathbf{\sigma}_{\mathbf{C}}^{\mathbf{2}}}}$$
 
   
-where $p$ = Peptide Statistic, $\overline{x}$ = mean $\log_{2}\$kinase activity of $T$ (Test) or $C$ (Control) conditions, $\sqrt{\sigma^{2}}$ = standard deviation of kinase activity of the two conditions.
+where $p$ = Peptide Statistic, $\overline{x}$ = mean $\log_{2}$ kinase activity of $T$ (Test) or $C$ (Control) conditions, $\sqrt{\sigma^{2}}$ = standard deviation of kinase activity of the two conditions.
 
 
 A similar value that describes the peptide difference is the Peptide Change:
@@ -281,7 +281,7 @@ $\mathbf{s}$: the Kinase Statistic is the weighted average of $\mathbf{p}$, the 
 
  
 An example calculation:
-![A picture containing text, font, receipt, screenshot Description automatically generated](Attachments/uka_08.png){width="6.3in" height="1.3284722222222223in"}
+![UKA example calculation](Attachments/uka_08.png)
 
   
 
@@ -312,7 +312,7 @@ The Kinase Statistic, in contrast to Kinase Change, is a value that also describ
 
 **Significance score**: permute samples 500 times and recalculate kinase FC. This gives the probability that the observed kinase FC could not have been obtained from random samples. This tells: _“Is this kinase signal reliably different?”_
 
- *Specificity score**: permute phosphosites and recalculate kinase FC. This gives the probability that the observed FC could not have been obtained from a random peptide set. This tells: _“Is this kinase specifically responsible for these phosphorylation changes?”
+**Specificity score**: permute phosphosites and recalculate kinase FC. This gives the probability that the observed FC could not have been obtained from a random peptide set. This tells: _“Is this kinase specifically responsible for these phosphorylation changes?”
 
 **Final score** = Significance Score + Specificity Score
 
