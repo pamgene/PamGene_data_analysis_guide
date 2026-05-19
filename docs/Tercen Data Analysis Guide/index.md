@@ -25,5 +25,4 @@ This guide assumes that you already know:
 3. [Basic Processing](III. Basic processing.md) — QC, normalization, and batch correction
 4. [Phosphosite Analysis](IV. Phosphosite analysis.md) — assessing differential phosphorylation between Test and Control
 5. [Kinase Analysis](V. Kinase analysis.md) — upstream kinase analysis (UKA) and interpretation
-6. [Further Insights](VI. Further insights.md) — deeper interpretation of phosphosite and kinase data
-7. [Workflow Decisions](Workflow Decisions in PamGene Data Analysis.md) — guidance on key decision points throughout the pipeline
+6. [Workflow Decisions](VI. Workflow Decisions in PamGene Data Analysis.md) — guidance on key decision points throughout the pipeline

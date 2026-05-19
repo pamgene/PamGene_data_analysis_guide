@@ -1,3 +1,4 @@
+## How to bring data from BioNavigator to Tercen
 
 How to bring data from old Bionavigator (.bn6 workflows) into Tercen:
 

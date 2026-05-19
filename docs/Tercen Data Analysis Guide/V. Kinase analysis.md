@@ -1,6 +1,6 @@
 ## Introduction to Upstream Kinase Analysis (UKA)
 
-Read about the overview of the UKA algorithm [here](../PamDx methods/UKA.md).
+Read about the overview of the UKA algorithm [here](../PamDx methods/2. UKA.md).
 
 Two `UKA_apps`:
 - UKA_app: legacy, deprecated, but supported. Please use the newer csUKA_app.
@@ -29,11 +29,11 @@ Is there batch effect?
 ## How to visualize the UKA output?
 
 * **Flutter Volcano Plot**: Inside the (cs)UKA_app, there is a highly customizable volcano app which shows the direction of effect, specificity and the names of selected kinases.  
-* **UKA dotplot**: run the UKA dotplot in the workflow template, after UKA to see more detailed information about the specificity and fold change of kinases groupped by kinase families. Adjust the specificity threshold if needed!
+* **UKA dotplot**: run the UKA dotplot app in the workflow template, after UKA, to see more detailed information about the specificity and fold change of kinases grouped by kinase families. The dotplot also allows for direct comparison of significant kinases between contrasts. Set the specificity threshold at least to > 0.7!
 
 The images the above apps create are downloadable in high quality and can be directly added to publications.
 
-Check out the visualizations [here](../PamDx methods/UKA.md).
+Check out the visualizations [here](../PamDx methods/2. UKA.md).
 
 ## (cs)UKA app details
 
