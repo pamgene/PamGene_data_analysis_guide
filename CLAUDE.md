@@ -7,27 +7,8 @@ MkDocs documentation site published at:
 
 Source is in `docs/`, built output is in `site/`, deployed via the `gh-pages` branch.
 
-## Structure
+Before commits, ask the user if you can go ahead.
 
-```
-docs/
-├── index.md                                  # Homepage (contents to be added by user)
-├── Tercen Data Analysis Guide/
-│   ├── index.md                              # Preface / overview of Part 1
-│   ├── Attachments/                          # All images for Part 1 chapters
-│   ├── I. Experiment Design.md
-│   ├── II. Image analysis.md
-│   ├── III. Basic processing.md
-│   ├── IV. Phosphosite analysis.md
-│   ├── V. Kinase analysis.md
-│   ├── VI. Further insights.md
-│   └── Workflow Decisions in PamGene Data Analysis.md
-└── PamDx methods/
-    ├── index.md                              # Overview of Part 2
-    ├── Attachments/                          # Images for Part 2 chapters
-    ├── Limma.md
-    └── UKA.md
-```
 
 ## Commands
 

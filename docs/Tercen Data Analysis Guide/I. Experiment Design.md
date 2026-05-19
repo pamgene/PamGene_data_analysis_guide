@@ -1,15 +1,7 @@
 ## Overview
 
 ![Pipeline: data analysis](Attachments/da_01.jpg)
-
----
-# Part 1: Experiment Design & Image Analysis
-
----
-
-## Experiment Design
-
-### Two Basic Experiment Designs
+## Two Basic Experiment Designs
 
 | Design | Description |
 |--------|-------------|
@@ -28,7 +20,7 @@
 
 ---
 
-### Balanced Design
+## Balanced Design
 
 Batch effects are variations caused by technical variability due to time, place, and materials  (e.g. runs, PamChips). Batch effects can confound real effects if the design is unbalanced → false results.
 
@@ -44,7 +36,7 @@ If needed, correction for batch effects is possible.
 
 ---
 
-### How to Make Sample Annotation
+## How to Make Sample Annotation
 
 An experiment needs the following design elements:
 
@@ -60,7 +52,7 @@ Add additional columns if needed (e.g. date, run).
 
 ---
 
-### Naming Rules for Workflow Automation
+## Naming Rules for Workflow Automation
 
 - Have `Supergroup` and `Test Condition` columns with **unchanged column names and values** (e.g. Control, T1, T2). Case sensitivity matters.
 - Real names go in separate columns (e.g. `Supergroup_annot`, `Tissue`)
