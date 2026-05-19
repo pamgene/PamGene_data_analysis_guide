@@ -9,10 +9,10 @@
       
       
       
-        <link rel="prev" href="../VI.%20Further%20insights/">
+        <link rel="prev" href="../2.%20UKA/">
       
       
-        <link rel="next" href="../X_How%20to%20bring%20data%20from%20BioNavigator%20to%20Tercen/">
+        <link rel="next" href="../../Tercen%20Data%20Analysis%20Guide/">
       
       
         
@@ -23,7 +23,7 @@
     
     
       
-        <title>Workflow Decisions - PamDx Data Analysis Guide</title>
+        <title>3. Further insights to PamDx data - PamDx Data Analysis Guide</title>
       
     
     
@@ -64,7 +64,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#should-the-qc-thresholds-be-adjusted" class="md-skip">
+        <a href="#the-interpretation-of-pamdx-data" class="md-skip">
           Skip to content
         </a>
       
@@ -100,7 +100,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Workflow Decisions
+              3. Further insights to PamDx data
             
           </span>
         </div>
@@ -250,7 +250,7 @@
   <span class="md-ellipsis">
     
   
-    Part 1 - Tercen Data Analysis Guide
+    PamDx methods
   
 
     
@@ -266,7 +266,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Part 1 - Tercen Data Analysis Guide
+    PamDx methods
   
 
           </label>
@@ -286,7 +286,7 @@
   <span class="md-ellipsis">
     
   
-    Index
+    PamDx Methods
   
 
     
@@ -307,14 +307,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../I.%20Experiment%20Design/" class="md-nav__link">
+      <a href="../1.%20Differential%20Phosphosite%20Analysis%20with%20Limma/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    I. Experiment Design
+    1. Differential Phosphosite Analysis with Limma
   
 
     
@@ -335,126 +335,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../II.%20Image%20analysis/" class="md-nav__link">
+      <a href="../2.%20UKA/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    II. Image Analysis
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../III.%20Basic%20processing/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    III. Basic Processing
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../IV.%20Phosphosite%20analysis/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    IV. Phosphosite Analysis
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../V.%20Kinase%20analysis/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    V. Kinase Analysis
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../VI.%20Further%20insights/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    VI. Further Insights
+    2. UKA
   
 
     
@@ -489,7 +377,7 @@
   <span class="md-ellipsis">
     
   
-    Workflow Decisions
+    3. Further insights to PamDx data
   
 
     
@@ -507,7 +395,7 @@
   <span class="md-ellipsis">
     
   
-    Workflow Decisions
+    3. Further insights to PamDx data
   
 
     
@@ -531,10 +419,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#should-the-qc-thresholds-be-adjusted" class="md-nav__link">
+  <a href="#the-interpretation-of-pamdx-data" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Should the QC Thresholds Be Adjusted?
+        The interpretation of PamDx Data
       
     </span>
   </a>
@@ -542,49 +430,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#log-or-vsn" class="md-nav__link">
+  <a href="#pathway-and-network-analysis-are-complementary" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Log or VSN?
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Log or VSN?">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#scenario-1-try-vsn-if-there-is-no-significant-differential-effect-with-log" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Scenario 1 - Try VSN if there is no significant differential effect with log.
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#scenario-2-global-updown-shift-with-log-which-conflicts-what-we-know" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Scenario 2 — Global up/down shift with log which conflicts what we know
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#limma-with-without-pairing" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Limma with / without pairing?
+        Pathway and Network Analysis Are Complementary
       
     </span>
   </a>
@@ -592,10 +441,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#do-limma-before-or-after-batch-correction" class="md-nav__link">
+  <a href="#pathway-analysis-tools" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Do Limma before or after batch correction?
+        Pathway Analysis Tools
       
     </span>
   </a>
@@ -603,10 +452,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#limma-decisions" class="md-nav__link">
+  <a href="#suggestions-for-validating-results" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Limma Decisions
+        Suggestions for validating results
       
     </span>
   </a>
@@ -614,10 +463,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#uka-before-or-after-batch-correction" class="md-nav__link">
+  <a href="#questions" class="md-nav__link">
     <span class="md-ellipsis">
       
-        UKA before or after batch correction?
+        Questions?
       
     </span>
   </a>
@@ -628,34 +477,6 @@
   
 </nav>
       
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../X_How%20to%20bring%20data%20from%20BioNavigator%20to%20Tercen/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    X. BioNavigator to Tercen
-  
-
-    
-  </span>
-  
-  
-
-      </a>
     </li>
   
 
@@ -700,7 +521,7 @@
   <span class="md-ellipsis">
     
   
-    Part 2 - PamDx Methods
+    Tercen Data Analysis Guide
   
 
     
@@ -716,7 +537,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Part 2 - PamDx Methods
+    Tercen Data Analysis Guide
   
 
           </label>
@@ -729,14 +550,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../PamDx%20methods/" class="md-nav__link">
+      <a href="../../Tercen%20Data%20Analysis%20Guide/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Index
+    PamDx Data Analysis Guide
   
 
     
@@ -757,14 +578,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../PamDx%20methods/Differential%20Phosphosite%20Analysis%20with%20Limma/" class="md-nav__link">
+      <a href="../../Tercen%20Data%20Analysis%20Guide/I.%20Experiment%20Design/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Differential Phosphosite Analysis (Limma)
+    I. Experiment Design
   
 
     
@@ -785,14 +606,154 @@
   
   
     <li class="md-nav__item">
-      <a href="../../PamDx%20methods/UKA/" class="md-nav__link">
+      <a href="../../Tercen%20Data%20Analysis%20Guide/II.%20Image%20analysis/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    UKA
+    II. Image analysis
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Tercen%20Data%20Analysis%20Guide/III.%20Basic%20processing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    III. Basic processing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Tercen%20Data%20Analysis%20Guide/IV.%20Phosphosite%20analysis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    IV. Phosphosite analysis
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Tercen%20Data%20Analysis%20Guide/V.%20Kinase%20analysis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    V. Kinase analysis
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Tercen%20Data%20Analysis%20Guide/VI.%20Workflow%20Decisions%20in%20PamGene%20Data%20Analysis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    VI. Workflow Decisions in PamGene Data Analysis
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Tercen%20Data%20Analysis%20Guide/VII.%20Miscellaneous/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    VII. Miscellaneous
   
 
     
@@ -830,105 +791,133 @@
 
 
 
-  <h1>Workflow Decisions</h1>
+  <h1>3. Further insights to PamDx data</h1>
 
-<h2 id="should-the-qc-thresholds-be-adjusted">Should the QC Thresholds Be Adjusted?</h2>
-<p><strong>PTK</strong> <code>fractionPresent</code> and <strong>STK</strong> <code>qc_stk_thr.ratio</code>:</p>
-<ul>
-<li>Default threshold = <strong>0.25</strong>, allowing for peptides to be missing in max 1 condition if there are 4 conditions.</li>
-<li>Inspect data and adjust threshold if appropriate:</li>
-<li>More than 4 conditions?</li>
-<li>Only few peptides passing QC?</li>
-<li>Experiment design indicates adjustment (e.g. if inhibitors are very potent, peptides might be present only in the control condition).</li>
-</ul>
-<hr />
-<h2 id="log-or-vsn">Log or VSN?</h2>
-<p>As default, <strong>log2 transformation</strong> is used, since VSN transforms the data in a way that fold change directions are harder to interpret.</p>
-<h3 id="scenario-1-try-vsn-if-there-is-no-significant-differential-effect-with-log">Scenario 1 - Try VSN if there is no significant differential effect with log.</h3>
-<p>After log2, if there is no differential signal between Test and Control conditions, and especially when the signal is overall low, VSN could work better. The reason can be the presence of differential low signal peptides which have a greater chance to be significant in VSN than in log2 data. </p>
-<p><strong>Assess by:</strong>
-- Comparing the number of significant phosphosites and kinases after log and VSN
-- PCA plot after log and VSN</p>
-<p>→ If there are more significant phosphosites or kinases after VSN than log2, and / or conditions cluster better in PCA, we can conclude that VSN works better for the given data.</p>
-<p><strong>Interpretation:</strong> the kinase directions (fold changes) are relative to the data mean.</p>
-<h3 id="scenario-2-global-updown-shift-with-log-which-conflicts-what-we-know">Scenario 2 — Global up/down shift with log which conflicts what we know</h3>
-<p>For example, we observe global upregulation. However, other experiments (e.g. Western blot) have already shown that some kinases are downregulated. The observed global shift might be due to an overactive kinase family masking the real effects - downregulated kinases couldn't be detected. </p>
-<p>→ VSN results in kinases that are down relative to the mean.
-→ <strong>Can we interpret this as downregulated kinases in the sample?</strong> Assess:
-- Whether downregulated kinases follow expectations (e.g. among them is the kinase the regulation of which has been shown - or other kinases which map to the same pathway as the kinase in question.)
-- Whether downregulated kinases have a high specificity score.</p>
-<p><strong>Interpretation:</strong>
-- VSN shows kinase changes relative to the data mean.
-- If kinases follow expectations and have a high specificity score, the hypothesis was probably correct — we can consider those kinases as probably downregulated in the sample.
-- If downregulated kinases are scattered and have a low specificity score, this is likely a normalization artifact. Other hypotheses should be considered for why PamGene experiments resulted in global upregulation.</p>
-<hr />
-<h2 id="limma-with-without-pairing">Limma with / without pairing?</h2>
+<h2 id="the-interpretation-of-pamdx-data">The interpretation of PamDx Data</h2>
 <table>
 <thead>
 <tr>
-<th>Type of pairing</th>
-<th>Description</th>
-<th>Paired / unpaired analysis?</th>
+<th></th>
+<th>Kinase data</th>
+<th>Phosphosite data</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><strong>Biological pairing</strong></td>
-<td>Control and Test are from the same replicate (e.g. same cell line). Pairing factor is typically <code>barcode</code> (= Replicate).</td>
-<td><strong>Paired analysis</strong> is better than unpaired— it is more powerful and sensitive because it accounts for technical variability.</td>
+<td><strong>Strength</strong></td>
+<td>Easy interpretation: positive FC = activation, negative = inhibition. Differential activity has  statistical underpinning.</td>
+<td>Autophosphorylation sites are valuable.</td>
 </tr>
 <tr>
-<td><strong>Technical pairing</strong></td>
-<td>Comparing cell line 1 to cell line 2 on the same chip.</td>
-<td><strong>Unpaired analysis.</strong></td>
+<td><strong>Key caveat</strong></td>
+<td>Kinases are predicted. Therefore, you must pre-select kinases with high scores (specificity score at least &gt; 0.7).</td>
+<td>Interpreting peptide signal = protein signal is a big simplification, because the peptide signal is the sum of phosphorylation by different kinases on a 13mer peptide on the PamChip.<br>Further:<br>1. The protein  may not be present in lysate.<br>2. Phosphorylation can have different outcomes (induction or inhibition of protein or other functions).  <br>3. Matching a single peptide to a protein is statistically not as strong as kinases. Kinases can only be predicted if at least 3 phosphosites show consistent change.<br>If you decide to interpret it this way, mention this caveat.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example: Phosphosites with different functions:</strong></p>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>PSite</th>
+<th>Residue</th>
+<th>Function</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AKT1_301_313</td>
+<td>308</td>
+<td>T</td>
+<td>required for full activity</td>
 </tr>
 <tr>
-<td><img alt="When batch effect is high, pairing  analysis probably yields more significant results" src="../Attachments/workflow_decisions_03.jpg" /></td>
-<td></td>
-<td></td>
+<td>AKT1_170_182</td>
+<td>176</td>
+<td>Y</td>
+<td>phosphorylation by TNK2 tethers AKT1 to plasma membrane</td>
 </tr>
 </tbody>
 </table>
 <hr />
-<h2 id="do-limma-before-or-after-batch-correction">Do Limma before or after batch correction?</h2>
-<p><strong>Phosphosite analysis should generally be done on log / VSN data, not on ComBat-corrected data.</strong></p>
+<h2 id="pathway-and-network-analysis-are-complementary">Pathway and Network Analysis Are Complementary</h2>
+<p><img alt="Pathway-network analysis" src="../Attachments/da_40.png" /></p>
+<hr />
+<h2 id="pathway-analysis-tools">Pathway Analysis Tools</h2>
+<p><strong>Choose:</strong></p>
 <ul>
-<li>ComBat corrects by estimating the mean, which removes a degree of freedom from the dataset.</li>
-<li>In limma, this lost degree of freedom cannot be accounted for.</li>
-<li>This leads to inflated significance (more false positives).</li>
+<li>
+<p>Pathway sets (e.g. KEGG, Reactome, WikiPathways, GO)</p>
+</li>
+<li>
+<p>Type of analysis:</p>
+<ul>
+<li>
+<p>Functional Class Scoring (e.g. GSEA)</p>
+</li>
+<li>
+<p>Overrepresentation Analysis (e.g. EnrichR)</p>
+</li>
 </ul>
-<p><strong>Exception:</strong> When there are many replicates (e.g. 2 runs × 6 replicates), and / or no pairing can be done, and the batch effect is large, ComBat is acceptable. But stricter significance thresholds must be set (e.g. P &lt; 0.001, or set FDR threshold).</p>
+</li>
+</ul>
+<p><strong>Pathway analysis types</strong></p>
+<table>
+<thead>
+<tr>
+<th>Overrepresentation (e.g. Metascape)</th>
+<th>Functional class scoring (e.g. GSEA)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>TLDR</strong>: More true positive, more false positive results.<br><br>Tests whether the overlap of pathway members in the data is higher than by chance.<br><br>Input: list of significant features (no values)</td>
+<td><strong>TLDR</strong>: Less false positive, less true positive results.<br><br>Detects pathways based on subtle, coordinated changes in pathway members.<br><br>Input: actual values of features or Fold Change.</td>
+</tr>
+<tr>
+<td><strong>Pro</strong>: easy to use.</td>
+<td><strong>Pro</strong>: Can sensitively detect subtle, coordinated changes in pathway members. Pathway output is more reliable.</td>
+</tr>
+<tr>
+<td><strong>Con</strong>: Pre-filtering of features can introduce bias: 1) subtler changes might not be significant; 2) multiple testing bias (inflation of false positives)</td>
+<td><strong>Con</strong>: Can overlook pathways if members don’t show clear up-or downregulation.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Online tools:</strong> Metascape, EnrichR, gProfiler, Paintomics (overrepresentation analysis)</p>
+<p><strong>R packages:</strong> GSEA (gage, clusterProfiler), Pathview</p>
+<p><strong>Paintomics output</strong>: KEGG pathways colored by LFC (of 1+ comparisons)</p>
+<p><img alt="Paintomics output" src="../Attachments/da_41.png" /></p>
+<p><strong>Metascape output: top pathways:</strong>
+<img alt="Metascape output" src="../Attachments/da_42.png" /></p>
 <hr />
-<h2 id="limma-decisions">Limma Decisions</h2>
-<div class="highlight"><pre><span></span><code>Is there biological pairing?
-│
-├── Yes → Paired Limma
-│
-└── No → Is there batch effect?
-         │
-         ├── Yes → ComBat → Unpaired Limma
-         │                  (set stricter significance threshold)
-         └── No  → Unpaired Limma
-</code></pre></div>
-<p><strong>Checking for batch effect:</strong>
-- Use PCA, color on batches, and observe clustering of technical batches.
-- <strong>1-run experiments:</strong> batch effect may be on Barcode.
-- <strong>Multi-run experiments:</strong> check batch effect on Run first (usually larger than Barcode effect). Correcting for too many batch types can introduce bias — if a Run effect exists, correcting for Barcode as well is usually not necessary.</p>
+<h2 id="suggestions-for-validating-results">Suggestions for validating results</h2>
+<p>Select kinases that <strong>consistently appear with high Specificity Score</strong> in experiments with ≥ 3 replicates/condition (cell lines) or ≥ 6 replicates/condition (primary cell cultures / patient samples).</p>
+<p><strong>We recommend validating kinases over phosphosites</strong> because:</p>
+<ul>
+<li>
+<p>Targets may not be in their native form in the lysate</p>
+</li>
+<li>
+<p>Phosphorylation at a site can have different functional outcomes</p>
+</li>
+</ul>
+<p><strong>Western blot validation strategy:</strong></p>
+<ul>
+<li>
+<p><strong>Upregulated kinase</strong>: use antibodies specific for phosphosites that <strong>induce</strong> kinase activity</p>
+</li>
+<li>
+<p><strong>Downregulated kinase</strong>: use antibodies specific for phosphosites that <strong>inhibit</strong> kinase activity</p>
+</li>
+</ul>
+<p>Use Uniprot and PhosphoSitePlus to identify relevant phosphosites. PamGene can also help identify relevant phosphosites on request.</p>
+<p>If direct kinase validation is not possible, validate <strong>downstream phosphosites</strong> activated by the kinase (PamGene can assist on request).</p>
 <hr />
-<h2 id="uka-before-or-after-batch-correction">UKA before or after batch correction?</h2>
-<p>In UKA, there is <strong>no pairing option</strong> available.</p>
-<p>ComBat should be done for UKA (or for any multivariate analyses such as PCA, class prediction) <strong>only if:</strong>
-1. The design is <strong>balanced</strong> (conditions are balanced across technical batches).
-2. There is a batch effect <strong>and</strong> ComBat can remove it.</p>
-<p>If ComBat cannot remove the batch effect, UKA should be done on log/VSN data.</p>
-<div class="highlight"><pre><span></span><code>Is there batch effect?
-│
-├── Yes → ComBat → UKA on log/VSN + ComBat-corrected data
-│
-└── No  → UKA on log/VSN data
-</code></pre></div>
-<p><strong>Before/after ComBat PCA example:</strong></p>
-<p><img alt="Combat operator in Tercen showing PCA plots before and after ComBat: batches are visible before correction and no longer visible after" src="../Attachments/workflow_decisions_04.jpg" /></p>
+<h2 id="questions">Questions?</h2>
+<p>For questions about experiment design, data analysis, validation, or anything else:</p>
+<p>📧 <strong>support@pamgene.com</strong></p>
 
 
 
