@@ -1167,11 +1167,11 @@
 <p><strong>For each kinase, different size of peptide sets are considered</strong></p>
 </li>
 </ul>
-<p>In each analysis, multiple <span class="arithmatex">\(U\)</span> matrices are calculated based on varying the Kinase rank cutoff. Thus for each kinase, multiple peptide sets are considered -- by decreasing the stringency of the cutoff, the size of the peptide set increases. The basic set includes the peptides of ranks 0 to 4 and subsequent peptide sets are formed by including the lower ranks from 5 to 12, one-by-one.</p>
+<p>In each analysis, multiple <span class="arithmatex">\(M\)</span> matrices are calculated based on varying the Kinase rank cutoff. Thus for each kinase, multiple peptide sets are considered -- by decreasing the stringency of the cutoff, the size of the peptide set increases. The basic set includes the peptides of ranks 0 to 4 and subsequent peptide sets are formed by including the lower ranks from 5 to 12, one-by-one.</p>
 <h3 id="step-3-calculation-of-the-kinase-statistic-and-the-kinase-change">Step 3: Calculation of The Kinase Statistic and the Kinase Change</h3>
 <p>The Kinase Statistic represents the direction of effect: the change in kinase activity in a Test condition (T) compared to a Control condition (C). \&lt; 0 means inhibition, &gt; 0 means activation in T versus C. </p>
 <p>The Kinase Statistic is the median of the Peptide Statistics of the set of peptides that a kinase can phosphorylate. Thus, the Kinase Statistic represents the log fold change scaled by the noise.</p>
-<p>For each <span class="arithmatex">\(U\)</span>  matrix (for each peptide set per kinase), the normalized Kinase Statistic is calculated:</p>
+<p>For each <span class="arithmatex">\(M\)</span>  matrix (for each peptide set per kinase), the normalized Kinase Statistic is calculated:</p>
 <p><span class="arithmatex">\(\mathbf{s = b\ *}\left( \mathbf{M}^{\mathbf{T}}\mathbf{p} \right)\)</span></p>
 <p><span class="arithmatex">\(\mathbf{b}_{\mathbf{i}}\mathbf{= 1/}\mathbf{a}_{\mathbf{i}}\)</span>, where</p>
 <p><span class="arithmatex">\(\mathbf{s}\)</span>: the Kinase Statistic is the weighted average of <span class="arithmatex">\(\mathbf{p}\)</span>, the peptide difference statistic. 
@@ -1189,7 +1189,7 @@
 <p><strong>Significance score</strong>: permute samples 500 times and recalculate kinase FC. This gives the probability that the observed kinase FC could not have been obtained from random samples. This tells: <em>“Is this kinase signal reliably different?”</em></p>
 <p><strong>Specificity score</strong>: permute phosphosites and recalculate kinase FC. This gives the probability that the observed FC could not have been obtained from a random peptide set. This tells: _“Is this kinase specifically responsible for these phosphorylation changes?”</p>
 <p><strong>Final score</strong> = Significance Score + Specificity Score</p>
-<p>For legacy UKA, mean and median scores are calculated across the different peptide sets (different U matrices) considered for a kinase. For further analysis, the Median Kinase Statistic and Median Final Score are used.</p>
+<p>For legacy UKA, mean and median scores are calculated across the different peptide sets (different M matrices) considered for a kinase. For further analysis, the Median Kinase Statistic and Median Final Score are used.</p>
 
 
 

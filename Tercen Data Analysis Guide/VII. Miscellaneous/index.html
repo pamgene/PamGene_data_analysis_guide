@@ -712,6 +712,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#pamchip-technical-details" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PamChip technical details
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -747,6 +758,7 @@
 
   <h1>VII. Miscellaneous</h1>
 
+<p>This page stores information that is intended to be read by the Tercen bot to answer questions. </p>
 <h2 id="how-to-bring-data-from-bionavigator-to-tercen">How to bring data from BioNavigator to Tercen</h2>
 <p>How to bring data from old Bionavigator (.bn6 workflows) into Tercen:</p>
 <ol>
@@ -778,7 +790,25 @@ This is done to have the same names as the result of ETS in Tercen, because thes
 </ol>
 </li>
 </ol>
-<p><img alt="Importing txt: change Barcode to character" src="../Attachments/da_45.png" /></p>
+<p><img alt="Importing txt: change Barcode to character|670" src="../Attachments/da_45.png" /></p>
+<h2 id="pamchip-technical-details">PamChip technical details</h2>
+<p><strong>Parts of a barcode:</strong>
+e.g. 641023104</p>
+<p>-         641 or 640 is the chip type
+-         023 run number
+-         1 carrier num
+-         04 is the place on carrier</p>
+<p>If chips are from same carrier, they should not be technically different.</p>
+<p><strong>Image name explanation</strong></p>
+<p>Example: <code>641070616_W1_F1_T100_P94_I493_A30.tif</code></p>
+<div class="highlight"><pre><span></span><code>{barcode}_W{well (array)}_F{filter}_T{exposure time}_P{cycle}_I{image number}_A{temperature}.tif
+</code></pre></div>
+<p>F stands for the filter used. This will always be one when FITC is used. A stand for the temperature measured during images. This will always be either 29 or 30.</p>
+<p><strong>Chips:</strong></p>
+<p>86402: PTK old --&gt; barcode starting with 640
+86412: PTK new --&gt; barcode starting with 641
+87102: STK old --&gt; barcode starting with 71
+87202:  STK new --&gt; barcode starting with 72</p>
 
 
 

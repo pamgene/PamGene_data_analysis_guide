@@ -664,10 +664,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#interpretation-of-pamgene-data" class="md-nav__link">
+  <a href="#interpretation-of-phosphosites" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Interpretation of PamGene Data
+        Interpretation of Phosphosites
       
     </span>
   </a>
@@ -880,26 +880,8 @@
          │                  (set stricter significance threshold)
          └── No  → Unpaired Limma
 </code></pre></div>
-<h2 id="interpretation-of-pamgene-data">Interpretation of PamGene Data</h2>
-<table>
-<thead>
-<tr>
-<th>Data type</th>
-<th>Notes</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Phosphosite data</strong></td>
-<td>The protein may not be present in the lysate. Phosphorylation can have different outcomes (induction or inhibition). Autophosphorylation sites are very valuable!</td>
-</tr>
-<tr>
-<td><strong>Kinase data</strong></td>
-<td>Main output. Positive FC = activation, negative = inhibition. Many-to-many kinase-phosphosite relationships → use predictions with high specificity scores.</td>
-</tr>
-</tbody>
-</table>
-<p>When phosphosite and kinase data overlap, prefer kinase-level data.</p>
+<h2 id="interpretation-of-phosphosites">Interpretation of Phosphosites</h2>
+<p>Read about the interpretation of phosphosites <a href="../../PamDx%20methods/3.%20Further%20insights%20to%20PamDx%20data/">here</a> - but preferably after learning about Upstream Kinase Analysis.</p>
 <hr />
 <h2 id="introduction-to-versioning">Introduction to versioning</h2>
 <p>PamGene continuously improves data analysis. Each improvement is recorded as a new version of the operator or app. When major improvements are done, the templates are also updated, so the new versions are automatically available.</p>

@@ -945,7 +945,7 @@ Its output file contains:
 </ol>
 <hr />
 <h2 id="ets-exposure-time-scaling-app">ETS: Exposure Time Scaling App</h2>
-<p>The ETS is the first app in PamGene data analysis. An <strong>app</strong> is a subworkflow: left click "Open" to inspect the structure to familiarize yourself with how an app looks like in general. It always starts with an <em>Input step</em>, which takes the data from the main workflow. Then there is a <em>wizard step</em> which helps the users to select data. Then there are data transformation steps and finally:
+<p>The ETS is the first app in PamDx data analysis. An <strong>app</strong> is a subworkflow: left click "Open" to inspect the structure to familiarize yourself with how an app looks like in general. It always starts with an <em>Input step</em>, which takes the data from the main workflow. Then there is a <em>wizard step</em> which helps the users to select data. Then there are data transformation steps and finally:
 - <em>View step(s)</em> to visualize data
 - <em>Output step</em> to bring data back to the main workflow</p>
 <p><img alt="ETS app internal workflow" src="../Attachments/da_23.png" /></p>
@@ -1102,7 +1102,7 @@ These filters are set up with the defaults in the templates. The QC heatmaps sho
 <p><em>Interpretation</em>:
 - VSN shows kinase changes relative to the data mean.
 - If kinases follow expectations and they have a high specificity score, probably the hypothesis was correct. We can consider downregulated kinases as probably downregulated in the sample.
-- However, if downregulated kinases are scattered and have low specificity score, we must conclude that this was just a normalization artifact. We must think of other hypotheses why PamGene experiments resulted in global upregulation.</p>
+- However, if downregulated kinases are scattered and have low specificity score, we must conclude that this was just a normalization artifact. We must think of other hypotheses why PamDx experiments resulted in global upregulation.</p>
 <hr />
 <h3 id="combat-batch-effect-correction">ComBat: Batch Effect Correction</h3>
 <ol>
