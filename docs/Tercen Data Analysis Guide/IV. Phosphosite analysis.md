@@ -67,14 +67,9 @@ Is there biological pairing?
          └── No  → Unpaired Limma
 ```
 
-## Interpretation of PamGene Data
+## Interpretation of Phosphosites
 
-| Data type            | Notes                                                                                                                                                             |
-| -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Phosphosite data** | The protein may not be present in the lysate. Phosphorylation can have different outcomes (induction or inhibition). Autophosphorylation sites are very valuable! |
-| **Kinase data**      | Main output. Positive FC = activation, negative = inhibition. Many-to-many kinase-phosphosite relationships → use predictions with high specificity scores.       |
-
- When phosphosite and kinase data overlap, prefer kinase-level data.
+Read about the interpretation of phosphosites [here](../PamDx methods/3. Further insights to PamDx data.md) - but preferably after learning about Upstream Kinase Analysis.
 
 ---
 

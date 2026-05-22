@@ -35,6 +35,9 @@ The images the above apps create are downloadable in high quality and can be dir
 
 Check out the visualizations [here](../PamDx methods/2. UKA.md).
 
+## Interpretation of kinases and phosphosites 
+
+Read about the interpretation (pathway / network analysis) of kinases and phosphosites [here](../PamDx methods/3. Further insights to PamDx data.md).
 ## (cs)UKA app details
 
 For information on (cs)UKA_app versions, what exactly changed, or how to fill out the wizard, read the readmes of the [UKA_app](https://github.com/pamgene/UKA_app) / [csUKA_app](https://github.com/pamgene/csUKA_app).

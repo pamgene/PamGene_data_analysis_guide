@@ -21,7 +21,7 @@ The result of Image Analysis contains the **Median signal minus background (Medi
 
 ## ETS: Exposure Time Scaling App
 
-The ETS is the first app in PamGene data analysis. An **app** is a subworkflow: left click "Open" to inspect the structure to familiarize yourself with how an app looks like in general. It always starts with an *Input step*, which takes the data from the main workflow. Then there is a *wizard step* which helps the users to select data. Then there are data transformation steps and finally:
+The ETS is the first app in PamDx data analysis. An **app** is a subworkflow: left click "Open" to inspect the structure to familiarize yourself with how an app looks like in general. It always starts with an *Input step*, which takes the data from the main workflow. Then there is a *wizard step* which helps the users to select data. Then there are data transformation steps and finally:
 - *View step(s)* to visualize data
 - *Output step* to bring data back to the main workflow
 
@@ -190,7 +190,7 @@ An example:
 *Interpretation*:
 - VSN shows kinase changes relative to the data mean.
 - If kinases follow expectations and they have a high specificity score, probably the hypothesis was correct. We can consider downregulated kinases as probably downregulated in the sample.
-- However, if downregulated kinases are scattered and have low specificity score, we must conclude that this was just a normalization artifact. We must think of other hypotheses why PamGene experiments resulted in global upregulation.
+- However, if downregulated kinases are scattered and have low specificity score, we must conclude that this was just a normalization artifact. We must think of other hypotheses why PamDx experiments resulted in global upregulation.
 
 ---
 

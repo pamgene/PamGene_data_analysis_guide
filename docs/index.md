@@ -1,5 +1,7 @@
-**Part 1 — Tercen Data Analysis Guide**
+**Tercen Data Analysis Guide**
 
-Analysis in Tercen, from image analysis through phosphosite and kinase interpretation.Contents to be added.
+Details of how to do analysis in the Tercen / BioNavigator software.
 
 **Part 2 — PamDx Methods**
+
+Details of the methods used in the PamDx data analysis. 
