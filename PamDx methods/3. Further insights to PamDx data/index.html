@@ -64,7 +64,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#the-interpretation-of-pamdx-data" class="md-skip">
+        <a href="#the-interpretation-of-peptides-and-kinases-which-one-is-more-insightful" class="md-skip">
           Skip to content
         </a>
       
@@ -419,10 +419,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#the-interpretation-of-pamdx-data" class="md-nav__link">
+  <a href="#the-interpretation-of-peptides-and-kinases-which-one-is-more-insightful" class="md-nav__link">
     <span class="md-ellipsis">
       
-        The interpretation of PamDx Data
+        The interpretation of peptides and kinases: which one is more insightful ?
       
     </span>
   </a>
@@ -445,6 +445,34 @@
     <span class="md-ellipsis">
       
         Pathway Analysis Tools
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Pathway Analysis Tools">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-outputs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example outputs:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-select-the-most-relevant-pathways-can-i-use-p-values-from-the-pathway-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How to select the most relevant pathways? Can I use p-values from the pathway analysis?
       
     </span>
   </a>
@@ -793,16 +821,25 @@
 
   <h1>3. Further insights to PamDx data</h1>
 
-<h2 id="the-interpretation-of-pamdx-data">The interpretation of PamDx Data</h2>
-<p>We suggest to base further analysis of PamDx results on kinase data and not peptide-level data. The UKA results are directly suitable to input to signaling pathway or network analysis, since they have a clear interpretation: positive FC = activation, negative = inhibition. Their differential activity has a better statistical underpinning than treating peptide signal as protein signal. Since kinases are predicted, pre-selection of kinases with high specificity scores (&gt; 0.7, rather &gt; 1) should be done.</p>
-<p><strong>The reasons why pathway or network analysis should be primarily based on kinase results</strong>: </p>
-<p>Peptide signal can be translated to protein signal (data provided in peptide enrichment) but interpreting it this way is a big simplification. The peptide signal is the sum of phosphorylation by different kinases on a 13mer peptide on the PamChip.
-Further:
-1. The protein may not be present in lysate.
-2. Phosphorylation can have different outcomes (induction or inhibition of protein or other functions).<br />
-3. Matching a single peptide to a protein is statistically not as strong as kinases. Kinases can only be predicted if at least 3 phosphosites show consistent change.</p>
-<p>If you decide to interpret it this way, mention this caveat in your publication.</p>
-<p><strong>Example: Phosphosites with different functions:</strong></p>
+<h2 id="the-interpretation-of-peptides-and-kinases-which-one-is-more-insightful">The interpretation of peptides and kinases: which one is more insightful ?</h2>
+<p><strong>We suggest to base further analysis of PamDx results on kinase data and not on peptide-level data.</strong> </p>
+<ul>
+<li><strong>Peptide signal can be translated to protein signal (data provided in peptide enrichment) but interpreting peptides = proteins is oversimplification:</strong> <ul>
+<li>the peptide signal is the sum of phosphorylation by different kinases on a 13mer peptide on the PamChip.</li>
+<li>The protein may not be present in lysate.</li>
+<li>Phosphorylation can have different outcomes (induction or inhibition of protein or other functions).  </li>
+</ul>
+</li>
+<li><strong>The UKA results</strong> on the other hand, <strong>are directly suitable to input to signaling pathway or network analysis</strong>: <ul>
+<li>they have a clear interpretation: positive FC = activation, negative = inhibition.</li>
+<li>Differential kinase activity has a better statistical underpinning than treating differential peptide phosphorylation as protein activity. (Specificity score is available for kinases and kinases can only be predicted if at least 3 phosphosites show consistent change. </li>
+<li>Since kinases are predicted, pre-selection of kinases with high specificity scores (&gt; 0.7, or &gt; 1, the latter is equivalent to p-value 0.1) should be done. We do not recommend to set stringent specificity score cutoff for pathway / network analysis. These analyses find functionally interacting kinases, which further pinpoints the most relevant ones and naturally filters out false positives. (If a kinase is not connected to any other kinase in a pathway or network analysis, it is likely to be false positive.) </li>
+</ul>
+</li>
+</ul>
+<p><strong>I really can't use peptide signal?</strong></p>
+<p>You can decide to use peptide signal as a proxy for protein activity in certain cases. For example, some peptides may match to proteins which are not kinases and they are specifically linked to the research domain. Or, if you want to use autophosphorylation site which is a strong indicator that the kinase is there (although in this case the kinase should be predicted as well.) If you do use peptides translated to proteins, mention the simplifications in your publication.</p>
+<p><strong>Example of phosphosites on the same protein with different functions:</strong></p>
 <table>
 <thead>
 <tr>
@@ -835,7 +872,7 @@ Further:
 <p><strong>Choose:</strong></p>
 <ul>
 <li>
-<p>Pathway sets (e.g. KEGG, Reactome, WikiPathways, GO)</p>
+<p>Pathway databases, e.g. KEGG, Reactome, WikiPathways, GO, SignaLink. Our default is Reactome.</p>
 </li>
 <li>
 <p>Type of analysis:</p>
@@ -844,7 +881,7 @@ Further:
 <p>Functional Class Scoring (e.g. GSEA)</p>
 </li>
 <li>
-<p>Overrepresentation Analysis (e.g. EnrichR)</p>
+<p>Overrepresentation Analysis (e.g. EnrichR, Metascape, gProfiler, Paintomics - all online tools)</p>
 </li>
 </ul>
 </li>
@@ -872,13 +909,16 @@ Further:
 </tr>
 </tbody>
 </table>
-<p><strong>Online tools:</strong> Metascape, EnrichR, gProfiler, Paintomics (overrepresentation analysis)</p>
 <p><strong>R packages:</strong> GSEA (gage, clusterProfiler), Pathview</p>
+<h3 id="example-outputs">Example outputs:</h3>
 <p><strong>Paintomics output</strong>: KEGG pathways colored by LFC (of 1+ comparisons)</p>
 <p><img alt="Paintomics output" src="../Attachments/da_41.png" /></p>
 <p><strong>Metascape output: top pathways:</strong>
 <img alt="Metascape output" src="../Attachments/da_42.png" /></p>
-<hr />
+<h2 id="how-to-select-the-most-relevant-pathways-can-i-use-p-values-from-the-pathway-analysis">How to select the most relevant pathways? Can I use p-values from the pathway analysis?</h2>
+<p>There is no simple metric. Pathways usually share members, and a pathway that is relevant in one model may be irrelevant in another.<br />
+In addition, statistical tests do not consider how specific members are to a pathway. As a result, a pathway may receive a strong p-value even if only non-specific members are detected.
+Therefore, we recommend assessing pathway relevance using biological domain knowledge rather than relying on p-values or combined scores.</p>
 <h2 id="suggestions-for-validating-results-with-western-blot">Suggestions for validating results with Western blot</h2>
 <p>Select kinases that <strong>consistently appear with high Specificity Score</strong> in experiments with ≥ 3 replicates/condition (cell lines) or ≥ 6 replicates/condition (primary cell cultures / patient samples).</p>
 <p><strong>We recommend validating kinases over phosphosites</strong> because:</p>
