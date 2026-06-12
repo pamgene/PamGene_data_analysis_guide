@@ -9,7 +9,7 @@
       
       
       
-        <link rel="prev" href="../2.%20UKA/">
+        <link rel="prev" href="../2.%20Kinase%20Analysis/">
       
       
         <link rel="next" href="../../Tercen%20Data%20Analysis%20Guide/">
@@ -335,14 +335,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../2.%20UKA/" class="md-nav__link">
+      <a href="../2.%20Kinase%20Analysis/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    2. UKA
+    2. Kinase Analysis
   
 
     
@@ -449,23 +449,6 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Pathway Analysis Tools">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#example-outputs" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Example outputs:
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
       
         <li class="md-nav__item">
@@ -473,6 +456,17 @@
     <span class="md-ellipsis">
       
         How to select the most relevant pathways? Can I use p-values from the pathway analysis?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#network-analysis-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Network analysis tools
       
     </span>
   </a>
@@ -869,22 +863,26 @@
 <p><img alt="Pathway-network analysis" src="../Attachments/da_40.png" /></p>
 <hr />
 <h2 id="pathway-analysis-tools">Pathway Analysis Tools</h2>
-<p><strong>Choose:</strong></p>
+<p><strong>Type of analysis</strong>:</p>
 <ul>
-<li>
-<p>Pathway databases, e.g. KEGG, Reactome, WikiPathways, GO, SignaLink. Our default is Reactome.</p>
-</li>
-<li>
-<p>Type of analysis:</p>
-<ul>
-<li>
-<p>Functional Class Scoring (e.g. GSEA)</p>
-</li>
-<li>
-<p>Overrepresentation Analysis (e.g. EnrichR, Metascape, gProfiler, Paintomics - all online tools)</p>
-</li>
+<li>Overrepresentation Analysis: simple pathway analysis - input only your list of significant kinases <ul>
+<li><a href="https://maayanlab.cloud/Enrichr/">EnrichR</a></li>
+<li><a href="https://metascape.org/">Metascape</a></li>
+<li><a href="https://biit.cs.ut.ee/gprofiler/gost">gProfiler</a></li>
+<li><a href="https://paintomics.uv.es/">Paintomics</a></li>
+<li><a href="https://cancerhallmarks.com/">Hallmarks of cancer</a> (human and mouse)</li>
 </ul>
 </li>
+<li>Functional Class Scoring (e.g. GSEA): (R packages: gage, clusterProfiler, pathview)</li>
+</ul>
+<p><strong>Choose the pathway databases, e.g:</strong></p>
+<ul>
+<li>KEGG (nice pathway figures but limited gene sets)</li>
+<li>Reactome (most recommended by us because of clear hiearchical structure and constant update)</li>
+<li>WikiPathways (nice pathway figures, but inconsistent pathway naming. Some diseases are only found here.)</li>
+<li>GO</li>
+<li><a href="https://signalink.org/">SignaLink</a> very well curated db</li>
+<li>Hallmarks of Cancer</li>
 </ul>
 <p><strong>Pathway analysis types</strong></p>
 <table>
@@ -907,18 +905,80 @@
 <td><strong>Con</strong>: Pre-filtering of features can introduce bias: 1) subtler changes might not be significant; 2) multiple testing bias (inflation of false positives)</td>
 <td><strong>Con</strong>: Can overlook pathways if members don’t show clear up-or downregulation.</td>
 </tr>
+<tr>
+<td>### Example outputs:</td>
+<td></td>
+</tr>
 </tbody>
 </table>
-<p><strong>R packages:</strong> GSEA (gage, clusterProfiler), Pathview</p>
-<h3 id="example-outputs">Example outputs:</h3>
 <p><strong>Paintomics output</strong>: KEGG pathways colored by LFC (of 1+ comparisons)</p>
 <p><img alt="Paintomics output" src="../Attachments/da_41.png" /></p>
-<p><strong>Metascape output: top pathways:</strong>
-<img alt="Metascape output" src="../Attachments/da_42.png" /></p>
+<p><strong>Metascape output: top pathways:</strong></p>
+<p><img alt="Metascape output" src="../Attachments/da_42.png" /></p>
+<p><strong>Hallmarks of cancer</strong></p>
+<p><img alt="Pathway-network analysis" src="../Attachments/insights_01.png" /></p>
 <h2 id="how-to-select-the-most-relevant-pathways-can-i-use-p-values-from-the-pathway-analysis">How to select the most relevant pathways? Can I use p-values from the pathway analysis?</h2>
 <p>There is no simple metric. Pathways usually share members, and a pathway that is relevant in one model may be irrelevant in another.<br />
 In addition, statistical tests do not consider how specific members are to a pathway. As a result, a pathway may receive a strong p-value even if only non-specific members are detected.
 Therefore, we recommend assessing pathway relevance using biological domain knowledge rather than relying on p-values or combined scores.</p>
+<h2 id="network-analysis-tools">Network analysis tools</h2>
+<p>Paste your gene list to <a href="https://string-db.org/cgi/input?sessionId=bABiPuufnLuv&amp;input_page_active_form=multiple_identifiers">STRING db</a>.</p>
+<p>To focus on the most validated part of the network, filter settings to make the interaction data more stringent. See interaction sources / evidence channels in the below table. You can also click on a link to see the source of interaction with publications.</p>
+<table>
+<thead>
+<tr>
+<th>Evidence Channel</th>
+<th>Type</th>
+<th>Reliability</th>
+<th>Key Strength</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Experimental</td>
+<td>Direct</td>
+<td>🥇 Highest</td>
+<td>Proof of direct physical or genetic interaction.</td>
+</tr>
+<tr>
+<td>Curated Databases</td>
+<td>Direct</td>
+<td>🥇 Very High</td>
+<td>Expert-validated functional association in pathways/complexes.</td>
+</tr>
+<tr>
+<td>Gene Fusion</td>
+<td>Genomic</td>
+<td>🥈 High</td>
+<td>Strong evolutionary evidence for functional interaction.</td>
+</tr>
+<tr>
+<td>Gene Neighborhood</td>
+<td>Genomic</td>
+<td>🥈 High (Prok) / Low (Euk)</td>
+<td>Evidence for operons and co-regulation (mainly in bacteria).</td>
+</tr>
+<tr>
+<td>Gene Co-occurrence</td>
+<td>Genomic</td>
+<td>🥈 Medium-High</td>
+<td>Evidence for participation in the same pathway/system.</td>
+</tr>
+<tr>
+<td>Co-expression</td>
+<td>Functional</td>
+<td>🥈 Medium</td>
+<td>Strong evidence for co-regulation and functional association.</td>
+</tr>
+<tr>
+<td>Text mining</td>
+<td>Literature</td>
+<td>🥉 Lower</td>
+<td>High-level associative</td>
+</tr>
+</tbody>
+</table>
+<p>Network clustering also helps to understand the network. The clustering methods require an initial guess of how many clusters you expect - you can play with this setting. The clustered networks can help to see pathways. </p>
 <h2 id="suggestions-for-validating-results-with-western-blot">Suggestions for validating results with Western blot</h2>
 <p>Select kinases that <strong>consistently appear with high Specificity Score</strong> in experiments with ≥ 3 replicates/condition (cell lines) or ≥ 6 replicates/condition (primary cell cultures / patient samples).</p>
 <p><strong>We recommend validating kinases over phosphosites</strong> because:</p>
