@@ -307,14 +307,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../PamDx%20methods/1.%20Differential%20Phosphosite%20Analysis%20with%20Limma/" class="md-nav__link">
+      <a href="../../PamDx%20methods/1.%20Normalization/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    1. Differential Phosphosite Analysis with Limma
+    1. Normalization
   
 
     
@@ -335,14 +335,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../PamDx%20methods/2.%20Kinase%20Analysis/" class="md-nav__link">
+      <a href="../../PamDx%20methods/2.%20Differential%20Phosphosite%20Analysis%20with%20Limma/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    2. Kinase Analysis
+    2. Differential Phosphosite Analysis with Limma
   
 
     
@@ -363,14 +363,42 @@
   
   
     <li class="md-nav__item">
-      <a href="../../PamDx%20methods/3.%20Further%20insights%20to%20PamDx%20data/" class="md-nav__link">
+      <a href="../../PamDx%20methods/3.%20Kinase%20Analysis/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    3. Further insights to PamDx data
+    3. Kinase Analysis
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PamDx%20methods/4.%20Further%20insights%20to%20PamDx%20data/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Further insights to PamDx data
   
 
     
@@ -695,14 +723,25 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Log or VSN?">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#limma-decisions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Limma decisions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Limma decisions">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#scenario-1-try-vsn-if-there-is-no-significant-differential-effect-with-log" class="md-nav__link">
+  <a href="#biological-and-technical-pairing" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Scenario 1 - Try VSN if there is no significant differential effect with log.
+        Biological and technical pairing
       
     </span>
   </a>
@@ -710,33 +749,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#scenario-2-global-updown-shift-with-log-which-conflicts-what-we-know" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Scenario 2 — Global up/down shift with log which conflicts what we know
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#limma-with-without-pairing" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Limma with / without pairing?
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#do-limma-before-or-after-batch-correction" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -746,15 +758,9 @@
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#limma-decisions" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Limma Decisions
-      
-    </span>
-  </a>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -844,25 +850,41 @@
 <hr />
 <h2 id="log-or-vsn">Log or VSN?</h2>
 <p>As default, <strong>log2 transformation</strong> is used, since VSN transforms the data in a way that fold change directions are harder to interpret.</p>
-<h3 id="scenario-1-try-vsn-if-there-is-no-significant-differential-effect-with-log">Scenario 1 - Try VSN if there is no significant differential effect with log.</h3>
-<p>After log2, if there is no differential signal between Test and Control conditions, and especially when the signal is overall low, VSN could work better. The reason can be the presence of differential low signal peptides which have a greater chance to be significant in VSN than in log2 data. </p>
-<p><strong>Assess by:</strong>
-- Comparing the number of significant phosphosites and kinases after log and VSN
-- PCA plot after log and VSN</p>
-<p>→ If there are more significant phosphosites or kinases after VSN than log2, and / or conditions cluster better in PCA, we can conclude that VSN works better for the given data.</p>
-<p><strong>Interpretation:</strong> the kinase directions (fold changes) are relative to the data mean.</p>
-<h3 id="scenario-2-global-updown-shift-with-log-which-conflicts-what-we-know">Scenario 2 — Global up/down shift with log which conflicts what we know</h3>
-<p>For example, we observe global upregulation. However, other experiments (e.g. Western blot) have already shown that some kinases are downregulated. The observed global shift might be due to an overactive kinase family masking the real effects - downregulated kinases couldn't be detected. </p>
-<p>→ VSN results in kinases that are down relative to the mean.
-→ <strong>Can we interpret this as downregulated kinases in the sample?</strong> Assess:
-- Whether downregulated kinases follow expectations (e.g. among them is the kinase the regulation of which has been shown - or other kinases which map to the same pathway as the kinase in question.)
-- Whether downregulated kinases have a high specificity score.</p>
-<p><strong>Interpretation:</strong>
-- VSN shows kinase changes relative to the data mean.
-- If kinases follow expectations and have a high specificity score, the hypothesis was probably correct — we can consider those kinases as probably downregulated in the sample.
-- If downregulated kinases are scattered and have a low specificity score, this is likely a normalization artifact. Other hypotheses should be considered for why PamGene experiments resulted in global upregulation.</p>
+<div class="highlight"><pre><span></span><code>Are there multiple biological entities (e.g. patients)?
+│
+├── Yes → VSN
+│
+└── No → is the variance between conditions normal?
+         │
+         ├── Yes → Log
+         │
+         └── No (high variation) → VSN
+
+       → is the signal level normal?
+         │
+         ├── Yes → Log
+         │
+         └── No (low signal) → VSN
+</code></pre></div>
+<p>Edge cases, when we deviate from default:</p>
+<ul>
+<li>no significant differential effect with log</li>
+<li>Global up/down shift with log which conflicts what we know </li>
+</ul>
+<p>Read more about edge cases <a href="../../PamDx%20methods/1.%20Normalization/">here</a>.</p>
 <hr />
-<h2 id="limma-with-without-pairing">Limma with / without pairing?</h2>
+<h2 id="limma-decisions">Limma decisions</h2>
+<div class="highlight"><pre><span></span><code>Is there biological pairing and are the paired samples in 1 chip?
+│
+├── Yes → Paired Limma
+│
+└── No → Is there batch effect?
+         │
+         ├── Yes → ComBat → Unpaired Limma
+         │                  (set stricter significance threshold)
+         └── No  → Unpaired Limma
+</code></pre></div>
+<h3 id="biological-and-technical-pairing">Biological and technical pairing</h3>
 <table>
 <thead>
 <tr>
@@ -890,7 +912,7 @@
 </tbody>
 </table>
 <hr />
-<h2 id="do-limma-before-or-after-batch-correction">Do Limma before or after batch correction?</h2>
+<h3 id="do-limma-before-or-after-batch-correction">Do Limma before or after batch correction?</h3>
 <p><strong>Phosphosite analysis should generally be done on log / VSN data, not on ComBat-corrected data.</strong></p>
 <ul>
 <li>ComBat corrects by estimating the mean, which removes a degree of freedom from the dataset.</li>
@@ -898,18 +920,6 @@
 <li>This leads to inflated significance (more false positives).</li>
 </ul>
 <p><strong>Exception:</strong> When there are many replicates (e.g. 2 runs × 6 replicates), and / or no pairing can be done, and the batch effect is large, ComBat is acceptable. But stricter significance thresholds must be set (e.g. P &lt; 0.001, or set FDR threshold).</p>
-<hr />
-<h2 id="limma-decisions">Limma Decisions</h2>
-<div class="highlight"><pre><span></span><code>Is there biological pairing?
-│
-├── Yes → Paired Limma
-│
-└── No → Is there batch effect?
-         │
-         ├── Yes → ComBat → Unpaired Limma
-         │                  (set stricter significance threshold)
-         └── No  → Unpaired Limma
-</code></pre></div>
 <p><strong>Checking for batch effect:</strong>
 - Use PCA, color on batches, and observe clustering of technical batches.
 - <strong>1-run experiments:</strong> batch effect may be on Barcode.

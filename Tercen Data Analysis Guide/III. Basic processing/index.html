@@ -307,14 +307,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../PamDx%20methods/1.%20Differential%20Phosphosite%20Analysis%20with%20Limma/" class="md-nav__link">
+      <a href="../../PamDx%20methods/1.%20Normalization/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    1. Differential Phosphosite Analysis with Limma
+    1. Normalization
   
 
     
@@ -335,14 +335,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../PamDx%20methods/2.%20Kinase%20Analysis/" class="md-nav__link">
+      <a href="../../PamDx%20methods/2.%20Differential%20Phosphosite%20Analysis%20with%20Limma/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    2. Kinase Analysis
+    2. Differential Phosphosite Analysis with Limma
   
 
     
@@ -363,14 +363,42 @@
   
   
     <li class="md-nav__item">
-      <a href="../../PamDx%20methods/3.%20Further%20insights%20to%20PamDx%20data/" class="md-nav__link">
+      <a href="../../PamDx%20methods/3.%20Kinase%20Analysis/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    3. Further insights to PamDx data
+    3. Kinase Analysis
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PamDx%20methods/4.%20Further%20insights%20to%20PamDx%20data/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Further insights to PamDx data
   
 
     
@@ -697,6 +725,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#data-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Data flow
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#normalizations" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -709,54 +748,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#log-normalization-log-of-qc-peptides" class="md-nav__link">
+  <a href="#normalizations-in-the-tercen-workflow" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Log normalization (Log of QC Peptides)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#data-flow" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Data flow
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#vsn-normalization" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        VSN normalization
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#log-or-vsn" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Log or VSN?
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#combat-batch-effect-correction" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ComBat: Batch Effect Correction
+        Normalizations in the Tercen workflow
       
     </span>
   </a>
@@ -1034,32 +1029,7 @@ These filters are set up with the defaults in the templates. The QC heatmaps sho
 </tbody>
 </table>
 <hr />
-<h2 id="normalizations">Normalizations</h2>
-<p>Two basic normalizations:</p>
-<ul>
-<li>
-<p><strong>Log</strong> (default), or</p>
-</li>
-<li>
-<p><strong>VSN</strong>: Variance Stabilizing Normalization</p>
-</li>
-</ul>
-<p>Optional: <strong>ComBat</strong> batch correction — if needed for UKA, applied after Log or VSN.</p>
-<blockquote>
-<p>Note: Log normalization &amp; filtering for QC-passed peptides is done in 1 step. For VSN, first VSN is done without filtering, then filtering for QC peptides in the next step. The reason is that log works per individual value, while VSN considers all peptides simultaneously - even peptides not passing QC are needed to carry it out.</p>
-</blockquote>
-<hr />
-<h3 id="log-normalization-log-of-qc-peptides">Log normalization (Log of QC Peptides)</h3>
-<ul>
-<li>Filter for peptides that passed QC. Defaults:<ul>
-<li>PTK: <code>fractionPresent &gt; 0.249</code></li>
-<li>STK: <code>qc_stk_thr.ratio &gt; 0.25</code></li>
-</ul>
-</li>
-<li>The log_cutoff operator assignes 1 to values &lt; 1 before log transformation.</li>
-</ul>
-<hr />
-<h3 id="data-flow">Data flow</h3>
+<h2 id="data-flow">Data flow</h2>
 <p>In general the data flows in the following way. An operator transforms the data (e.g. log transform). It creates an output factor. Each step has a namespace which is the name of the step. </p>
 <p>Output construction follows the pattern: <code>&lt;namespace&gt;.&lt;output_name_from_operator&gt;</code></p>
 <p>In the next step, the output of the previous step is taken as input values. It is represented on the y axis of the crosstab view.</p>
@@ -1069,42 +1039,21 @@ These filters are set up with the defaults in the templates. The QC heatmaps sho
 - Output name: <code>logTransformed</code>
 - → Full reference: <code>STKQC.logTransformed</code></p>
 <hr />
-<h3 id="vsn-normalization">VSN normalization</h3>
-<p>In log data, low-signal peptides have higher variance. The same fold change of a low-mean peptide is less significant than for a high-mean peptide.</p>
-<p><strong>VSN</strong> counteracts this by making variance independent of the mean → facilitates discovery of significant phosphosites with low signals.</p>
-<p><img alt="VSN|657" src="../Attachments/da_31.png" /></p>
-<p><strong>When to use VSN:</strong> data shows low signal or noise.</p>
-<h4 id="vsn-reveals-relative-differences-compared-to-the-data-mean-not-absolute-differences"><strong>VSN reveals relative differences compared to the data mean, not absolute differences.</strong></h4>
-<p><strong>VSN in detail:</strong>
-1. Centers data to the mean and scales the data.
-2. Log transformation → VSN result is equivalent to log transformation</p>
-<p>→ Due to the data centering, the interpretation changes!</p>
-<p><img alt="Volcano plot in log vs VSN" src="../Attachments/da_32.png" /></p>
-<p>If with log data, we observe general upregulation of phosphosites in T vs C at phosphosite analysis, after VSN there will probably be down and upregulation as well. The interpretation: the absolute changes are positive, but the negative signals are the ones which have relatively lower signals compared to the mean of all samples. </p>
-<h3 id="log-or-vsn">Log or VSN?</h3>
-<p>As default we do log transformation, since VSN transforms the data in a way that fold change directions are harder to interpret. </p>
-<p><strong>Scenario 1, when VSN can be better than log: when there is significant differential signal only with VSN.</strong> </p>
-<p>After log2, if there is no differential signal between Test and Control conditions, and especially when the signal is overall low, VSN could work better. The reason can be the presence of differential low signal peptides which have a greater chance to be significant in VSN than in log2 data. </p>
-<p>If there are more significant phosphosites or kinases after VSN than log2, and / or conditions cluster better in PCA, we can conclude that VSN works better for the given data. </p>
-<p><em>Interpretation</em>: the kinase directions (fold changes) are relative to the data mean.</p>
-<p><strong>Scenario 2: Log data results in a global up or down shift of kinases, but other experiments have shown that some kinases show the opposite pattern.</strong> </p>
-<p>An example:</p>
-<ol>
-<li>we observe global upregulation with log</li>
-<li>we don’t trust this because some kinases should show the opposite pattern. We can set the hypothesis: there is an overactive kinase family which masks the real effects, meaning that we can’t detect downregulated kinases.</li>
-<li>VSN results in kinases that are down relative to the mean.</li>
-<li>Can we interpret this as downregulated kinases in the sample? → Assess:<ol>
-<li>whether downregulated kinases follow expectations: e.g. they map to a specific pathways.</li>
-<li>Whether downregulated kinases have a high specificity score. </li>
-</ol>
+<h2 id="normalizations">Normalizations</h2>
+<p>Read about the overview of different base normalizations <a href="../../PamDx%20methods/1.%20Normalization/">here</a>.</p>
+<h3 id="normalizations-in-the-tercen-workflow">Normalizations in the Tercen workflow</h3>
+<h4 id="normalization-is-done-together-with-filtering">Normalization is done together with filtering</h4>
+<p>Log normalization &amp; filtering for QC-passed peptides is done in 1 step. For VSN, first VSN is done without filtering, then filtering for QC peptides in the next step. The reason is that log works per individual value, while VSN considers all peptides simultaneously - even peptides not passing QC are needed to carry it out.</p>
+<ul>
+<li>Filter for peptides that passed QC. Defaults:<ul>
+<li>PTK: <code>fractionPresent &gt; 0.249</code></li>
+<li>STK: <code>qc_stk_thr.ratio &gt; 0.25</code></li>
+</ul>
 </li>
-</ol>
-<p><em>Interpretation</em>:
-- VSN shows kinase changes relative to the data mean.
-- If kinases follow expectations and they have a high specificity score, probably the hypothesis was correct. We can consider downregulated kinases as probably downregulated in the sample.
-- However, if downregulated kinases are scattered and have low specificity score, we must conclude that this was just a normalization artifact. We must think of other hypotheses why PamDx experiments resulted in global upregulation.</p>
+<li>The log_cutoff operator assignes 1 to values &lt; 1 before log transformation.</li>
+</ul>
 <hr />
-<h3 id="combat-batch-effect-correction">ComBat: Batch Effect Correction</h3>
+<h4 id="combat-batch-effect-correction">ComBat: Batch Effect Correction</h4>
 <ol>
 <li><strong>Crosstab view</strong>: color by expected technical batch (Barcode for single PS12 run; Run for multi-run projects)</li>
 <li><strong>Operator view</strong>: assess batch effect removal — check if before-ComBat PCA shows batch clusters and after-ComBat PCA has resolved them</li>
@@ -1119,10 +1068,6 @@ These filters are set up with the defaults in the templates. The QC heatmaps sho
 <p><strong>Important: for multi-run experiments</strong>: check Run effect first (usually larger than Barcode). Correcting for too many batch types can introduce bias — if Run effect exists, correcting for Barcode as well is usually unnecessary.</p>
 <hr />
 <h2 id="references">References</h2>
-<p><strong>VSN:</strong></p>
-<ul>
-<li>Huber, W., et al. (2002). Variance stabilization applied to microarray data calibration and to the quantification of differential expression. <em>Bioinformatics</em>, 18(S1), S96–S104.</li>
-</ul>
 <p><strong>ComBat and batch correction:</strong></p>
 <ul>
 <li>

@@ -9,25 +9,25 @@
       
       
       
-        <link rel="prev" href="../PamDx%20methods/4.%20Further%20insights%20to%20PamDx%20data/">
+        <link rel="prev" href="../">
       
       
-        <link rel="next" href="I.%20Experiment%20Design/">
+        <link rel="next" href="../2.%20Differential%20Phosphosite%20Analysis%20with%20Limma/">
       
       
         
       
       
-      <link rel="icon" href="../assets/images/favicon.png">
+      <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
       
-        <title>PamDx Data Analysis Guide - PamDx Data Analysis Guide</title>
+        <title>1. Normalization - PamDx Data Analysis Guide</title>
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
       
       
 
@@ -46,7 +46,7 @@
       
     
     
-    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -64,7 +64,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#pamdx-data-analysis-guide" class="md-skip">
+        <a href="#overview" class="md-skip">
           Skip to content
         </a>
       
@@ -80,7 +80,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href=".." title="PamDx Data Analysis Guide" class="md-header__button md-logo" aria-label="PamDx Data Analysis Guide" data-md-component="logo">
+    <a href="../.." title="PamDx Data Analysis Guide" class="md-header__button md-logo" aria-label="PamDx Data Analysis Guide" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -100,7 +100,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              PamDx Data Analysis Guide
+              1. Normalization
             
           </span>
         </div>
@@ -180,7 +180,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="PamDx Data Analysis Guide" class="md-nav__button md-logo" aria-label="PamDx Data Analysis Guide" data-md-component="logo">
+    <a href="../.." title="PamDx Data Analysis Guide" class="md-nav__button md-logo" aria-label="PamDx Data Analysis Guide" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -198,7 +198,7 @@
   
   
     <li class="md-nav__item">
-      <a href=".." class="md-nav__link">
+      <a href="../.." class="md-nav__link">
         
   
   
@@ -222,8 +222,10 @@
       
   
   
+    
   
   
+  
     
     
     
@@ -234,13 +236,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
         
           
           <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
@@ -261,7 +261,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             
@@ -279,7 +279,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../PamDx%20methods/" class="md-nav__link">
+      <a href="../" class="md-nav__link">
         
   
   
@@ -304,10 +304,35 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../PamDx%20methods/1.%20Normalization/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Normalization
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -323,6 +348,74 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Overview
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vsn-normalization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        VSN normalization
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="VSN normalization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#log-or-vsn-decision-edge-cases-deviation-from-default" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Log or VSN decision edge cases / deviation from default
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -335,7 +428,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../PamDx%20methods/2.%20Differential%20Phosphosite%20Analysis%20with%20Limma/" class="md-nav__link">
+      <a href="../2.%20Differential%20Phosphosite%20Analysis%20with%20Limma/" class="md-nav__link">
         
   
   
@@ -363,7 +456,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../PamDx%20methods/3.%20Kinase%20Analysis/" class="md-nav__link">
+      <a href="../3.%20Kinase%20Analysis/" class="md-nav__link">
         
   
   
@@ -391,7 +484,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../PamDx%20methods/4.%20Further%20insights%20to%20PamDx%20data/" class="md-nav__link">
+      <a href="../4.%20Further%20insights%20to%20PamDx%20data/" class="md-nav__link">
         
   
   
@@ -423,8 +516,6 @@
       
   
   
-    
-  
   
   
     
@@ -437,11 +528,13 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
         
           
           <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
@@ -462,7 +555,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             
@@ -477,37 +570,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    PamDx Data Analysis Guide
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../Tercen%20Data%20Analysis%20Guide/" class="md-nav__link">
         
   
   
@@ -523,48 +589,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#prerequisites" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Prerequisites
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#chapters" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Chapters
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -577,7 +601,7 @@
   
   
     <li class="md-nav__item">
-      <a href="I.%20Experiment%20Design/" class="md-nav__link">
+      <a href="../../Tercen%20Data%20Analysis%20Guide/I.%20Experiment%20Design/" class="md-nav__link">
         
   
   
@@ -605,7 +629,7 @@
   
   
     <li class="md-nav__item">
-      <a href="II.%20Image%20analysis/" class="md-nav__link">
+      <a href="../../Tercen%20Data%20Analysis%20Guide/II.%20Image%20analysis/" class="md-nav__link">
         
   
   
@@ -633,7 +657,7 @@
   
   
     <li class="md-nav__item">
-      <a href="III.%20Basic%20processing/" class="md-nav__link">
+      <a href="../../Tercen%20Data%20Analysis%20Guide/III.%20Basic%20processing/" class="md-nav__link">
         
   
   
@@ -661,7 +685,7 @@
   
   
     <li class="md-nav__item">
-      <a href="IV.%20Phosphosite%20analysis/" class="md-nav__link">
+      <a href="../../Tercen%20Data%20Analysis%20Guide/IV.%20Phosphosite%20analysis/" class="md-nav__link">
         
   
   
@@ -689,7 +713,7 @@
   
   
     <li class="md-nav__item">
-      <a href="V.%20Kinase%20analysis/" class="md-nav__link">
+      <a href="../../Tercen%20Data%20Analysis%20Guide/V.%20Kinase%20analysis/" class="md-nav__link">
         
   
   
@@ -717,7 +741,7 @@
   
   
     <li class="md-nav__item">
-      <a href="VI.%20Workflow%20Decisions%20in%20PamGene%20Data%20Analysis/" class="md-nav__link">
+      <a href="../../Tercen%20Data%20Analysis%20Guide/VI.%20Workflow%20Decisions%20in%20PamGene%20Data%20Analysis/" class="md-nav__link">
         
   
   
@@ -745,7 +769,7 @@
   
   
     <li class="md-nav__item">
-      <a href="VII.%20Miscellaneous/" class="md-nav__link">
+      <a href="../../Tercen%20Data%20Analysis%20Guide/VII.%20Miscellaneous/" class="md-nav__link">
         
   
   
@@ -790,32 +814,75 @@
 
 
 
-<h1 id="pamdx-data-analysis-guide">PamDx Data Analysis Guide</h1>
-<p>This guide covers the full data analysis pipeline for PamGene kinase activity data, from experiment design through kinase-level interpretation and PamDx-specific methods.</p>
-<h3 id="prerequisites">Prerequisites</h3>
-<p>Complete this training after watching (and optionally working through) the <a href="https://www.youtube.com/watch?v=JaFlgRekJP8&amp;t=60s&amp;ab_channel=Tercen">general Tercen tutorial</a>. 
-This guide assumes that you already know:</p>
+  <h1>1. Normalization</h1>
+
+<h2 id="overview">Overview</h2>
+<p><strong>Two basic normalizations:</strong></p>
 <ul>
-<li>How Tercen is organized (Teams, Projects, clone, upload, download from project page)</li>
-<li>What workflows are</li>
-<li>How to upload data tables</li>
-<li>How a workflow step crosstab view looks</li>
-<li>Row factors, column factors, y and x factors</li>
-<li>How to use filters and Boolean logic</li>
-<li>How to use colors</li>
-<li>Data visualizations: points / heatmap / bar</li>
-<li>Operators: input projection, output relations, run and reset, namespace, README</li>
-<li>Special steps: join, gather, export (short and long format)</li>
+<li>
+<p>Log</p>
+</li>
+<li>
+<p>VSN (Variance Stabilizing Normalization)</p>
+</li>
 </ul>
-<h3 id="chapters">Chapters</h3>
+<p>Optional: batch effect correction by ComBat, applied after Log or VSN.</p>
+<p><strong>Log or VSN? Decision guide</strong> </p>
+<p>As default, <strong>log2 transformation</strong> is used, since VSN transforms the data in a way that fold change directions are harder to interpret. <strong>Interpretation of VSN:</strong> the kinase directions (fold changes) are relative to the data mean.</p>
+<div class="highlight"><pre><span></span><code>Are there multiple biological entities (e.g. patients)?
+│
+├── Yes → VSN
+│
+└── No → is the variance between conditions normal?
+         │
+         ├── Yes → Log
+         │
+         └── No (high variation) → VSN
+
+       → is the signal level normal?
+         │
+         ├── Yes → Log
+         │
+         └── No (low signal) → VSN
+</code></pre></div>
+<h2 id="vsn-normalization">VSN normalization</h2>
+<p>In log data, low-signal peptides have higher variance. The same fold change of a low-mean peptide is less significant than for a high-mean peptide.</p>
+<p><strong>VSN</strong> counteracts this by making variance independent of the mean → facilitates discovery of significant phosphosites with low signals.</p>
+<p><img alt="VSN" src="../Attachments/da_31.png" /></p>
+<p><strong>VSN reveals relative differences compared to the data mean, not absolute differences.</strong>
+<strong>→ Due to the data centering, the interpretation changes!</strong></p>
+<p><strong>Steps:</strong>
+1. Centering data to the mean and scaling.
+2. Log transformation → VSN result is equivalent to log transformation</p>
+<p><img alt="Volcano plot in log vs VSN" src="../Attachments/da_32.png" /></p>
+<p>If with log data, we observe general upregulation of phosphosites in T vs C at phosphosite analysis, after VSN there will probably be down and upregulation as well. 
+The interpretation: the absolute changes are positive, but the resulting negative signals are the ones which have relatively lower signals compared to the mean of all samples. </p>
+<h3 id="log-or-vsn-decision-edge-cases-deviation-from-default">Log or VSN decision edge cases / deviation from default</h3>
+<p>As default we do log transformation, since VSN transforms the data in a way that fold change directions are harder to interpret. </p>
+<p><strong>Scenario 1, when VSN can be better than log: when there is significant differential signal only with VSN.</strong> </p>
+<p>After log2, if there is no differential signal between Test and Control conditions, and especially when the signal is overall low, VSN could work better. The reason can be the presence of differential low signal peptides which have a greater chance to be significant in VSN than in log2 data. </p>
+<p>If there are more significant phosphosites or kinases after VSN than log2, and / or conditions cluster better in PCA, we can conclude that VSN works better for the given data. </p>
+<p><em>Interpretation</em>: the kinase directions (fold changes) are relative to the data mean.</p>
+<p><strong>Scenario 2: Global up/down shift with log which conflicts what we know</strong></p>
+<p>An example:</p>
 <ol>
-<li><a href="I.%20Experiment%20Design/">Experiment Design</a> — project setup, and experimental considerations</li>
-<li><a href="II.%20Image%20analysis/">Image Analysis</a> — Tercen project structure and image analysis workflow</li>
-<li><a href="III.%20Basic%20processing/">Basic Processing</a> — QC, normalization, and batch correction</li>
-<li><a href="IV.%20Phosphosite%20analysis/">Phosphosite Analysis</a> — assessing differential phosphorylation between Test and Control</li>
-<li><a href="V.%20Kinase%20analysis/">Kinase Analysis</a> — upstream kinase analysis (UKA) and interpretation</li>
-<li><a href="VI.%20Workflow%20Decisions%20in%20PamGene%20Data%20Analysis/">Workflow Decisions</a> — guidance on key decision points throughout the pipeline</li>
+<li>we observe global upregulation with log</li>
+<li>we don’t trust this because some kinases should show the opposite pattern. We can set the hypothesis: there is an overactive kinase family which masks the real effects, meaning that we can’t detect downregulated kinases.</li>
+<li>VSN results in kinases that are down relative to the mean.</li>
+<li>Can we interpret this as downregulated kinases in the sample? → Assess:<ol>
+<li>whether downregulated kinases follow expectations: e.g. they map to a specific pathways.</li>
+<li>Whether downregulated kinases have a high specificity score. </li>
 </ol>
+</li>
+</ol>
+<p><em>Interpretation</em>:
+- VSN shows kinase changes relative to the data mean.
+- If kinases follow expectations and they have a high specificity score, probably the hypothesis was correct. We can consider downregulated kinases as probably downregulated in the sample.
+- However, if downregulated kinases are scattered and have low specificity score, we must conclude that this was just a normalization artifact. We must think of other hypotheses why PamDx experiments resulted in global upregulation.</p>
+<h3 id="references">References</h3>
+<ul>
+<li>Huber, W., et al. (2002). Variance stabilization applied to microarray data calibration and to the quantification of differential expression. <em>Bioinformatics</em>, 18(S1), S96–S104.</li>
+</ul>
 
 
 
@@ -871,12 +938,12 @@ This guide assumes that you already know:</p>
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "navigation.expand", "navigation.top", "toc.integrate"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.sections", "navigation.expand", "navigation.top", "toc.integrate"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
       
-        <script src="../javascripts/mathjax.js"></script>
+        <script src="../../javascripts/mathjax.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       
