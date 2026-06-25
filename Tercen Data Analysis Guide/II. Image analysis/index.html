@@ -890,10 +890,12 @@
 <hr />
 <h3 id="upload-data-to-a-project">Upload Data to a Project</h3>
 <p><img alt="Tercen project page: Tercen training with project actions and README" src="../Attachments/da_10.jpg" /></p>
-<p>The zip file to upload should contain:
-- <code>ImageResults/</code> folder (can contain multiple PS12 runs)
-- <code>Array Layout.txt</code> (correct file, do not change name)
-- Zip file name must <strong>not contain a dot (.)</strong></p>
+<p>The zip file to upload should contain:</p>
+<ul>
+<li><code>ImageResults/</code> folder (can contain multiple PS12 runs)</li>
+<li><code>Array Layout.txt</code> (correct file, do not change name)</li>
+<li>Zip file name must <strong>not contain a dot (.)</strong></li>
+</ul>
 <hr />
 <h4 id="uploading-sample-annotation-set-column-types">Uploading Sample Annotation: Set Column Types</h4>
 <p><img alt="Column type dialog: Barcode must be changed from numeric to character" src="../Attachments/da_11.png" /></p>
@@ -912,10 +914,12 @@ You can rename the template - useful if multiple of the same type exist in a pro
 * data upload step,
 * operator, which changes the input data and produces an output. </p>
 <p><img alt="IA workflow part 1: data file to ps12image + Image overview, then Grid afterwash, Gather, ReGrid" src="../Attachments/da_14.jpg" /></p>
-<p>Overview of steps (details below)
-1. Click data file → Run → select zip file
-2. Run <strong>Image overview</strong> to see if everything is OK (see below)
-3. Run <strong>ReGrid</strong> (previous steps run automatically) and do gridding </p>
+<p>Overview of steps (details below)</p>
+<ol>
+<li>Click data file → Run → select zip file</li>
+<li>Run <strong>Image overview</strong> to see if everything is OK (see below)</li>
+<li>Run <strong>ReGrid</strong> (previous steps run automatically) and do gridding </li>
+</ol>
 <hr />
 <h3 id="image-overview">Image Overview</h3>
 <p><img alt="Image overview operator" src="../Attachments/da_15.png" />
@@ -933,10 +937,10 @@ Grey appearance means that the shiny operator has stopped. → just restart it.<
 <p><img alt="Working with filters" src="../Attachments/da_21.png" /></p>
 <hr />
 <h4 id="examples-of-issues">Examples of issues</h4>
-<p>Bubble on the side (still usable)
-<img alt="Bubble on the side" src="../Attachments/da_19.png" />
-Broken array → discard 
-<img alt="Broken array" src="../Attachments/da_20.png" /></p>
+<p>Bubble on the side (still usable)</p>
+<p><img alt="Bubble on the side" src="../Attachments/da_19.png" /></p>
+<p>Broken array → discard </p>
+<p><img alt="Broken array" src="../Attachments/da_20.png" /></p>
 <hr />
 <h3 id="special-peptides-on-the-array-layouts">Special Peptides on the Array Layouts</h3>
 <p><img alt="PamChip fluorescence image: Functional peptides, Reference spots, Positive control labeled" src="../Attachments/da_12.png" /></p>
@@ -980,9 +984,6 @@ Broken array → discard
 </video>
 
 <p>The purpose of gridding is to find incorrectly placed grids and manually correct them.</p>
-<blockquote>
-<p>⚠️ Gridding is done by a Shiny operator. <strong>Always finish it and do not leave the page</strong> — if it stops, all reviewed grids are lost!</p>
-</blockquote>
 <hr />
 <h3 id="image-analysis-overview-part-2">Image Analysis Overview — Part 2</h3>
 <p><img alt="IA workflow part 2: ReGrid, Gather, Quantitation Type, Join, select, Export" src="../Attachments/da_16.png" /></p>

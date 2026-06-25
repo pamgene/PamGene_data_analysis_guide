@@ -597,6 +597,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-comparisons-answer-research-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How comparisons answer research questions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#how-to-make-sample-annotation" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -846,12 +857,8 @@
 <p><img alt="Design 2: C1T1-C2T2 chip layout" src="../Attachments/da_03.png" /></p>
 <p><strong>Number of replicates needed:</strong></p>
 <ul>
-<li>
-<p>Cell lines: minimum <strong>3 replicates / condition</strong></p>
-</li>
-<li>
-<p>Primary cell culture: minimum <strong>6 replicates / condition</strong></p>
-</li>
+<li>Cell lines: minimum <strong>3 replicates / condition</strong></li>
+<li>Primary cell culture: minimum <strong>6 replicates / condition</strong></li>
 </ul>
 <hr />
 <h2 id="balanced-design">Balanced Design</h2>
@@ -862,12 +869,37 @@
 <p><img alt="Batch effect: scatter plot (Batch 1 vs 2) and dendrogram showing batch-dominated clustering" src="../Attachments/da_05.png" /></p>
 <p><strong>Reference:</strong> [Leek et al., 2010]</p>
 <hr />
+<h2 id="how-comparisons-answer-research-questions">How comparisons answer research questions</h2>
+<p>Assume:</p>
+<ul>
+<li>two cell lines: a wild type (WT) and a knock-out (KO).</li>
+<li>Treatment (T) and untreated (DMSO-treated) Control (C).</li>
+</ul>
+<p>Possible research questions and their answers:</p>
+<ol>
+<li>What is the test effect in WT? → T vs C in WT</li>
+<li>What is the test effect in KO? → T vs C in KO</li>
+<li>How is KO and WT different? → KO vs WT in Control (= KO-Control vs WT-Control)</li>
+<li>How is test effect in KO and WT different? <ol>
+<li>→ simple approach: compare results from questions 1 and 2 with <a href="https://bioinfogp.cnb.csic.es/tools/venny/">Venn-diagram</a> </li>
+<li>→ better: compare the fold changes of specific kinases with a low specificity threshold.</li>
+</ol>
+</li>
+</ol>
+<p><em>Do not use KO-Test vs WT-Test comparison.</em> The reason: KO-Test vs WT-Test does not isolate treatment-response differences because it mixes:</p>
+<ul>
+<li>baseline genotype differences</li>
+<li>treatment-induced genotype differences</li>
+</ul>
+<p>The above comparisons are usually done on kinase-level data, the main output of PamDx experiments. Upstream Kinase Analysis is not a statistical test, so interaction effects cannot be calculated. That is why research question 4 is addressed in a simple way.</p>
+<hr />
 <h2 id="how-to-make-sample-annotation">How to Make Sample Annotation</h2>
 <p>An experiment needs the following design elements:</p>
 <ul>
 <li><strong>Test condition</strong>: describes what to compare (e.g. treated vs untreated, mutated vs wild type). For multiple test conditions with 1 control → use C-T1-2-3 design.</li>
 <li><strong>Supergroup</strong>: the group within which you compare T vs C (e.g. tissue). For 2 supergroups with 1 T and 1 C → use C1T1-C2T2 design.</li>
 <li><strong>Sample name</strong>: should be unique to the sample (e.g. Barcode + Row). Suggested format: <code>&lt;Supergroup&gt;_&lt;TestCond&gt;_&lt;Replicate&gt;</code></li>
+<li>When a biological entity is treated (e.g. control and treated come from same cell or patient), there should be a factor defining the biological entity. e.g. Cell_line, Supergroup, PatientID.</li>
 </ul>
 <p>Add additional columns if needed (e.g. date, run).</p>
 <p><img alt="Sample annotation table: C-T1-2-3 design (HeLa, Control/T1/T2/T3)" src="../Attachments/da_06.png" /></p>
@@ -880,7 +912,7 @@
 <li>Have a <code>Supergroup</code> column <strong>even if there is only 1 supergroup</strong> — needed for UKA</li>
 <li><code>Sample name</code> must be <strong>unique per biological replicate</strong> (e.g. <code>HeLa_Control_1</code>) — needed for UKA</li>
 <li><code>Replicate</code> column: only necessary in some designs for fold change calculation</li>
-<li>Keep names simple → visible on heatmaps</li>
+<li>Keep names simple. If too long, shorten it to so they are visible on heatmaps.</li>
 </ul>
 
 
