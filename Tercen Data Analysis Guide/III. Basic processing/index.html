@@ -874,14 +874,42 @@
   
   
     <li class="md-nav__item">
-      <a href="../VII.%20Miscellaneous/" class="md-nav__link">
+      <a href="../VII.%20How%20to%20bring%20data%20from%20BioNavigator%20to%20Tercen/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    VII. Miscellaneous
+    VII. How to bring data from BioNavigator to Tercen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../VIII.%20Miscellaneous/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    VIII. Miscellaneous
   
 
     
@@ -1040,18 +1068,17 @@ These filters are set up with the defaults in the templates. The QC heatmaps sho
 - → Full reference: <code>STKQC.logTransformed</code></p>
 <hr />
 <h2 id="normalizations">Normalizations</h2>
-<p>Read about the overview of different base normalizations <a href="../../PamDx%20methods/1.%20Normalization/">here</a>.</p>
+<p>Read about different base normalizations <a href="../../PamDx%20methods/1.%20Normalization/">here</a>.</p>
 <h3 id="normalizations-in-the-tercen-workflow">Normalizations in the Tercen workflow</h3>
 <h4 id="normalization-is-done-together-with-filtering">Normalization is done together with filtering</h4>
-<p>Log normalization &amp; filtering for QC-passed peptides is done in 1 step. For VSN, first VSN is done without filtering, then filtering for QC peptides in the next step. The reason is that log works per individual value, while VSN considers all peptides simultaneously - even peptides not passing QC are needed to carry it out.</p>
+<p>Log normalization &amp; filtering for QC-passed peptides is done in 1 step. </p>
+<p>VSN normalization &amp; filtering for QC-passed peptides is done in two steps. The reason is that log works per individual value, while VSN considers all peptides simultaneously - even peptides not passing QC are needed to carry it out.</p>
+<p><strong>Filtering for peptides that passed QC is done with the following defaults:</strong></p>
 <ul>
-<li>Filter for peptides that passed QC. Defaults:<ul>
 <li>PTK: <code>fractionPresent &gt; 0.249</code></li>
 <li>STK: <code>qc_stk_thr.ratio &gt; 0.25</code></li>
 </ul>
-</li>
-<li>The log_cutoff operator assignes 1 to values &lt; 1 before log transformation.</li>
-</ul>
+<p><strong>The log_cutoff operator</strong> assignes 1 to values &lt; 1 before log transformation.</p>
 <hr />
 <h4 id="combat-batch-effect-correction">ComBat: Batch Effect Correction</h4>
 <ol>
@@ -1062,9 +1089,11 @@ These filters are set up with the defaults in the templates. The QC heatmaps sho
 <p><img alt="Combat operator" src="../Attachments/workflow_decisions_04.jpg" /></p>
 <h4 id="check-pca-and-heatmap-before-and-after-combat">Check PCA and Heatmap Before and After ComBat</h4>
 <p><img alt="Heatmap and PCA before and after ComBat" src="../Attachments/da_33.png" /></p>
-<p>After ComBat:
-- Replicates within a condition are usually more similar
-- Conditions are usually more separated</p>
+<p>If ComBat successfully decreases technical variance, then after Combat:</p>
+<ul>
+<li>Replicates within a condition are more similar &amp;</li>
+<li>Conditions are usually more separated</li>
+</ul>
 <p><strong>Important: for multi-run experiments</strong>: check Run effect first (usually larger than Barcode). Correcting for too many batch types can introduce bias — if Run effect exists, correcting for Barcode as well is usually unnecessary.</p>
 <hr />
 <h2 id="references">References</h2>

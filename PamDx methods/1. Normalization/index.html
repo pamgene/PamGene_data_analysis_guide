@@ -382,7 +382,18 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="VSN normalization">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#log-or-vsn-decision-guide" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Log or VSN? Decision guide
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Log or VSN? Decision guide">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -769,14 +780,42 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Tercen%20Data%20Analysis%20Guide/VII.%20Miscellaneous/" class="md-nav__link">
+      <a href="../../Tercen%20Data%20Analysis%20Guide/VII.%20How%20to%20bring%20data%20from%20BioNavigator%20to%20Tercen/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    VII. Miscellaneous
+    VII. How to bring data from BioNavigator to Tercen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Tercen%20Data%20Analysis%20Guide/VIII.%20Miscellaneous/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    VIII. Miscellaneous
   
 
     
@@ -820,34 +859,20 @@
 <p><strong>Two basic normalizations:</strong></p>
 <ul>
 <li>
-<p>Log</p>
+<p>Log2 </p>
 </li>
 <li>
 <p>VSN (Variance Stabilizing Normalization)</p>
 </li>
 </ul>
 <p>Optional: batch effect correction by ComBat, applied after Log or VSN.</p>
-<p><strong>Log or VSN? Decision guide</strong> </p>
-<p>As default, <strong>log2 transformation</strong> is used, since VSN transforms the data in a way that fold change directions are harder to interpret. <strong>Interpretation of VSN:</strong> the kinase directions (fold changes) are relative to the data mean.</p>
-<div class="highlight"><pre><span></span><code>Are there multiple biological entities (e.g. patients)?
-│
-├── Yes → VSN
-│
-└── No → is the variance between conditions normal?
-         │
-         ├── Yes → Log
-         │
-         └── No (high variation) → VSN
-
-       → is the signal level normal?
-         │
-         ├── Yes → Log
-         │
-         └── No (low signal) → VSN
-</code></pre></div>
 <h2 id="vsn-normalization">VSN normalization</h2>
-<p>In log data, low-signal peptides have higher variance. The same fold change of a low-mean peptide is less significant than for a high-mean peptide.</p>
-<p><strong>VSN</strong> counteracts this by making variance independent of the mean → facilitates discovery of significant phosphosites with low signals.</p>
+<p>VSN is a standard normalization method - also used in in e.g. transcriptomics.</p>
+<p><strong>VSN corrects for overall differences in signal intensity between samples.</strong> When samples differ mainly in their overall signal (for example, when most peptides show higher signal in sample A than in sample B), VSN reduces this variance. This makes it possible to analyze the data in terms of activities that are relatively high or low compared to the overall signal intensity, rather than absolute differences driven by global intensity shifts.</p>
+<p><strong>VSN also stabilizes the variance across the signal intensity range</strong>—similar to a log transformation, but without the instabilities near zero signal. At higher signal values, VSN-transformed data approximates log-transformed data.</p>
+<ul>
+<li>In log data, low-signal peptides have higher variance. The same fold change of a low-mean peptide is less significant than for a high-mean peptide. VSN counteracts this by making variance independent of the mean → facilitates discovery of significant phosphosites with low signals. </li>
+</ul>
 <p><img alt="VSN" src="../Attachments/da_31.png" /></p>
 <p><strong>VSN reveals relative differences compared to the data mean, not absolute differences.</strong>
 <strong>→ Due to the data centering, the interpretation changes!</strong></p>
@@ -857,6 +882,24 @@
 <p><img alt="Volcano plot in log vs VSN" src="../Attachments/da_32.png" /></p>
 <p>If with log data, we observe general upregulation of phosphosites in T vs C at phosphosite analysis, after VSN there will probably be down and upregulation as well. 
 The interpretation: the absolute changes are positive, but the resulting negative signals are the ones which have relatively lower signals compared to the mean of all samples. </p>
+<h2 id="log-or-vsn-decision-guide">Log or VSN? Decision guide</h2>
+<p>As default, <strong>log2 transformation</strong> is used, since VSN transforms the data in a way that fold change directions are harder to interpret. <strong>Interpretation of VSN:</strong> the kinase directions (fold changes) are relative to the data mean.</p>
+<div class="highlight"><pre><span></span><code>Are there multiple biological entities (e.g. patients)?
+│
+├── Yes → VSN (because of high variance)
+│
+└── No → is the variance between conditions normal?
+         │
+         ├── Yes → Log
+         │
+         └── No (high variance) → VSN
+
+       → is the signal level normal?
+         │
+         ├── Yes → Log
+         │
+         └── No (low signal) → VSN
+</code></pre></div>
 <h3 id="log-or-vsn-decision-edge-cases-deviation-from-default">Log or VSN decision edge cases / deviation from default</h3>
 <p>As default we do log transformation, since VSN transforms the data in a way that fold change directions are harder to interpret. </p>
 <p><strong>Scenario 1, when VSN can be better than log: when there is significant differential signal only with VSN.</strong> </p>

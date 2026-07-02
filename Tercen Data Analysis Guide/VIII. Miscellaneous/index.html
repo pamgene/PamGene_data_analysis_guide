@@ -9,7 +9,7 @@
       
       
       
-        <link rel="prev" href="../VI.%20Workflow%20Decisions%20in%20PamGene%20Data%20Analysis/">
+        <link rel="prev" href="../VII.%20How%20to%20bring%20data%20from%20BioNavigator%20to%20Tercen/">
       
       
       
@@ -21,7 +21,7 @@
     
     
       
-        <title>VII. Miscellaneous - PamDx Data Analysis Guide</title>
+        <title>VIII. Miscellaneous - PamDx Data Analysis Guide</title>
       
     
     
@@ -62,7 +62,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#how-to-bring-data-from-bionavigator-to-tercen" class="md-skip">
+        <a href="#pamchip-technical-details" class="md-skip">
           Skip to content
         </a>
       
@@ -98,7 +98,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              VII. Miscellaneous
+              VIII. Miscellaneous
             
           </span>
         </div>
@@ -671,6 +671,34 @@
                 
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../VII.%20How%20to%20bring%20data%20from%20BioNavigator%20to%20Tercen/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    VII. How to bring data from BioNavigator to Tercen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
     
   
   
@@ -688,7 +716,7 @@
   <span class="md-ellipsis">
     
   
-    VII. Miscellaneous
+    VIII. Miscellaneous
   
 
     
@@ -706,7 +734,7 @@
   <span class="md-ellipsis">
     
   
-    VII. Miscellaneous
+    VIII. Miscellaneous
   
 
     
@@ -728,17 +756,6 @@
       Table of contents
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#how-to-bring-data-from-bionavigator-to-tercen" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        How to bring data from BioNavigator to Tercen
-      
-    </span>
-  </a>
-  
-</li>
       
         <li class="md-nav__item">
   <a href="#pamchip-technical-details" class="md-nav__link">
@@ -784,41 +801,9 @@
 
 
 
-  <h1>VII. Miscellaneous</h1>
+  <h1>VIII. Miscellaneous</h1>
 
 <p>This page stores information that is intended to be read by the Tercen bot to answer questions. </p>
-<h2 id="how-to-bring-data-from-bionavigator-to-tercen">How to bring data from BioNavigator to Tercen</h2>
-<p>How to bring data from old Bionavigator (.bn6 workflows) into Tercen:</p>
-<ol>
-<li>After ETS, add export step<ol>
-<li>Export type: Flat file</li>
-<li>From array, export: Barcode, Row, Cycle</li>
-<li>From Spot, export: ID</li>
-<li>From QuantitationType, export:ets::S100_multiplied</li>
-</ol>
-</li>
-</ol>
-<p><img alt="Exporting from BioNavigator" src="../Attachments/da_44.png" /></p>
-<ol>
-<li>
-<p>Open this output in notepad or Notepad++ (not in Excel) and change the name of factors:</p>
-<ol>
-<li>ets::S100_multiplied --&gt; ETS.ds1.S100.</li>
-<li>Cycle --&gt; ETS.ds1..Cycle. (be aware of the number of dots!)<br />
-This is done to have the same names as the result of ETS in Tercen, because these names are default in the next QC step.</li>
-</ol>
-</li>
-<li>
-<p>Bring this data in Tercen:</p>
-<ol>
-<li>Import data --&gt; Delimited text --&gt; change barcode to character, row should remain numeric, and check whether all column types are correct</li>
-<li>Make a new data analysis template (PTK_template or STK_template, where you add this file instead of the image analysis output file.</li>
-<li>Next, join the data with the enrichment file using the join step. Joining is done on Barcode and Row, but the exact factor names in the bn6 export files are different (only Barcode and Row, not ds1.Barcode and ds1.Row).</li>
-<li>Delete the ETS step and join this directly to the QC step.</li>
-</ol>
-</li>
-</ol>
-<p><img alt="Importing txt: change Barcode to character|670" src="../Attachments/da_45.png" /></p>
 <h2 id="pamchip-technical-details">PamChip technical details</h2>
 <p><strong>Parts of a barcode:</strong>
 e.g. 641023104</p>
