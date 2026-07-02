@@ -499,6 +499,34 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Network analysis tools">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#signor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SIGNOR
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#string" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        STRING
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -978,7 +1006,46 @@
 In addition, statistical tests do not consider how specific members are to a pathway. As a result, a pathway may receive a strong p-value even if only non-specific members are detected.
 Therefore, we recommend assessing pathway relevance using biological domain knowledge rather than relying on p-values or combined scores.</p>
 <h2 id="network-analysis-tools">Network analysis tools</h2>
-<p>Paste your gene list to <a href="https://string-db.org/cgi/input?sessionId=bABiPuufnLuv&amp;input_page_active_form=multiple_identifiers">STRING db</a>.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th><a href="https://signor.uniroma2.it/">SIGNOR</a></th>
+<th><a href="https://string-db.org/cgi/input?sessionId=bABiPuufnLuv&amp;input_page_active_form=multiple_identifiers">STRING db</a></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Features</td>
+<td>Experimental evidence about causal interactions.  <br><br>Pathways (signaling, metabolic, disease)</td>
+<td>Network from experimental sources and association (e.g. Gene-cooccurence, text-mining) sources</td>
+</tr>
+<tr>
+<td>Direction</td>
+<td>Directed</td>
+<td>Mostly undirected</td>
+</tr>
+<tr>
+<td>Mechanistic detail</td>
+<td>High</td>
+<td>Low–moderate</td>
+</tr>
+<tr>
+<td>Best for</td>
+<td>Inferring signaling pathways and causal networks</td>
+<td>Finding interacting proteins and network modules</td>
+</tr>
+<tr>
+<td>Weakness</td>
+<td>Smaller coverage</td>
+<td>Many edges are not causal or signaling-specific</td>
+</tr>
+</tbody>
+</table>
+<h3 id="signor">SIGNOR</h3>
+<p>Use the multi-protein search tool with <em>connect mode</em> to find a network of the top kinase list. The resulting network might include connector nodes (connectors between kinases without direct link).</p>
+<h3 id="string">STRING</h3>
+<p>Use the Search multiple proteins module and paste your top kinase list to find how they are connected.</p>
 <p>To focus on the most validated part of the network, filter settings to make the interaction data more stringent. See interaction sources / evidence channels in the below table. You can also click on a link to see the source of interaction with publications.</p>
 <table>
 <thead>

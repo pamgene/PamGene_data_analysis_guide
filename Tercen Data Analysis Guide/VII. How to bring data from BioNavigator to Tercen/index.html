@@ -842,15 +842,16 @@
 <p>This is how to do it:</p>
 <h3 id="1-export-data-from-the-bn6-workflow">1. Export data from the .bn6 workflow.</h3>
 <p>After ETS, add export step</p>
-<pre><code>1. Export type: Flat file
-2. From array, export: Barcode, Row, Cycle
-3. From Spot, export: ID
-4. From QuantitationType, export:ets::S100_multiplied
-</code></pre>
+<ul>
+<li>Export type: Flat file</li>
+<li>From array, export: Barcode, Row, Cycle</li>
+<li>From Spot, export: ID</li>
+<li>From QuantitationType, export:ets::S100_multiplied</li>
+</ul>
 <p><img alt="Exporting from BioNavigator" src="../Attachments/da_44.png" /></p>
 <h3 id="2-change-the-data-headers-to-match-tercen-format">2. Change the data headers to match Tercen format</h3>
 <p>Open this output in notepad or Notepad++ (not in Excel).</p>
-<p>Delete the first row which is not part of the actual data</p>
+<p>Delete the first row which is not part of the actual data.</p>
 <p>Change the name of factors:</p>
 <ul>
 <li>ets::S100_multiplied --&gt; ETS.ds1.S100</li>
@@ -865,7 +866,7 @@
 <p>Import data --&gt; Delimited text --&gt; change Barcode to character, Row should remain numeric, and check whether all column types are correct</p>
 <p><img alt="Importing txt: change Barcode to character|500" src="../Attachments/da_45.png" /></p>
 <h3 id="4-in-a-new-data-analysis-template">4. In a new data analysis template:</h3>
-<p>Make a PTK_template or STK_template.</p>
+<p>Make a workflow from the PTK_template or STK_template.</p>
 <ol>
 <li>
 <p>Upload your exported data and your enrichment into the data steps and join them. Joining is done on Barcode and Row, but the  factor names can be a little different between the two files, e.g. ds0.Barcode or Barcode. Select the correct factors.</p>
