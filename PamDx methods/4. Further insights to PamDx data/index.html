@@ -477,6 +477,34 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Pathway Analysis Tools">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#additional-interesting-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Additional interesting tools
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-outputs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example outputs:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -912,6 +940,7 @@
 <li>they have a clear interpretation: positive FC = activation, negative = inhibition.</li>
 <li>Differential kinase activity has a better statistical underpinning than treating differential peptide phosphorylation as protein activity. (Specificity score is available for kinases and kinases can only be predicted if at least 3 phosphosites show consistent change. </li>
 <li>Since kinases are predicted, pre-selection of kinases with high specificity scores (&gt; 0.7, or &gt; 1, the latter is equivalent to p-value 0.1) should be done. We do not recommend to set stringent specificity score cutoff for pathway / network analysis. These analyses find functionally interacting kinases, which further pinpoints the most relevant ones and naturally filters out false positives. (If a kinase is not connected to any other kinase in a pathway or network analysis, it is likely to be false positive.) </li>
+<li>since PTKs and STKs usually act together in pathways, combine them for pathway and network analysis.</li>
 </ul>
 </li>
 </ul>
@@ -989,12 +1018,14 @@
 <td><strong>Con</strong>: Pre-filtering of features can introduce bias: 1) subtler changes might not be significant; 2) multiple testing bias (inflation of false positives)</td>
 <td><strong>Con</strong>: Can overlook pathways if members don’t show clear up-or downregulation.</td>
 </tr>
-<tr>
-<td>### Example outputs:</td>
-<td></td>
-</tr>
 </tbody>
 </table>
+<h3 id="additional-interesting-tools">Additional interesting tools</h3>
+<p><a href="https://lomics.ai/"><strong>Lomics</strong></a> is an LLM-based tool that gives potential pathways and pathway members upon a question.</p>
+<p><a href="https://www.proteinatlas.org/">Protein Atlas</a> is useful to verify biological context of a kinase hit. (E.g.: is LCK expressed in endothelial cells?)</p>
+<p><a href="https://darkkinome.org/data">Dark Kinome</a> provides information about not-well-studied kinases (network, expression, pathways, assays to study).</p>
+<p>To overlap the top hits across different comparisons (e.g. T1 vs C, T2 vs C, etc.) you can use <a href="https://bioinfogp.cnb.csic.es/tools/venny/">Venny</a>.</p>
+<h3 id="example-outputs">Example outputs:</h3>
 <p><strong>Paintomics output</strong>: KEGG pathways colored by LFC (of 1+ comparisons)</p>
 <p><img alt="Paintomics output" src="../Attachments/da_41.png" /></p>
 <p><strong>Metascape output: top pathways:</strong></p>
@@ -1104,16 +1135,7 @@ Therefore, we recommend assessing pathway relevance using biological domain know
 </table>
 <p>Network clustering also helps to understand the network. The clustering methods require an initial guess of how many clusters you expect - you can play with this setting. The clustered networks can help to see pathways. </p>
 <h2 id="suggestions-for-validating-results-with-western-blot">Suggestions for validating results with Western blot</h2>
-<p>Select kinases that <strong>consistently appear with high Specificity Score</strong> in experiments with ≥ 3 replicates/condition (cell lines) or ≥ 6 replicates/condition (primary cell cultures / patient samples).</p>
-<p><strong>We recommend validating kinases over phosphosites</strong> because:</p>
-<ul>
-<li>
-<p>Targets may not be in their native form in the lysate</p>
-</li>
-<li>
-<p>Phosphorylation at a site can have different functional outcomes</p>
-</li>
-</ul>
+<p>Select kinases that <strong>appear with high Specificity Score</strong> in experiments with ≥ 3 replicates/condition (cell lines) or ≥ 6 replicates/condition (primary cell cultures / patient samples).</p>
 <p><strong>Western blot validation strategy:</strong></p>
 <ul>
 <li>

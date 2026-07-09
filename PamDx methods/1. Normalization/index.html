@@ -886,7 +886,7 @@ The interpretation: the absolute changes are positive, but the resulting negativ
 <p>As default, <strong>log2 transformation</strong> is used, since VSN transforms the data in a way that fold change directions are harder to interpret. <strong>Interpretation of VSN:</strong> the kinase directions (fold changes) are relative to the data mean.</p>
 <div class="highlight"><pre><span></span><code>Are there multiple biological entities*?
 │
-├── Yes → VSN (because of high variance)
+├── Yes → VSN
 │
 └── No (same biological entity with perturbation) 
     → is the variance normal?
@@ -895,7 +895,7 @@ The interpretation: the absolute changes are positive, but the resulting negativ
          │
          └── No (high variance)
             |
-            └─ Is high variance arising from only batch effects?
+            └─ Is high variance arising only from batch effects?
                  |
                  └── Yes → Log + Combat
                  |
