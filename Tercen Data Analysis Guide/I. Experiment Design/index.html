@@ -64,7 +64,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#overview" class="md-skip">
+        <a href="#two-basic-experiment-designs" class="md-skip">
           Skip to content
         </a>
       
@@ -564,17 +564,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#overview" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Overview
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#two-basic-experiment-designs" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -860,8 +849,6 @@
 
   <h1>I. Experiment Design</h1>
 
-<h2 id="overview">Overview</h2>
-<p><img alt="Pipeline: data analysis" src="../Attachments/da_01.jpg" /></p>
 <h2 id="two-basic-experiment-designs">Two Basic Experiment Designs</h2>
 <table>
 <thead>
@@ -883,11 +870,12 @@
 </table>
 <p><img alt="Design 1: C-T1T2T3 chip layout" src="../Attachments/da_02.png" /></p>
 <p><img alt="Design 2: C1T1-C2T2 chip layout" src="../Attachments/da_03.png" /></p>
-<p><strong>Number of replicates needed:</strong></p>
+<p>==<strong>Number of replicates needed:</strong>==</p>
 <ul>
 <li>Cell lines: minimum <strong>3 replicates / condition</strong></li>
 <li>Primary cell culture: minimum <strong>6 replicates / condition</strong></li>
 </ul>
+<p><strong>If the differences in conditions (e.g. treatments) is expected to be low, probably 3 replicates are not enough to show statistically significant differences.</strong></p>
 <hr />
 <h2 id="balanced-design">Balanced Design</h2>
 <p>Batch effects are variations caused by technical variability due to time, place, and materials  (e.g. runs, PamChips). Batch effects can confound real effects if the design is unbalanced → false results.</p>
@@ -922,25 +910,116 @@
 <p>The above comparisons are usually done on kinase-level data, the main output of PamDx experiments. Upstream Kinase Analysis is not a statistical test, so interaction effects cannot be calculated. That is why research question 4 is addressed in a simple way.</p>
 <hr />
 <h2 id="how-to-make-sample-annotation">How to Make Sample Annotation</h2>
-<p>An experiment needs the following design elements:</p>
-<ul>
-<li><strong>Test condition</strong>: describes what to compare (e.g. treated vs untreated, mutated vs wild type). For multiple test conditions with 1 control → use C-T1-2-3 design.</li>
-<li><strong>Supergroup</strong>: the group within which you compare T vs C (e.g. tissue). For 2 supergroups with 1 T and 1 C → use C1T1-C2T2 design.</li>
-<li><strong>Sample name</strong>: should be unique to the sample (e.g. Barcode + Row). Suggested format: <code>&lt;Supergroup&gt;_&lt;TestCond&gt;_&lt;Replicate&gt;</code></li>
-<li>When a biological entity is treated (e.g. control and treated come from same cell or patient), there should be a factor defining the biological entity. e.g. Cell_line, Supergroup, PatientID.</li>
-</ul>
-<p>Add additional columns if needed (e.g. date, run).</p>
-<p><img alt="Sample annotation table: C-T1-2-3 design (HeLa, Control/T1/T2/T3)" src="../Attachments/da_06.png" /></p>
-<p><img alt="Sample annotation table: C1T1-C2T2 design (HeLa + HEK293)" src="../Attachments/da_07.png" /></p>
+<p><strong>Main sample annotation factors</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>Factor</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Test condition</td>
+<td>Perturbation. Describes what to compare (e.g. treated vs control).</td>
+</tr>
+<tr>
+<td>Supergroup</td>
+<td>The group within which the test conditions are compared. E.g. WT or KO cell or different tissues.</td>
+</tr>
+<tr>
+<td>Sample name</td>
+<td>Should be unique to the sample.</td>
+</tr>
+<tr>
+<td>Biological Replicate (BR)</td>
+<td>The biological entity, e.g. patient, mouse. In case of cell line, cells from different wells in a plate.</td>
+</tr>
+<tr>
+<td>Technical Replicate (TR)</td>
+<td></td>
+</tr>
+<tr>
+<td>PatientID</td>
+<td>If experiment has patients, for clarity, include the id.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example</strong></p>
+<table>
+<thead>
+<tr>
+<th>Barcode</th>
+<th>Row</th>
+<th>Supergroup ID</th>
+<th>Supergroup</th>
+<th>Test condition ID</th>
+<th>Test condition</th>
+<th>Sample name</th>
+<th>BR</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>chip1</td>
+<td>1</td>
+<td>Sgroup1</td>
+<td>Sgroup1_WT</td>
+<td>Control</td>
+<td>Control</td>
+<td>WT_Control_01</td>
+<td>BR01</td>
+</tr>
+<tr>
+<td>chip1</td>
+<td>2</td>
+<td>Sgroup1</td>
+<td>Sgroup1_WT</td>
+<td>Test</td>
+<td>Test_RAFi</td>
+<td>WT_RAFi_01</td>
+<td>BR01</td>
+</tr>
+<tr>
+<td>chip1</td>
+<td>3</td>
+<td>Sgroup2</td>
+<td>Sgroup2_KO</td>
+<td>Control</td>
+<td>Control</td>
+<td>KO_Control_01</td>
+<td>BR01</td>
+</tr>
+<tr>
+<td>chip1</td>
+<td>4</td>
+<td>Sgroup2</td>
+<td>Sgroup2_KO</td>
+<td>Test</td>
+<td>Test_RAFi</td>
+<td>KO_RAFi_01</td>
+<td>BR01</td>
+</tr>
+<tr>
+<td>chip2</td>
+<td>1</td>
+<td>Sgroup1</td>
+<td>Sgroup1_WT</td>
+<td>Control</td>
+<td>Control</td>
+<td>WT_Control_01</td>
+<td>BR02</td>
+</tr>
+</tbody>
+</table>
 <hr />
 <h2 id="naming-rules-for-workflow-automation">Naming Rules for Workflow Automation</h2>
 <ul>
-<li>Have <code>Supergroup</code> and <code>Test Condition</code> columns with <strong>unchanged column names and values</strong> (e.g. Control, T1, T2). Case sensitivity matters.</li>
-<li>Real names go in separate columns (e.g. <code>Supergroup_annot</code>, <code>Tissue</code>)</li>
+<li><code>Supergroup ID</code> column values should always be: Sgroup1, Sgroup2, ...</li>
+<li><code>Test condition ID</code> column values should always be: Control, Test, T1, T2, ...</li>
+<li>Real names go in the <code>Supergroup</code>, <code>Test condition</code> columns</li>
 <li>Have a <code>Supergroup</code> column <strong>even if there is only 1 supergroup</strong> — needed for UKA</li>
-<li><code>Sample name</code> must be <strong>unique per biological replicate</strong> (e.g. <code>HeLa_Control_1</code>) — needed for UKA</li>
-<li><code>Replicate</code> column: only necessary in some designs for fold change calculation</li>
-<li>Keep names simple. If too long, shorten it to so they are visible on heatmaps.</li>
+<li>Keep names simple so they are visible on heatmaps.</li>
 </ul>
 
 
