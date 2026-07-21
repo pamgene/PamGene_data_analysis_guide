@@ -888,29 +888,54 @@ The interpretation: the absolute changes are positive, but the resulting negativ
 │
 ├── Yes → VSN
 │
-└── No (same biological entity with perturbation) 
-    → is the variance normal?
-         │
-         ├── Yes → Log
-         │
-         └── No (high variance)
-            |
-            └─ Is high variance arising only from batch effects?
-                 |
-                 └── Yes → Log + Combat
-                 |
-                 └── No (high variance arising from global effects within or between conditions) --&gt; VSN
+└── No (same biological entity with perturbation) → Log2
+│
+└── Both (different biological entities AND perturbation) 
+    → Log2 for perturbation, VSN for comparison of entities
 </code></pre></div>
-<p>* Different biological entities: e.g. patients; R/NR cells; WT/KO cells</p>
-<p>Example: </p>
-<p>2 cells, WT, KO &amp; Treatment, Control conditions. The variance is normal.</p>
-<ul>
-<li>Test vs Control in WT and in KO --&gt; Log</li>
-<li>KO-Control vs WT-Control --&gt; VSN</li>
-</ul>
+<p>* Different biological entities: e.g. patients; different mice; R/NR cells; WT/KO cells; differentiated cells from stem cells.</p>
+<p>NOT different biological entities: e.g. treatment with shRNA (knockdown).</p>
+<p>Between different biological entities, global effects are expected that can be mitigated with VSN.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>CV*</th>
+<th>Limma**</th>
+<th>Interpretation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Scenario 1</td>
+<td>within accepted range</td>
+<td>Substantial significance</td>
+<td>Large relevant effect.</td>
+</tr>
+<tr>
+<td>Scenario 2</td>
+<td>Too high</td>
+<td>Substantial significance</td>
+<td>Probably variance arises from technical effects.</td>
+</tr>
+<tr>
+<td>Scenario 3</td>
+<td>within accepted range</td>
+<td>Not enough significance</td>
+<td>Treatment effect is too subtle → optimization or more replicates needed.</td>
+</tr>
+<tr>
+<td>Scenario 4</td>
+<td>Too high</td>
+<td>Not enough significance</td>
+<td>We can't correct this variance even with VSN <br>→ more replicates needed</td>
+</tr>
+</tbody>
+</table>
+<p>*  Biological replicates: up to 30% biological CV (in a condition/group, between replicates) is accepted. Technical replicates: up to 15%.</p>
+<p>** The definition of substantial significance is very arbitrary and depends on the interpreter. Typically, we suggest that a comparison has substantial significance when there are at least a few (FDR-) significant results (p-value threshold: 0.05; FDR threshold: &lt;0.25). In an experiment, we expect at least 1 comparison to be significant.</p>
 <h3 id="log-or-vsn-decision-edge-cases-deviation-from-default">Log or VSN decision edge cases / deviation from default</h3>
 <ul>
-<li>there are no differential kinases in log, but there are differential kinases in VSN. Then we might have not seen that there are global effects and not corrected for it with VSN.</li>
 <li>global effects (every peptide is going up or down) and we want to see effects relative to the mean. E.g. everything is going up, then which are those kinases that are the most overactive (positive direction), and which are those that are less overactive (negative direction)</li>
 </ul>
 <h3 id="references">References</h3>
