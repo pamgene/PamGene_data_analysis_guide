@@ -884,7 +884,7 @@
 The interpretation: the absolute changes are positive, but the resulting negative signals are the ones which have relatively lower signals compared to the mean of all samples. </p>
 <h2 id="log-or-vsn-decision-guide">Log or VSN? Decision guide</h2>
 <p>As default, <strong>log2 transformation</strong> is used, since VSN transforms the data in a way that fold change directions are harder to interpret. <strong>Interpretation of VSN:</strong> the kinase directions (fold changes) are relative to the data mean.</p>
-<div class="highlight"><pre><span></span><code>Are there multiple biological entities*?
+<div class="highlight"><pre><span></span><code>Are there multiple biological subjects*?
 │
 ├── Yes → VSN
 │
@@ -893,9 +893,9 @@ The interpretation: the absolute changes are positive, but the resulting negativ
 └── Both (different biological entities AND perturbation) 
     → Log2 for perturbation, VSN for comparison of entities
 </code></pre></div>
-<p>* Different biological entities: e.g. patients; different mice; R/NR cells; WT/KO cells; differentiated cells from stem cells.</p>
-<p>NOT different biological entities: e.g. treatment with shRNA (knockdown).</p>
-<p>Between different biological entities, global effects are expected that can be mitigated with VSN.</p>
+<p>* Different biological subjects: e.g. patients; different mice; R/NR cells; WT/KO cells; differentiated cells from stem cells.</p>
+<p>NOT different biological subjects: e.g. treatment with shRNA (knockdown).</p>
+<p>Between different biological subjects, global effects are expected that can be mitigated with VSN.</p>
 <table>
 <thead>
 <tr>
@@ -908,7 +908,7 @@ The interpretation: the absolute changes are positive, but the resulting negativ
 <tbody>
 <tr>
 <td>Scenario 1</td>
-<td>within accepted range</td>
+<td>within normal range</td>
 <td>Substantial significance</td>
 <td>Large relevant effect.</td>
 </tr>
@@ -916,11 +916,11 @@ The interpretation: the absolute changes are positive, but the resulting negativ
 <td>Scenario 2</td>
 <td>Too high</td>
 <td>Substantial significance</td>
-<td>Probably variance arises from technical effects.</td>
+<td>Probably variance arises from technical effects which are still smaller than biological effects (or paired limma is used within a replicate / chip).</td>
 </tr>
 <tr>
 <td>Scenario 3</td>
-<td>within accepted range</td>
+<td>within normal range</td>
 <td>Not enough significance</td>
 <td>Treatment effect is too subtle → optimization or more replicates needed.</td>
 </tr>
@@ -928,11 +928,11 @@ The interpretation: the absolute changes are positive, but the resulting negativ
 <td>Scenario 4</td>
 <td>Too high</td>
 <td>Not enough significance</td>
-<td>We can't correct this variance even with VSN <br>→ more replicates needed</td>
+<td>We can't mitigate this variance even with VSN <br>→ more replicates needed</td>
 </tr>
 </tbody>
 </table>
-<p>*  Biological replicates: up to 30% biological CV (in a condition/group, between replicates) is accepted. Technical replicates: up to 15%.</p>
+<p>*  Biological replicates: up to 30% biological and 20% technical CV (in a condition/group, between replicates) is considered normal.  </p>
 <p>** The definition of substantial significance is very arbitrary and depends on the interpreter. Typically, we suggest that a comparison has substantial significance when there are at least a few (FDR-) significant results (p-value threshold: 0.05; FDR threshold: &lt;0.25). In an experiment, we expect at least 1 comparison to be significant.</p>
 <h3 id="log-or-vsn-decision-edge-cases-deviation-from-default">Log or VSN decision edge cases / deviation from default</h3>
 <ul>
