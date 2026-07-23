@@ -874,16 +874,14 @@
 <li>In log data, low-signal peptides have higher variance. The same fold change of a low-mean peptide is less significant than for a high-mean peptide. VSN counteracts this by making variance independent of the mean → facilitates discovery of significant phosphosites with low signals. </li>
 </ul>
 <p><img alt="VSN" src="../Attachments/da_31.png" /></p>
-<p><strong>VSN reveals relative differences compared to the data mean, not absolute differences.</strong>
-<strong>→ Due to the data centering, the interpretation changes!</strong></p>
-<p><strong>Steps:</strong>
-1. Centering data to the mean and scaling.
-2. Log transformation → VSN result is equivalent to log transformation</p>
-<p><img alt="Volcano plot in log vs VSN" src="../Attachments/da_32.png" /></p>
 <p>If with log data, we observe general upregulation of phosphosites in T vs C at phosphosite analysis, after VSN there will probably be down and upregulation as well. 
 The interpretation: the absolute changes are positive, but the resulting negative signals are the ones which have relatively lower signals compared to the mean of all samples. </p>
+<p><img alt="Volcano plot in log vs VSN" src="../Attachments/da_32.png" /></p>
 <h2 id="log-or-vsn-decision-guide">Log or VSN? Decision guide</h2>
-<p>As default, <strong>log2 transformation</strong> is used, since VSN transforms the data in a way that fold change directions are harder to interpret. <strong>Interpretation of VSN:</strong> the kinase directions (fold changes) are relative to the data mean.</p>
+<p>As default, <strong>log2 transformation</strong> is used.</p>
+<p>VSN is done for comparison of different biological subjects, when global effects are observed, since global effects can be reduced with VSN.</p>
+<p>A global effect means one subject shows overall higher or lower signal than another, for reasons unrelated to the biology we're studying. If left uncorrected, this general difference gets read as if it were biological: with simple log transformation, it shows up as a uniform shift across almost all peptides. This is a bias, hiding truly specific changes. VSN corrects for this: for each sample, it estimates a shared correction from the majority of peptides — assuming most don't actually differ between samples — and removes it before comparing samples. Peptides that move together with the majority are treated as unchanged; only peptides that deviate from that shared pattern keep a nonzero fold change.</p>
+<p>VSN-transformed data yields fold change, not absolute values: it reflects how much a peptide deviates from what the majority of peptides did across the compared samples, rather than how much its raw signal actually changed.</p>
 <div class="highlight"><pre><span></span><code>Are there multiple biological subjects*?
 │
 ├── Yes → VSN
@@ -895,7 +893,10 @@ The interpretation: the absolute changes are positive, but the resulting negativ
 </code></pre></div>
 <p>* Different biological subjects: e.g. patients; different mice; R/NR cells; WT/KO cells; differentiated cells from stem cells.</p>
 <p>NOT different biological subjects: e.g. treatment with shRNA (knockdown).</p>
-<p>Between different biological subjects, global effects are expected that can be mitigated with VSN.</p>
+<p><em>Can we use VSN to reduce variance in cases when there is only 1 biological subject?</em>
+VSN corrects for global effects (reduces variance stemming from global effects). When there is 1 biological subject, the variance can stem from:
+- technical effects (e.g. chip, run, which can be corrected by Combat)
+- between-replicate variance (not global effect)</p>
 <table>
 <thead>
 <tr>
@@ -928,7 +929,7 @@ The interpretation: the absolute changes are positive, but the resulting negativ
 <td>Scenario 4</td>
 <td>Too high</td>
 <td>Not enough significance</td>
-<td>We can't mitigate this variance even with VSN <br>→ more replicates needed</td>
+<td>There is either no changes in the kinome, or more replicates are needed.</td>
 </tr>
 </tbody>
 </table>
