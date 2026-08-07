@@ -382,6 +382,34 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="VSN normalization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-does-vsn-do" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What does VSN do?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-to-interpret-vsn-results" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How to interpret VSN results?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -395,17 +423,6 @@
   
     <nav class="md-nav" aria-label="Log or VSN? Decision guide">
       <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#log-or-vsn-decision-edge-cases-deviation-from-default" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Log or VSN decision edge cases / deviation from default
-      
-    </span>
-  </a>
-  
-</li>
         
           <li class="md-nav__item">
   <a href="#references" class="md-nav__link">
@@ -867,36 +884,62 @@
 </ul>
 <p>Optional: batch effect correction by ComBat, applied after Log or VSN.</p>
 <h2 id="vsn-normalization">VSN normalization</h2>
+<h3 id="what-does-vsn-do">What does VSN do?</h3>
 <p>VSN is a standard normalization method - also used in in e.g. transcriptomics.</p>
-<p><strong>VSN corrects for overall differences in signal intensity between samples.</strong> When samples differ mainly in their overall signal (for example, when most peptides show higher signal in sample A than in sample B), VSN reduces this variance. This makes it possible to analyze the data in terms of activities that are relatively high or low compared to the overall signal intensity, rather than absolute differences driven by global intensity shifts.</p>
+<p><strong>VSN corrects for <em>overall differences in signal intensity between samples (=global effects between samples)</em>.</strong> When samples differ mainly in their overall signal (for example, when most peptides show higher signal in sample A than in sample B), VSN reduces this variance. This makes it possible to analyze the data in terms of activities that are relatively high or low compared to the overall signal intensity, rather than absolute differences driven by global intensity shifts.</p>
 <p><strong>VSN also stabilizes the variance across the signal intensity range</strong>—similar to a log transformation, but without the instabilities near zero signal. At higher signal values, VSN-transformed data approximates log-transformed data.</p>
-<ul>
-<li>In log data, low-signal peptides have higher variance. The same fold change of a low-mean peptide is less significant than for a high-mean peptide. VSN counteracts this by making variance independent of the mean → facilitates discovery of significant phosphosites with low signals. </li>
-</ul>
+<p>In log data, low-signal peptides have higher variance. The same fold change of a low-mean peptide is less significant than for a high-mean peptide. VSN counteracts this by making variance independent of the mean → facilitates discovery of significant phosphosites with low signals. </p>
 <p><img alt="VSN" src="../Attachments/da_31.png" /></p>
-<p>If with log data, we observe general upregulation of phosphosites in T vs C at phosphosite analysis, after VSN there will probably be down and upregulation as well. 
-The interpretation: the absolute changes are positive, but the resulting negative signals are the ones which have relatively lower signals compared to the mean of all samples. </p>
+<h3 id="how-to-interpret-vsn-results">How to interpret VSN results?</h3>
+<p><strong>When in log data, there is <em>global up or downregulation between test conditions (T vs C)</em>, why is the volcano V-shaped for VSN data?</strong> </p>
+<p><em>Assume</em>: 
+In log data we observe global upregulation for all kinases or phosphosites in T vs C. 
+After VSN we observe both up-and downregulation.</p>
+<p><em>Interpretation</em>:
+- in T vs C, the delta for all peptides is still positive.
+- the VSN-upregulated peptides are those that contribute more to the global upregulation than the average.
+- the VSN-downregulated peptides are those that contribute less to the global upregulation than the average. The absolute changes are still positive (= in reality, these peptides show upregulation), but VSN shows the signals relative to sample average.</p>
 <p><img alt="Volcano plot in log vs VSN" src="../Attachments/da_32.png" /></p>
+<p><strong>Why are there more peptides newly significant in VSN data, compared to log data?</strong></p>
+<p>When a peptide became significant in VSN, the noise of the peptide FC was too high to become significant. VSN's variance-stabilizing transform reduces that noise, and Limma can pick it up as significant. That's a legitimate, well-documented benefit of VSN.</p>
+<p><strong>Can we trust those kinases with high specificity scores that go to the opposite direction</strong>? Yes. The fold change direction reversal is just the known effect of VSN. Highly specific kinases with reversed fold change direction change less than the average, but they might be still relevant - check whether they are relevant in your model system (e.g. with pathway/network approach whether they are connected to the rest of the highly specific kinases).  </p>
+<p><strong>How does VSN correct for global effects?</strong></p>
+<p><img alt="Volcano plot in log vs VSN" src="../Attachments/vsn_updown_explainer.png" /></p>
 <h2 id="log-or-vsn-decision-guide">Log or VSN? Decision guide</h2>
 <p>As default, <strong>log2 transformation</strong> is used.</p>
 <p>VSN is done for comparison of different biological subjects, when global effects are observed, since global effects can be reduced with VSN.</p>
-<p>A global effect means one subject shows overall higher or lower signal than another, for reasons unrelated to the biology we're studying. If left uncorrected, this general difference gets read as if it were biological: with simple log transformation, it shows up as a uniform shift across almost all peptides. This is a bias, hiding truly specific changes. VSN corrects for this: for each sample, it estimates a shared correction from the majority of peptides — assuming most don't actually differ between samples — and removes it before comparing samples. Peptides that move together with the majority are treated as unchanged; only peptides that deviate from that shared pattern keep a nonzero fold change.</p>
+<p><em>A global effect means that one subject shows overall higher or lower signal than another, for reasons unrelated to the biology we're studying.</em> If left uncorrected, this general difference gets read as if it were biological: with simple log transformation, it shows up as a uniform shift across almost all peptides. This is a bias, hiding truly specific changes. VSN corrects for this: for each sample, it estimates a shared correction from the majority of peptides — assuming most don't actually differ between samples — and removes it before comparing samples. Peptides that move together with the majority are treated as unchanged; only peptides that deviate from that shared pattern keep a nonzero fold change.</p>
 <p>VSN-transformed data yields fold change, not absolute values: it reflects how much a peptide deviates from what the majority of peptides did across the compared samples, rather than how much its raw signal actually changed.</p>
-<div class="highlight"><pre><span></span><code>Are there multiple biological subjects*?
+<div class="highlight"><pre><span></span><code>Are multiple biological subjects* being compared AND 
+Are there overal signal intensity differences between subjects**? 
 │
 ├── Yes → VSN
 │
-└── No (same biological entity with perturbation) → Log2
+└── No 
+│   (same subject &amp; perturbation OR 
+│   different subjects &amp; no overal signal intensity differences)
+│    → Log2
 │
-└── Both (different biological entities AND perturbation) 
-    → Log2 for perturbation, VSN for comparison of entities
+└── Both in 1 experiment
+    → Log2 for perturbation, VSN for comparison of subjects
 </code></pre></div>
-<p>* Different biological subjects: e.g. patients; different mice; R/NR cells; WT/KO cells; differentiated cells from stem cells.</p>
+<p>* <strong>Different biological subjects</strong>: e.g. patients; different mice; R/NR cells; WT/KO cells; differentiated cells from stem cells, different cell lines from same indication</p>
 <p>NOT different biological subjects: e.g. treatment with shRNA (knockdown).</p>
-<p><em>Can we use VSN to reduce variance in cases when there is only 1 biological subject?</em>
-VSN corrects for global effects (reduces variance stemming from global effects). When there is 1 biological subject, the variance can stem from:
-- technical effects (e.g. chip, run, which can be corrected by Combat)
-- between-replicate variance (not global effect)</p>
+<p>*<em> </em><em>VSN should be used when there are global effects between different subjects</em>*. 
+The reason: even without any visible between-sample offset, VSN still corrects based on the assumption that most peptides shouldn't differ.</p>
+<p><strong>Special case: 1 mouse genotype, 6 mouse, 6-6 pre-post treatment samples, paired design (same mouse is C and T)</strong></p>
+<ul>
+<li>when there is pairing we usually do paired limma to avoid the bias from different biological subjects</li>
+<li>UKA can't be paired, so for UKA, we must do VSN since the global effects must be first corrected</li>
+<li>→ Do limma &amp; UKA on VSN</li>
+</ul>
+<p><em>Can we use VSN to reduce variance in cases when there is only 1 biological subject?</em></p>
+<p>VSN corrects for global effects (reduces variance stemming from global effects). When there is 1 biological subject, the variance can stem from:</p>
+<ul>
+<li>technical effects (e.g. chip, run, which can be corrected by Combat)</li>
+<li>between-replicate variance (not global effect)</li>
+</ul>
+<p><strong>Interpretation of cases of low/high CV &amp; limma with / without significance</strong></p>
 <table>
 <thead>
 <tr>
@@ -908,37 +951,33 @@ VSN corrects for global effects (reduces variance stemming from global effects).
 </thead>
 <tbody>
 <tr>
-<td>Scenario 1</td>
+<td>Case 1</td>
 <td>within normal range</td>
 <td>Substantial significance</td>
 <td>Large relevant effect.</td>
 </tr>
 <tr>
-<td>Scenario 2</td>
+<td>Case 2</td>
 <td>Too high</td>
 <td>Substantial significance</td>
 <td>Probably variance arises from technical effects which are still smaller than biological effects (or paired limma is used within a replicate / chip).</td>
 </tr>
 <tr>
-<td>Scenario 3</td>
+<td>Case 3</td>
 <td>within normal range</td>
 <td>Not enough significance</td>
 <td>Treatment effect is too subtle → optimization or more replicates needed.</td>
 </tr>
 <tr>
-<td>Scenario 4</td>
+<td>Case 4</td>
 <td>Too high</td>
 <td>Not enough significance</td>
 <td>There is either no changes in the kinome, or more replicates are needed.</td>
 </tr>
 </tbody>
 </table>
-<p>*  Biological replicates: up to 30% biological and 20% technical CV (in a condition/group, between replicates) is considered normal.  </p>
+<p>* CV: up to ~ 30% biological and ~ 20% technical CV (in a condition/group, between replicates) is considered normal.  </p>
 <p>** The definition of substantial significance is very arbitrary and depends on the interpreter. Typically, we suggest that a comparison has substantial significance when there are at least a few (FDR-) significant results (p-value threshold: 0.05; FDR threshold: &lt;0.25). In an experiment, we expect at least 1 comparison to be significant.</p>
-<h3 id="log-or-vsn-decision-edge-cases-deviation-from-default">Log or VSN decision edge cases / deviation from default</h3>
-<ul>
-<li>global effects (every peptide is going up or down) and we want to see effects relative to the mean. E.g. everything is going up, then which are those kinases that are the most overactive (positive direction), and which are those that are less overactive (negative direction)</li>
-</ul>
 <h3 id="references">References</h3>
 <ul>
 <li>Huber, W., et al. (2002). Variance stabilization applied to microarray data calibration and to the quantification of differential expression. <em>Bioinformatics</em>, 18(S1), S96–S104.</li>
