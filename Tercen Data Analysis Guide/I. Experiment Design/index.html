@@ -63,11 +63,6 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
-        
-        <a href="#two-basic-experiment-designs" class="md-skip">
-          Skip to content
-        </a>
-      
     </div>
     <div data-md-component="announce">
       
@@ -307,6 +302,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../PamDx%20methods/0.%20Experiment%20Design/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0. Experiment Design
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../PamDx%20methods/1.%20Normalization/" class="md-nav__link">
         
   
@@ -515,24 +538,6 @@
       
       
       
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    I. Experiment Design
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -549,78 +554,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#two-basic-experiment-designs" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Two Basic Experiment Designs
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#balanced-design" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Balanced Design
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#how-comparisons-answer-research-questions" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        How comparisons answer research questions
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#how-to-make-sample-annotation" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        How to Make Sample Annotation
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#naming-rules-for-workflow-automation" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Naming Rules for Workflow Automation
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
       
     </li>
   
@@ -849,177 +782,13 @@
 
   <h1>I. Experiment Design</h1>
 
-<h2 id="two-basic-experiment-designs">Two Basic Experiment Designs</h2>
-<table>
-<thead>
-<tr>
-<th>Design</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>C-T1T2T3</strong></td>
-<td>Compare multiple Test conditions vs one Control</td>
-</tr>
-<tr>
-<td><strong>C1T1–C2T2</strong></td>
-<td>Compare 2 model systems, each with its own Test and Control</td>
-</tr>
-</tbody>
-</table>
-<p><img alt="Design 1: C-T1T2T3 chip layout" src="../Attachments/da_02.png" /></p>
-<p><img alt="Design 2: C1T1-C2T2 chip layout" src="../Attachments/da_03.png" /></p>
-<p><mark><strong>Number of replicates needed:</strong></mark></p>
+<p>Read about <a href="../../PamDx%20methods/0.%20Experiment%20Design/">experiment design</a> to understand:</p>
 <ul>
-<li>Cell lines: minimum <strong>3 replicates / condition</strong></li>
-<li>Primary cell culture: minimum <strong>6 replicates / condition</strong></li>
-</ul>
-<p><strong>If the differences in conditions (e.g. treatments) is expected to be low, probably 3 replicates are not enough to show statistically significant differences.</strong></p>
-<hr />
-<h2 id="balanced-design">Balanced Design</h2>
-<p>Batch effects are variations caused by technical variability due to time, place, and materials  (e.g. runs, PamChips). Batch effects can confound real effects if the design is unbalanced → false results.</p>
-<p>A <strong>balanced design</strong> avoids confounding the effects of the covariates of interest with batch effects. </p>
-<p>If needed, correction for batch effects is possible.</p>
-<p><img alt="PamChip array distribution: Balanced / Randomized / Unbalanced" src="../Attachments/da_04.png" /></p>
-<p><img alt="Batch effect: scatter plot (Batch 1 vs 2) and dendrogram showing batch-dominated clustering" src="../Attachments/da_05.png" /></p>
-<p><strong>Reference:</strong> [Leek et al., 2010]</p>
-<hr />
-<h2 id="how-comparisons-answer-research-questions">How comparisons answer research questions</h2>
-<p>Assume:</p>
-<ul>
-<li>two cell lines: a wild type (WT) and a knock-out (KO).</li>
-<li>Treatment (T) and untreated (DMSO-treated) Control (C).</li>
-</ul>
-<p>Possible research questions and their answers:</p>
-<ol>
-<li>What is the test effect in WT? → T vs C in WT</li>
-<li>What is the test effect in KO? → T vs C in KO</li>
-<li>How is KO and WT different? → KO vs WT in Control (= KO-Control vs WT-Control)</li>
-<li>How is test effect in KO and WT different? <ol>
-<li>→ simple approach: compare results from questions 1 and 2 with <a href="https://bioinfogp.cnb.csic.es/tools/venny/">Venn-diagram</a> </li>
-<li>→ better: compare the fold changes of specific kinases with a low specificity threshold.</li>
-</ol>
-</li>
-</ol>
-<p><em>Do not use KO-Test vs WT-Test comparison.</em> The reason: KO-Test vs WT-Test does not isolate treatment-response differences because it mixes:</p>
-<ul>
-<li>baseline genotype differences</li>
-<li>treatment-induced genotype differences</li>
-</ul>
-<p>The above comparisons are usually done on kinase-level data, the main output of PamDx experiments. Upstream Kinase Analysis is not a statistical test, so interaction effects cannot be calculated. That is why research question 4 is addressed in a simple way.</p>
-<hr />
-<h2 id="how-to-make-sample-annotation">How to Make Sample Annotation</h2>
-<p><strong>Main sample annotation factors</strong>:</p>
-<table>
-<thead>
-<tr>
-<th>Factor</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Test condition</td>
-<td>Perturbation. Describes what to compare (e.g. treated vs control).</td>
-</tr>
-<tr>
-<td>Supergroup</td>
-<td>The group within which the test conditions are compared. E.g. WT or KO cell or different tissues.</td>
-</tr>
-<tr>
-<td>Sample name</td>
-<td>Should be unique to the sample.</td>
-</tr>
-<tr>
-<td>Biological Replicate (BR)</td>
-<td>The biological entity, e.g. patient, mouse. In case of cell line, cells from different wells in a plate.</td>
-</tr>
-<tr>
-<td>Technical Replicate (TR)</td>
-<td></td>
-</tr>
-<tr>
-<td>PatientID</td>
-<td>If experiment has patients, for clarity, include the id.</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Example</strong></p>
-<table>
-<thead>
-<tr>
-<th>Barcode</th>
-<th>Row</th>
-<th>Supergroup ID</th>
-<th>Supergroup</th>
-<th>Test condition ID</th>
-<th>Test condition</th>
-<th>Sample name</th>
-<th>BR</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>chip1</td>
-<td>1</td>
-<td>Sgroup1</td>
-<td>Sgroup1_WT</td>
-<td>Control</td>
-<td>Control</td>
-<td>WT_Control_01</td>
-<td>BR01</td>
-</tr>
-<tr>
-<td>chip1</td>
-<td>2</td>
-<td>Sgroup1</td>
-<td>Sgroup1_WT</td>
-<td>Test</td>
-<td>Test_RAFi</td>
-<td>WT_RAFi_01</td>
-<td>BR01</td>
-</tr>
-<tr>
-<td>chip1</td>
-<td>3</td>
-<td>Sgroup2</td>
-<td>Sgroup2_KO</td>
-<td>Control</td>
-<td>Control</td>
-<td>KO_Control_01</td>
-<td>BR01</td>
-</tr>
-<tr>
-<td>chip1</td>
-<td>4</td>
-<td>Sgroup2</td>
-<td>Sgroup2_KO</td>
-<td>Test</td>
-<td>Test_RAFi</td>
-<td>KO_RAFi_01</td>
-<td>BR01</td>
-</tr>
-<tr>
-<td>chip2</td>
-<td>1</td>
-<td>Sgroup1</td>
-<td>Sgroup1_WT</td>
-<td>Control</td>
-<td>Control</td>
-<td>WT_Control_01</td>
-<td>BR02</td>
-</tr>
-</tbody>
-</table>
-<hr />
-<h2 id="naming-rules-for-workflow-automation">Naming Rules for Workflow Automation</h2>
-<ul>
-<li><code>Supergroup ID</code> column values should always be: Sgroup1, Sgroup2, ...</li>
-<li><code>Test condition ID</code> column values should always be: Control, Test, T1, T2, ...</li>
-<li>Real names go in the <code>Supergroup</code>, <code>Test condition</code> columns</li>
-<li>Have a <code>Supergroup</code> column <strong>even if there is only 1 supergroup</strong> — needed for UKA</li>
-<li>Keep names simple so they are visible on heatmaps.</li>
+<li>two basic designs: C-T1-T2-T3 &amp; C1-T1–C2-T2</li>
+<li>how many replicates are minimally needed</li>
+<li>why balanced design is a must for PamDx experiments</li>
+<li>how the comparisons (T vs C) answer your research questions</li>
+<li>how to make sample annotation</li>
 </ul>
 
 
