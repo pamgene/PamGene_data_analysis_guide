@@ -922,7 +922,7 @@
 <li>Row --&gt; ds0.Row</li>
 </ul>
 <p><strong>Regarding the sample annotation:</strong></p>
-<p>There are two sample annotation columns that are pre-selected in the Tercen templates: Test condition and Supergroup. If you have different annotations, this will lead to "Missing factor" errors which is expected and you will fix them (see later).</p>
+<p>There are two sample annotation columns that are pre-selected in the Tercen templates: Test Condition and Supergroup. If you have different annotations, this will lead to "Missing factor" errors which is expected and you will fix them (see later).</p>
 <h3 id="3-upload-the-data-and-the-sample-annotation-enrichment-in-your-tercen-project">3. Upload the data and the sample annotation (enrichment) in your Tercen project:</h3>
 <p>Import data --&gt; Delimited text --&gt; change Barcode to character, Row should remain numeric, and check whether all column types are correct</p>
 <p><img alt="Importing txt: change Barcode to character|500" src="../Attachments/da_45.png" /></p>
@@ -956,7 +956,9 @@
 <p><strong>The differences then stem from new version of the UKAdb</strong>, the kinase-to-peptide database the UKA algorithm uses. PamDx releases an updated UKAdb and UKA_app version approximately once per year to:</p>
 <ul>
 <li>adapt changes from UniProt. </li>
-<li>fix potential bugs.</li>
+<li>fix potential bugs</li>
+<li>add new data (e.g. Kinase Library)</li>
+<li>add new features (e.g. removal of dual-specificity kinases, or the automated comparison of all conditions versus each other)</li>
 </ul>
 <p>For the complete list of differences, see the <a href="https://github.com/pamgene/UKA_app">UKA_app readme</a>.</p>
 <p><strong>Comparing to the confidence-scoring, <code>csUKA_app</code>:</strong></p>
