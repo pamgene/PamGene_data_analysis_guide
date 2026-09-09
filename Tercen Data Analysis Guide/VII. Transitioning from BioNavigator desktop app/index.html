@@ -23,7 +23,7 @@
     
     
       
-        <title>VII. How to bring data from BioNavigator to Tercen - PamDx Data Analysis Guide</title>
+        <title>VII. Transitioning from BioNavigator desktop app - PamDx Data Analysis Guide</title>
       
     
     
@@ -64,7 +64,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#1-export-data-from-the-bn6-workflow" class="md-skip">
+        <a href="#exporting-s100-from-bionavigator-desktop-app" class="md-skip">
           Skip to content
         </a>
       
@@ -100,7 +100,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              VII. How to bring data from BioNavigator to Tercen
+              VII. Transitioning from BioNavigator desktop app
             
           </span>
         </div>
@@ -718,7 +718,7 @@
   <span class="md-ellipsis">
     
   
-    VII. How to bring data from BioNavigator to Tercen
+    VII. Transitioning from BioNavigator desktop app
   
 
     
@@ -736,7 +736,7 @@
   <span class="md-ellipsis">
     
   
-    VII. How to bring data from BioNavigator to Tercen
+    VII. Transitioning from BioNavigator desktop app
   
 
     
@@ -760,6 +760,18 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#exporting-s100-from-bionavigator-desktop-app" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exporting S100 from BioNavigator desktop app
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Exporting S100 from BioNavigator desktop app">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#1-export-data-from-the-bn6-workflow" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -769,8 +781,8 @@
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#2-change-the-data-headers-to-match-tercen-format" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -780,8 +792,8 @@
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#3-upload-the-data-and-the-sample-annotation-enrichment-in-your-tercen-project" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -791,12 +803,28 @@
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#4-in-a-new-data-analysis-template" class="md-nav__link">
     <span class="md-ellipsis">
       
         4. In a new data analysis template:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#comparing-desktop-bionavigator-uka-to-new-csuka" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Comparing desktop-BioNavigator UKA to new (cs)UKA
       
     </span>
   </a>
@@ -864,10 +892,15 @@
 
 
 
-  <h1>VII. How to bring data from BioNavigator to Tercen</h1>
+  <h1>VII. Transitioning from BioNavigator desktop app</h1>
 
 <p>If you have worked before in the BioNavigator desktop app, you might want to redo your experiment with the new apps in Tercen.</p>
-<p>This is how to do it:</p>
+<p><strong>There are two ways to redo your experiments in Tercen-based BioNavigator:</strong> </p>
+<ol>
+<li>Directly upload the experiment zips to Tercen and do the whole workflow --&gt; we suggest this if you have only a few experiments.</li>
+<li>Export S100 - if you have many runs and you have already integrated them in a BioNavigator data analysis workflow, it is better to export it after the ETS step to reduce analysis time.</li>
+</ol>
+<h2 id="exporting-s100-from-bionavigator-desktop-app">Exporting S100 from BioNavigator desktop app</h2>
 <h3 id="1-export-data-from-the-bn6-workflow">1. Export data from the .bn6 workflow.</h3>
 <p>After ETS, add export step</p>
 <ul>
@@ -906,6 +939,28 @@
 <p>From the next normalization step (Log or VSN) probably you will get "Missing factor" errors, because some factors (e.g. Test condition) are pre-selected with slightly different factor names that you have in your data. To fix the error, you must change all these factors to the one that you have in your data/sample annotation. The pre-selected factors are not only in the crosstab, but also in the Filters and sometimes in the colors! </p>
 </li>
 </ol>
+<h2 id="comparing-desktop-bionavigator-uka-to-new-csuka">Comparing desktop-BioNavigator UKA to new (cs)UKA</h2>
+<p><strong>First make sure that the two analyses were done in the same way:</strong></p>
+<ul>
+<li>normalization (log, VSN, ComBat)</li>
+<li>outlier removal</li>
+<li>STK QC app (instead of the LOD-version, add the old version in Tercen only for comparison purposes)</li>
+<li>QC app threshold (e.g. 0.25%)</li>
+</ul>
+<p>When the two analyses were done in the same way, then the remaining differences between UKA files only stem from the differences in the UKA algorithm and UKA database.</p>
+<p><strong>Comparing the latest desktop-BioNavigator UKA version (2022) to the Tercen-based <code>UKA_app</code> with version 0.2.x:</strong> </p>
+<p>Make sure you run the new app with same parameters as the 2022-version:
+- without the Kinase Library (KL)
+- without removing dual-specificity kinases</p>
+<p><mark>Compare the UniprotIDs, and not Kinase_Name</mark> - Kinase_Name changed to primary gene names after moving to Tercen.</p>
+<p><strong>The differences then stem from new version of the UKAdb</strong>, the kinase-to-peptide database the UKA algorithm uses. PamDx releases an updated UKAdb and UKA_app version approximately once per year to:</p>
+<ul>
+<li>adapt changes from UniProt. </li>
+<li>fix potential bugs.</li>
+</ul>
+<p>For the complete list of differences, see the <a href="https://github.com/pamgene/UKA_app">UKA_app readme</a>.</p>
+<p><strong>Comparing to the confidence-scoring, <code>csUKA_app</code>:</strong></p>
+<p>On the top of the database change, the <code>csUKA_app</code> has updated algorithm. Read about the differences what this can bring in <a href="../../PamDx%20methods/3.%20Kinase%20Analysis/#uka-vs-csuka-what-are-the-differences">PamDx methods / Kinase Analysis</a>.</p>
 
 
 

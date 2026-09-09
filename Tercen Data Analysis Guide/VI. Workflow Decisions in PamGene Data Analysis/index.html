@@ -12,7 +12,7 @@
         <link rel="prev" href="../V.%20Kinase%20analysis/">
       
       
-        <link rel="next" href="../VII.%20How%20to%20bring%20data%20from%20BioNavigator%20to%20Tercen/">
+        <link rel="next" href="../VII.%20Transitioning%20from%20BioNavigator%20desktop%20app/">
       
       
         
@@ -819,14 +819,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../VII.%20How%20to%20bring%20data%20from%20BioNavigator%20to%20Tercen/" class="md-nav__link">
+      <a href="../VII.%20Transitioning%20from%20BioNavigator%20desktop%20app/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    VII. How to bring data from BioNavigator to Tercen
+    VII. Transitioning from BioNavigator desktop app
   
 
     
@@ -906,28 +906,7 @@
 <hr />
 <h2 id="log-or-vsn">Log or VSN?</h2>
 <p>As default, <strong>log2 transformation</strong> is used, since VSN transforms the data in a way that fold change directions are harder to interpret.</p>
-<div class="highlight"><pre><span></span><code>Are there multiple biological entities (e.g. patients)?
-│
-├── Yes → VSN
-│
-└── No → is the variance between conditions normal?
-         │
-         ├── Yes → Log
-         │
-         └── No (high variation) → VSN
-
-       → is the signal level normal?
-         │
-         ├── Yes → Log
-         │
-         └── No (low signal) → VSN
-</code></pre></div>
-<p>Edge cases, when we deviate from default:</p>
-<ul>
-<li>no significant differential effect with log</li>
-<li>Global up/down shift with log which conflicts what we know </li>
-</ul>
-<p>Read more about edge cases <a href="../../PamDx%20methods/1.%20Normalization/">here</a>.</p>
+<p>Read more about how to decide on base normalization <a href="../../PamDx%20methods/1.%20Normalization/">here</a>.</p>
 <hr />
 <h2 id="limma-decisions">Limma decisions</h2>
 <div class="highlight"><pre><span></span><code>Is there biological pairing and are the paired samples in 1 chip?

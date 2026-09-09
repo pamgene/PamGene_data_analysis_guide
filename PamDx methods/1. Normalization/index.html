@@ -825,14 +825,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Tercen%20Data%20Analysis%20Guide/VII.%20How%20to%20bring%20data%20from%20BioNavigator%20to%20Tercen/" class="md-nav__link">
+      <a href="../../Tercen%20Data%20Analysis%20Guide/VII.%20Transitioning%20from%20BioNavigator%20desktop%20app/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    VII. How to bring data from BioNavigator to Tercen
+    VII. Transitioning from BioNavigator desktop app
   
 
     
@@ -914,19 +914,21 @@
 <h2 id="vsn-normalization">VSN normalization</h2>
 <h3 id="what-does-vsn-do">What does VSN do?</h3>
 <p>VSN is a standard normalization method - also used in in e.g. transcriptomics.</p>
-<p><strong>VSN corrects for <em>overall differences in signal intensity between samples (=global effects between samples)</em>.</strong> When samples differ mainly in their overall signal (for example, when most peptides show higher signal in sample A than in sample B), VSN reduces this variance. This makes it possible to analyze the data in terms of activities that are relatively high or low compared to the overall signal intensity, rather than absolute differences driven by global intensity shifts.</p>
+<p><strong>VSN corrects for <em>overall differences in signal intensity between samples (=global effects between samples)</em>.</strong> When samples differ mainly in their overall signal (for example, when most peptides show higher signal in sample A than in sample B), VSN reduces this variance. This makes it possible to analyze the data in terms of activities that are relatively high or low compared to the overall signal intensity, rather than absolute differences driven by global intensity shifts. Importantly, the global effects between samples should not be correlated to the covariate of interest (test condition) - these would be then not global effects, but the relevant delta.</p>
 <p><strong>VSN also stabilizes the variance across the signal intensity range</strong>—similar to a log transformation, but without the instabilities near zero signal. At higher signal values, VSN-transformed data approximates log-transformed data.</p>
 <p>In log data, low-signal peptides have higher variance. The same fold change of a low-mean peptide is less significant than for a high-mean peptide. VSN counteracts this by making variance independent of the mean → facilitates discovery of significant phosphosites with low signals. </p>
 <p><img alt="VSN" src="../Attachments/da_31.png" /></p>
 <h3 id="how-to-interpret-vsn-results">How to interpret VSN results?</h3>
 <p><strong>When in log data, there is <em>global up or downregulation between test conditions (T vs C)</em>, why is the volcano V-shaped for VSN data?</strong> </p>
-<p><em>Assume</em>: 
-In log data we observe global upregulation for all kinases or phosphosites in T vs C. 
+<p><em>Assume</em>: </p>
+<p>In log data we observe global upregulation for all kinases or phosphosites in T vs C. 
 After VSN we observe both up-and downregulation.</p>
-<p><em>Interpretation</em>:
-- in T vs C, the delta for all peptides is still positive.
-- the VSN-upregulated peptides are those that contribute more to the global upregulation than the average.
-- the VSN-downregulated peptides are those that contribute less to the global upregulation than the average. The absolute changes are still positive (= in reality, these peptides show upregulation), but VSN shows the signals relative to sample average.</p>
+<p><em>Interpretation</em>:</p>
+<ul>
+<li>in T vs C, the delta for all peptides is still positive.</li>
+<li>the VSN-upregulated peptides are those that contribute more to the global upregulation than the average.</li>
+<li>the VSN-downregulated peptides are those that contribute less to the global upregulation than the average. The absolute changes are still positive (= in reality, these peptides show upregulation), but VSN shows the signals relative to sample average.</li>
+</ul>
 <p><img alt="Volcano plot in log vs VSN" src="../Attachments/da_32.png" /></p>
 <p><strong>Why are there more peptides newly significant in VSN data, compared to log data?</strong></p>
 <p>When a peptide became significant in VSN, the noise of the peptide FC was too high to become significant. VSN's variance-stabilizing transform reduces that noise, and Limma can pick it up as significant. That's a legitimate, well-documented benefit of VSN.</p>
