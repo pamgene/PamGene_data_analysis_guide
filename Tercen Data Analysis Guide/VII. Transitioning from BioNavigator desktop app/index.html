@@ -921,8 +921,8 @@
 <li>Barcode --&gt; ds0.Barcode</li>
 <li>Row --&gt; ds0.Row</li>
 </ul>
-<p><strong>Regarding the sample annotation:</strong></p>
-<p>There are two sample annotation columns that are pre-selected in the Tercen templates: Test Condition and Supergroup. If you have different annotations, this will lead to "Missing factor" errors which is expected and you will fix them (see later).</p>
+<p><strong>Sample annotation / enrichment:</strong></p>
+<p>There are two sample annotation columns that are pre-selected in the Tercen templates: <code>Test Condition</code> and <code>Supergroup</code>. If you have different annotations, this will lead to "Missing factor" errors which is expected and you can fix them in the data analysis workflow (see later). However, changing the name of your annotation columns to the above 2 (exact column names) <em>before</em> uploading the annotation will solve this problem. </p>
 <h3 id="3-upload-the-data-and-the-sample-annotation-enrichment-in-your-tercen-project">3. Upload the data and the sample annotation (enrichment) in your Tercen project:</h3>
 <p>Import data --&gt; Delimited text --&gt; change Barcode to character, Row should remain numeric, and check whether all column types are correct</p>
 <p><img alt="Importing txt: change Barcode to character|500" src="../Attachments/da_45.png" /></p>
@@ -936,7 +936,7 @@
 <p>Delete the ETS step and join this directly to the QC step. Run the QC.</p>
 </li>
 <li>
-<p>From the next normalization step (Log or VSN) probably you will get "Missing factor" errors, because some factors (e.g. Test condition) are pre-selected with slightly different factor names that you have in your data. To fix the error, you must change all these factors to the one that you have in your data/sample annotation. The pre-selected factors are not only in the crosstab, but also in the Filters and sometimes in the colors! </p>
+<p>From the next normalization step (Log or VSN) probably you will get "Missing factor" errors, because some factors (e.g. <code>Test Condition</code>) are pre-selected with slightly different factor names that you have in your data. To fix the error, you must change all these factors to the one that you have in your data/sample annotation. The pre-selected factors are not only in the crosstab, but also in the Filters and sometimes in the colors! </p>
 </li>
 </ol>
 <h2 id="comparing-desktop-bionavigator-uka-to-new-csuka">Comparing desktop-BioNavigator UKA to new (cs)UKA</h2>
