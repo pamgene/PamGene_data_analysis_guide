@@ -486,17 +486,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#how-to-do-pathway-analysis-on-kinases" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        How to do pathway analysis on kinases?
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#pathway-and-network-analysis-are-complementary" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -508,15 +497,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#pathway-analysis-tools" class="md-nav__link">
+  <a href="#how-to-do-pathway-analysis" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Pathway Analysis Tools
+        How to do Pathway Analysis?
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Pathway Analysis Tools">
+    <nav class="md-nav" aria-label="How to do Pathway Analysis?">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1011,17 +1000,17 @@
 </table>
 <p>*<strong>Information on the nature of phosphosites</strong></p>
 <p>There is scattered information online (e.g. UniProt) of the nature of phosphorylation on a phosphosite by a certain kinase, for in vitro data. However, most of the UKA database is composed of in silico predictions, for which this list is not available.    </p>
-<h2 id="how-to-do-pathway-analysis-on-kinases">How to do pathway analysis on kinases?</h2>
-<ul>
-<li>Since kinases are predicted, pre-selection of kinases with high specificity scores (&gt; 0.7, or &gt; 1, the latter is equivalent to p-value 0.1) should be done. We do not recommend to set stringent specificity score cutoff for pathway / network analysis. These analyses find functionally interacting kinases, which further pinpoints the most relevant ones and naturally filters out false positives. (If a kinase is not connected to any other kinase in a pathway or network analysis, it is likely to be false positive.) </li>
-<li>since PTKs and STKs usually act together in pathways, combine them for pathway and network analysis.</li>
-</ul>
 <hr />
 <h2 id="pathway-and-network-analysis-are-complementary">Pathway and Network Analysis Are Complementary</h2>
 <p><img alt="Pathway-network analysis" src="../Attachments/da_40.png" /></p>
 <hr />
-<h2 id="pathway-analysis-tools">Pathway Analysis Tools</h2>
-<p><strong>Type of analysis</strong>:</p>
+<h2 id="how-to-do-pathway-analysis">How to do Pathway Analysis?</h2>
+<p><strong>Choose top kinases:</strong></p>
+<ul>
+<li>Since kinases are predicted, pre-selection of kinases with high specificity scores (&gt; 0.7, or &gt; 1, the latter is equivalent to p-value 0.1) should be done. We do not recommend to set stringent specificity score cutoff for pathway / network analysis. These analyses find functionally interacting kinases, which further pinpoints the most relevant ones and naturally filters out false positives. (If a kinase is not connected to any other kinase in a pathway or network analysis, it is likely to be false positive.) </li>
+<li>since PTKs and STKs usually act together in pathways, combine them for pathway and network analysis.</li>
+</ul>
+<p><strong>Choose type of analysis</strong>:</p>
 <ul>
 <li>Overrepresentation Analysis: simple pathway analysis - input only your list of significant kinases <ul>
 <li><a href="https://maayanlab.cloud/Enrichr/">EnrichR</a></li>
