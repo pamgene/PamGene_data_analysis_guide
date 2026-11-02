@@ -1026,7 +1026,7 @@
 <p><strong>Choose type of analysis</strong>:</p>
 <ul>
 <li>Overrepresentation Analysis: simple pathway analysis - input only your list of significant kinases <ul>
-<li><a href="https://maayanlab.cloud/Enrichr/">EnrichR</a></li>
+<li><a href="https://maayanlab.cloud/Enrichr/">EnrichR</a> --&gt; important: we recommend to change the background from the whole genome to the list of kinases for more relevant results. Feel free to ask a scientist in PamDx to send you the whole list of kinases.</li>
 <li><a href="https://metascape.org/">Metascape</a></li>
 <li><a href="https://biit.cs.ut.ee/gprofiler/gost">gProfiler</a></li>
 <li><a href="https://paintomics.uv.es/">Paintomics</a></li>
@@ -1062,7 +1062,7 @@
 <td><strong>Pro</strong>: Can sensitively detect subtle, coordinated changes in pathway members. Pathway output is more reliable.</td>
 </tr>
 <tr>
-<td><strong>Con</strong>: Pre-filtering of features can introduce bias: 1) subtler changes might not be significant; 2) multiple testing bias (inflation of false positives)</td>
+<td><strong>Con</strong>: Pre-filtering of features can introduce bias, because 1) subtler changes (of non-top kinases) might not be significant; 2) multiple testing bias (inflation of false positives)</td>
 <td><strong>Con</strong>: Can overlook pathways if members don’t show clear up-or downregulation.</td>
 </tr>
 </tbody>
