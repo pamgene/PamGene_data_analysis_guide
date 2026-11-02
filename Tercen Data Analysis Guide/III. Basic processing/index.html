@@ -670,10 +670,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#sample-quality-control-the-mean-cv-operator" class="md-nav__link">
+  <a href="#quality-control-for-technical-replicates-the-mean-variance-operator" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Sample quality control: the Mean &amp; CV operator
+        Quality control for technical replicates: the Mean &amp; Variance operator
       
     </span>
   </a>
@@ -742,10 +742,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#quality-control-criteria-table" class="md-nav__link">
+  <a href="#quality-control-criteria" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Quality Control criteria table
+        Quality Control criteria
       
     </span>
   </a>
@@ -753,10 +753,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#data-flow" class="md-nav__link">
+  <a href="#data-flow-in-tercen" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Data flow
+        Data flow in Tercen
       
     </span>
   </a>
@@ -1019,13 +1019,17 @@ Its output file contains:
 <h2 id="basic-processing-overview">Basic Processing Overview</h2>
 <p>The result of Image Analysis contains the <strong>Median signal minus background (Median_SigmBg)</strong> value for each peptide-barcode-row-cycle-exposure time datapoint.</p>
 <ol>
+<li>add input data<ol>
 <li>data step: add image analysis output files (for PTK: add both <strong>prewash</strong> and <strong>afterwash</strong> at the same time)</li>
 <li>Join with sample annotation</li>
+</ol>
+</li>
 <li>Run <strong>ETS</strong> (Exposure Time Scaling) app.
    ETS combines Median_SigmBg at multiple exposure times to create a single value per cycle: <strong>S100</strong> (AU).</li>
-<li>Check Mean and CV (CV is the data quality metric)</li>
+<li>Check Mean and CV (CV is the data quality metric for technical replicates)</li>
 <li>Check positive control (pre-phosphorylated peptides). Expectation: <strong>S100 &gt; 1000</strong></li>
 <li>Run the QC app (PTK or STK QC app)</li>
+<li>Do normalizations</li>
 </ol>
 <hr />
 <h2 id="ets-exposure-time-scaling-app">ETS: Exposure Time Scaling App</h2>
@@ -1036,8 +1040,8 @@ Its output file contains:
 <p>However, usually we do not have to interact with the app from inside. When we run the app from the main workflow, the <em>wizard</em> pops up, where we have to select correct data input by answering questions.  </p>
 <p>In ETS, the correct factors are set by default — just click Run.</p>
 <p><img alt="ETS app internal workflow" src="../Attachments/da_24.png" /></p>
-<h2 id="sample-quality-control-the-mean-cv-operator">Sample quality control: the Mean &amp; CV operator</h2>
-<p>We examine the sample quality by assessing the variance in the individual conditions / samples. Each condition has usually 3+ biological or techncial replicates. An example of technical replicate is 1 sample lysate on 3+ arrays; An example of biological replicate is 1 sample lysate per array).</p>
+<h2 id="quality-control-for-technical-replicates-the-mean-variance-operator">Quality control for technical replicates: the Mean &amp; Variance operator</h2>
+<p>We examine technical replicate variation of individual conditions / samples as a quality metric. Each condition has usually 3+ replicates. An example of technical replicate is 1 sample lysate on 3+ arrays; An example of biological replicate is 1 sample lysate per array.</p>
 <p><strong>How to configure the crosstab view</strong>
 - Each column should contain all replicates of a condition.
 - Colors should be set per condition (e.g. drag and drop Supergroup and/or Test condition to colors)</p>
@@ -1077,7 +1081,7 @@ Its output file contains:
 <h3 id="removal-of-low-signal-peptides">Removal of low signal peptides</h3>
 <p>Removal of low signal peptides is done by a Filter in the log step or, if VSN normalization is done, then in the Filter QC peptides step after VSN.
 These filters are set up with the defaults in the templates. The QC heatmaps should be used to visually assess if these thresholds should be adjusted.</p>
-<h2 id="quality-control-criteria-table">Quality Control criteria table</h2>
+<h2 id="quality-control-criteria">Quality Control criteria</h2>
 <p>The quality assessment manages our expectations. See the below table for criteria that can be used to assess quality of the experiment.
 For example, if the number of QC passed phosphosites is high and the samples have low technical CV (with technical replicates), it enables detection of smaller effect sizes from the covariates of interest.
 On the contrary, if the flags indicate fair or poor quality of samples, higher differential effects are needed to reach significance. </p>
@@ -1116,8 +1120,8 @@ On the contrary, if the flags indicate fair or poor quality of samples, higher d
 </tbody>
 </table>
 <hr />
-<h2 id="data-flow">Data flow</h2>
-<p>In general the data flows in the following way. An operator transforms the data (e.g. log transform). It creates an output factor. Each step has a namespace which is the name of the step. </p>
+<h2 id="data-flow-in-tercen">Data flow in Tercen</h2>
+<p>In general the data flows from operator to operator in the following way. An operator transforms the data (e.g. log transform). It creates an output factor. Each step has a namespace which is the name of the step. </p>
 <p>Output construction follows the pattern: <code>&lt;namespace&gt;.&lt;output_name_from_operator&gt;</code></p>
 <p>In the next step, the output of the previous step is taken as input values. It is represented on the y axis of the crosstab view.</p>
 <p><img alt="workfow logic" src="../Attachments/da_30.png" /></p>
