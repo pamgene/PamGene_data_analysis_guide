@@ -776,10 +776,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#normalizations-in-the-tercen-workflow" class="md-nav__link">
+  <a href="#combat-batch-effect-correction" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Normalizations in the Tercen workflow
+        ComBat: Batch Effect Correction
       
     </span>
   </a>
@@ -1097,8 +1097,7 @@ These filters are set up with the defaults in the templates. The QC heatmaps sho
 <hr />
 <h2 id="normalizations">Normalizations</h2>
 <p>Read about different base normalizations <a href="../../PamDx%20methods/1.%20Normalization/">here</a>.</p>
-<h3 id="normalizations-in-the-tercen-workflow">Normalizations in the Tercen workflow</h3>
-<h4 id="normalization-is-done-together-with-filtering">Normalization is done together with filtering</h4>
+<p><strong>Normalization in the Tercen workflows are done together with filtering.</strong></p>
 <p>Log normalization &amp; filtering for QC-passed peptides is done in 1 step. </p>
 <p>VSN normalization &amp; filtering for QC-passed peptides is done in two steps. The reason is that log works per individual value, while VSN considers all peptides simultaneously - even peptides not passing QC are needed to carry it out.</p>
 <p><strong>Filtering for peptides that passed QC is done with the following defaults:</strong></p>
@@ -1108,14 +1107,24 @@ These filters are set up with the defaults in the templates. The QC heatmaps sho
 </ul>
 <p><strong>The log_cutoff operator</strong> assignes 1 to values &lt; 1 before log transformation.</p>
 <hr />
-<h4 id="combat-batch-effect-correction">ComBat: Batch Effect Correction</h4>
+<h3 id="combat-batch-effect-correction">ComBat: Batch Effect Correction</h3>
+<p>Examine with the Combat operator if there are technical batch effects. For a single run, the batch can be barcode, for multiple runs the batch can be run. If batch effects are visible, Combat can remove them.
+Use Combat on normalized  data (log or VSN).</p>
+<p><strong>Combat should only be done on data with balanced design</strong>: if a condition (e.g. control) sits mostly or only in one batch, the correction also removes part of the real biological difference.
+Additionally, in every technical batch there should be minimum 2 samples.</p>
 <ol>
-<li><strong>Crosstab view</strong>: color by expected technical batch (Barcode for single PS12 run; Run for multi-run projects)</li>
-<li><strong>Operator view</strong>: assess batch effect removal — check if before-ComBat PCA shows batch clusters and after-ComBat PCA has resolved them</li>
-<li>If resolved, click <strong>Done</strong> — leave the page <strong>only when the dot appears under Done</strong></li>
+<li><strong>Crosstab view</strong>: color by expected technical batch</li>
+<li><strong>Result</strong>: assess batch effect removal: check if before-ComBat PCA shows batch clusters and after-ComBat PCA has removed / mitigated the batch effect</li>
+<li>If Combat is suitable for the data and has removed batch effects, keep this step, otherwise do not use it. </li>
 </ol>
-<p><img alt="Combat operator" src="../Attachments/workflow_decisions_04.jpg" /></p>
-<h4 id="check-pca-and-heatmap-before-and-after-combat">Check PCA and Heatmap Before and After ComBat</h4>
+<p><img alt="ComBat" src="../Attachments/da_32_combat.png" /></p>
+<h4 id="mode-1-simple">Mode 1: simple</h4>
+<p>All batches are shifted toward a common average.
+Use it when every batch contains a similar mix of your conditions, e.g. each run has controls and treatments in similar numbers.</p>
+<h4 id="mode-2-fit-condition-usefitcondition-true-fitconditionfactors-eg-grouping-fitconditionvalues-eg-ref">Mode 2 fit condition (<code>UseFitCondition</code> = true, <code>FitConditionFactors</code> = e.g. <code>Grouping</code>, <code>FitConditionValues</code> = e.g. <code>REF</code>)</h4>
+<p>The correction is learned only from the samples of one condition, typically reference or control samples measured in every batch. It is then applied to all samples. Used with multiple run design, when we expect a condition (e.g. REF) to be very homogenous (technical replicates) so the batch effect estimated from this is cleaner. </p>
+<p>Put the condition factors on the <strong>columns</strong> of the crosstab.</p>
+<h4 id="check-whether-replicates-in-a-condition-are-more-similar-before-and-after-combat">Check whether replicates in a condition are more similar Before and After ComBat</h4>
 <p><img alt="Heatmap and PCA before and after ComBat" src="../Attachments/da_33.png" /></p>
 <p>If ComBat successfully decreases technical variance, then after Combat:</p>
 <ul>
