@@ -776,6 +776,28 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Overview
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#log-vsn" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Log &amp; VSN
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#combat-batch-effect-correction" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1096,16 +1118,30 @@ These filters are set up with the defaults in the templates. The QC heatmaps sho
 - → Full reference: <code>STKQC.logTransformed</code></p>
 <hr />
 <h2 id="normalizations">Normalizations</h2>
-<p>Read about different base normalizations <a href="../../PamDx%20methods/1.%20Normalization/">here</a>.</p>
-<p><strong>Normalization in the Tercen workflows are done together with filtering.</strong></p>
-<p>Log normalization &amp; filtering for QC-passed peptides is done in 1 step. </p>
-<p>VSN normalization &amp; filtering for QC-passed peptides is done in two steps. The reason is that log works per individual value, while VSN considers all peptides simultaneously - even peptides not passing QC are needed to carry it out.</p>
-<p><strong>Filtering for peptides that passed QC is done with the following defaults:</strong></p>
+<h3 id="overview">Overview</h3>
+<p><strong>Two basic normalizations:</strong></p>
 <ul>
+<li>
+<p>Log2  (<strong>the log_cutoff operator</strong> assignes 1 to values &lt; 1 before log transformation.)</p>
+</li>
+<li>
+<p>VSN (Variance Stabilizing Normalization)</p>
+</li>
+</ul>
+<p>Optional: batch effect correction by ComBat, applied after Log or VSN.</p>
+<p><strong>Normalization in the Tercen workflows are done together with filtering.</strong></p>
+<ul>
+<li>Log normalization &amp; filtering for QC-passed peptides is done in 1 step. </li>
+<li>VSN normalization &amp; filtering for QC-passed peptides is done in two steps. The reason is that log works per individual value, while VSN considers all peptides simultaneously - even peptides not passing QC are needed to carry it out</li>
+<li><strong>Filtering for peptides that passed QC is done with the following defaults:</strong><ul>
 <li>PTK: <code>fractionPresent &gt; 0.249</code></li>
 <li>STK: <code>qc_stk_thr.ratio &gt; 0.25</code></li>
 </ul>
-<p><strong>The log_cutoff operator</strong> assignes 1 to values &lt; 1 before log transformation.</p>
+</li>
+</ul>
+<hr />
+<h3 id="log-vsn">Log &amp; VSN</h3>
+<p>Read about different base normalizations <a href="../../PamDx%20methods/1.%20Normalization/">here</a>.</p>
 <hr />
 <h3 id="combat-batch-effect-correction">ComBat: Batch Effect Correction</h3>
 <p>Examine with the Combat operator if there are technical batch effects. For a single run, the batch can be barcode, for multiple runs the batch can be run. If batch effects are visible, Combat can remove them.
