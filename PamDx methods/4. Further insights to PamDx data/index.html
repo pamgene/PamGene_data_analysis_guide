@@ -486,10 +486,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#pathway-and-network-analysis-are-complementary" class="md-nav__link">
+  <a href="#interpretation-of-uka-results-using-pathway-and-network-analysis" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Pathway and Network Analysis Are Complementary
+        Interpretation of UKA results using pathway and network analysis
       
     </span>
   </a>
@@ -1001,13 +1001,26 @@
 <p>*<strong>Information on the nature of phosphosites</strong></p>
 <p>There is scattered information online (e.g. UniProt) of the nature of phosphorylation on a phosphosite by a certain kinase, for in vitro data. However, most of the UKA database is composed of in silico predictions, for which this list is not available.    </p>
 <hr />
-<h2 id="pathway-and-network-analysis-are-complementary">Pathway and Network Analysis Are Complementary</h2>
-<p><img alt="Pathway-network analysis" src="../Attachments/da_40.png" /></p>
+<h2 id="interpretation-of-uka-results-using-pathway-and-network-analysis">Interpretation of UKA results using pathway and network analysis</h2>
+<ul>
+<li>pathway analysis can give good <strong>overview of known biological functions</strong>, while networks do not give simple overview, they are harder to interpret.</li>
+<li><strong>Coverage of kinases</strong> might be better in networks: pathways are fixed gene sets, some kinases are not annotated to any pathway. <ul>
+<li>Note that UKA can predict some <strong>poorly studied kinases as well</strong>, which might not even show up in networks. </li>
+</ul>
+</li>
+<li><strong>Connections</strong> between kinases and pathways are visible in networks but not in pathways.</li>
+</ul>
+<p><strong>To analyze UKA results, we suggest to use pathways and networks in the following way:</strong> </p>
+<ol>
+<li>which pathways are active? Is there a pathway that shows interesting phenotype (e.g. cell cycle, apoptosis, motility) </li>
+<li>then investigate how the signal travels from perturbation to phenotype using networks</li>
+<li>investigate the remaining high specificity kinases which are not in the network or pathway.</li>
+</ol>
 <hr />
 <h2 id="how-to-do-pathway-analysis">How to do Pathway Analysis?</h2>
 <p><strong>Choose top kinases:</strong></p>
 <ul>
-<li>Since kinases are predicted, pre-selection of kinases with high specificity scores (&gt; 0.7, or &gt; 1, the latter is equivalent to p-value 0.1) should be done. We do not recommend to set stringent specificity score cutoff for pathway / network analysis. These analyses find functionally interacting kinases, which further pinpoints the most relevant ones and naturally filters out false positives. (If a kinase is not connected to any other kinase in a pathway or network analysis, it is likely to be false positive.) </li>
+<li>Since kinases are predicted, pre-selecti kinases with high specificity scores (e.g. &gt; 1,  equivalent to p-value 0.1). We do not recommend to set stringent specificity score cutoff for pathway / network analysis. These analyses find interacting kinases so it might filter out false positives. (If a kinase is not connected to any other kinase in a pathway or network analysis, it is likely to be false positive.) </li>
 <li>since PTKs and STKs usually act together in pathways, combine them for pathway and network analysis.</li>
 </ul>
 <p><strong>Choose type of analysis</strong>:</p>
