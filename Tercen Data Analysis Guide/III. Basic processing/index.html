@@ -814,6 +814,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#assessment-of-biological-variability" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Assessment of biological variability
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#references" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1067,7 +1078,9 @@ Its output file contains:
 <p>Removal of low signal peptides is done by a Filter in the log step or, if VSN normalization is done, then in the Filter QC peptides step after VSN.
 These filters are set up with the defaults in the templates. The QC heatmaps should be used to visually assess if these thresholds should be adjusted.</p>
 <h2 id="quality-control-criteria-table">Quality Control criteria table</h2>
-<p>The following criteria can be used to assess quality of the experiment. The quality control does not serve to exclude samples - it rather manages our expectations. For example, if the number of QC passed phosphosites is high and the samples have low biological CV, we can expect that there is a differential signal between conditions. On the contrary, if the flags indicate fair or poor sample quality, probably differential effects won't be highly significant . </p>
+<p>The quality assessment manages our expectations. See the below table for criteria that can be used to assess quality of the experiment.
+For example, if the number of QC passed phosphosites is high and the samples have low technical CV (with technical replicates), it enables detection of smaller effect sizes from the covariates of interest.
+On the contrary, if the flags indicate fair or poor quality of samples, higher differential effects are needed to reach significance. </p>
 <table>
 <thead>
 <tr>
@@ -1076,7 +1089,6 @@ These filters are set up with the defaults in the templates. The QC heatmaps sho
 <th>Number of QC-passed phosphosites PTK (of 195)</th>
 <th>Number of QC-passed phosphosites STK (of 142)</th>
 <th>Technical CV</th>
-<th>Biological CV</th>
 </tr>
 </thead>
 <tbody>
@@ -1086,7 +1098,6 @@ These filters are set up with the defaults in the templates. The QC heatmaps sho
 <td>&gt; 123</td>
 <td>&gt; 90</td>
 <td>&lt; 20%</td>
-<td>&lt; 30%</td>
 </tr>
 <tr>
 <td>Fair</td>
@@ -1094,7 +1105,6 @@ These filters are set up with the defaults in the templates. The QC heatmaps sho
 <td>78–123</td>
 <td>56–90</td>
 <td>20–30%</td>
-<td>30–40%</td>
 </tr>
 <tr>
 <td>Poor</td>
@@ -1102,7 +1112,6 @@ These filters are set up with the defaults in the templates. The QC heatmaps sho
 <td>&lt; 78</td>
 <td>&lt; 56</td>
 <td>&gt; 30%</td>
-<td>&gt; 40%</td>
 </tr>
 </tbody>
 </table>
@@ -1168,6 +1177,19 @@ Use it when every batch contains a similar mix of your conditions, e.g. each run
 <li>Conditions are usually more separated</li>
 </ul>
 <p><strong>Important: for multi-run experiments</strong>: check Run effect first (usually larger than Barcode). Correcting for too many batch types can introduce bias — if Run effect exists, correcting for Barcode as well is usually unnecessary.</p>
+<hr />
+<h2 id="assessment-of-biological-variability">Assessment of biological variability</h2>
+<p>When limma &amp; UKA results in low significance, we suggest to assess biological variability within the conditions.</p>
+<p>Lower variation enables detection of smaller effect sizes from the covariates of interest. With high variability, a larger sample size may be required to detect differentially active phosphosites or kinases reliably. </p>
+<p><strong>If the limma and UKA results have low significance and the biological variability is high, we suggest to include more replicates in the analysis because the biological variability obscures the signal between conditions.</strong></p>
+<p>The variability of an experiment can be calculated like this:</p>
+<ul>
+<li>for each condition, for each peptide, calculate standard deviation (SD).</li>
+<li>Take the median peptide SD per condition. (--&gt; 1 value per condition)</li>
+<li>Take the median of the median peptide SD between conditions.</li>
+</ul>
+<p>We calculated the biological variability across a large variety of PamDx experiments. Below, see an indication of expected variability, for comparison with a given experiment.</p>
+<p><img alt="Data variability distribution" src="../Attachments/da_46_qc_variability_distribution.png" /></p>
 <hr />
 <h2 id="references">References</h2>
 <p><strong>ComBat and batch correction:</strong></p>
