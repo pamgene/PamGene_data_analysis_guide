@@ -1003,18 +1003,18 @@
 <hr />
 <h2 id="interpretation-of-uka-results-using-pathway-and-network-analysis">Interpretation of UKA results using pathway and network analysis</h2>
 <ul>
-<li>pathway analysis can give good <strong>overview of known biological functions</strong>, while networks do not give simple overview, they are harder to interpret.</li>
-<li><strong>Coverage of kinases</strong> might be better in networks: pathways are fixed gene sets, some kinases are not annotated to any pathway. <ul>
-<li>Note that UKA can predict some <strong>poorly studied kinases as well</strong>, which might not even show up in networks. </li>
-</ul>
-</li>
-<li><strong>Connections</strong> between kinases and pathways are visible in networks but not in pathways.</li>
+<li>Pathway analysis can give good <strong>overview of known biological functions</strong>.  However, pathway analysis may identify pathways that are not relevant to the experiment. The reason is that the same genes can be involved in different pathways across different contexts. Therefore, there is no simple way to determine pathway relevance based on p-values or combined scores alone, but rather we recommend evaluating pathway relevance using biological domain knowledge.</li>
+<li><strong>Networks do not give simple overview, but might have better coverage of kinases</strong> than pathways. Pathways are fixed gene sets, some kinases are not annotated to any pathway. </li>
+<li><strong>Networks also show connections between kinases and pathways</strong> contrary to pathway analysis.</li>
 </ul>
 <p><strong>To analyze UKA results, we suggest to use pathways and networks in the following way:</strong> </p>
 <ol>
-<li>which pathways are active? Is there a pathway that shows interesting phenotype (e.g. cell cycle, apoptosis, motility) </li>
-<li>then investigate how the signal travels from perturbation to phenotype using networks</li>
-<li>investigate the remaining high specificity kinases which are not in the network or pathway.</li>
+<li>pathway analysis --&gt; use domain knowledge to <strong>select relevant pathways in the biological context</strong>. <ol>
+<li>Is there a pathway that shows interesting <strong>phenotype</strong> (e.g. cell cycle, apoptosis, motility)? </li>
+</ol>
+</li>
+<li>then investigate <strong>how the signal travels from perturbation to phenotype</strong> using networks</li>
+<li>investigate the remaining high specificity kinases which are not in the network or pathway. (UKA can predict some <strong>poorly studied kinases as well</strong>, which might not even show up in networks.)</li>
 </ol>
 <hr />
 <h2 id="how-to-do-pathway-analysis">How to do Pathway Analysis?</h2>
