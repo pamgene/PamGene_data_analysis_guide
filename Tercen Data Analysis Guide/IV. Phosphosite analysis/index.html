@@ -741,6 +741,28 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#assessment-of-biological-variability" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Assessment of biological variability
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#removing-outliers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Removing outliers
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -976,6 +998,26 @@
 <p>PamGene data analysis specific operators are found on <a href="https://github.com/pamgene">PamGene's github</a> and general operators are usually found on <a href="https://github.com/tercen">Tercen's github page</a>.
 Find apps, operators and templates with the following pattern on github:  <code>X_app</code>, <code>X_operator</code>, <code>X_template</code>.</p>
 <p>Sometimes, previous versions of operators are also available from the library, but in general, the newest versions should be used. </p>
+<hr />
+<h2 id="assessment-of-biological-variability">Assessment of biological variability</h2>
+<p>When limma &amp; UKA results in low significance, we suggest to assess biological variability within the conditions.</p>
+<p>Lower variation enables detection of smaller effect sizes from the covariates of interest. With high variability, a larger sample size may be required to detect differentially active phosphosites or kinases reliably. </p>
+<p><strong>If the limma and UKA results have low significance and the biological variability is high, we suggest to include more replicates in the analysis because the biological variability obscures the signal between conditions.</strong></p>
+<p>The variability of an experiment can be calculated like this:</p>
+<ul>
+<li>for each condition, for each peptide, calculate standard deviation (SD).</li>
+<li>Take the median peptide SD per condition. (--&gt; 1 value per condition)</li>
+<li>Take the median of the median peptide SD between conditions.</li>
+</ul>
+<p>We calculated the biological variability across a large variety of PamDx experiments. Below, see an indication of expected variability, for comparison with a given experiment.</p>
+<p><img alt="Data variability distribution" src="../Attachments/da_46_qc_variability_distribution.png" /></p>
+<hr />
+<h2 id="removing-outliers">Removing outliers</h2>
+<p>When limma and UKA results show low significance, we suggest to examine if there is an outlier that could cause this.
+For example, if 2 conditions to be compared cluster close to each other (meaning little difference between conditions) AND there is also an outlier of a condition, check if removing it increases significance.
+To check for outliers, use PCA biplot (which shows the axis scales) and heatmap. If a sample is very far from the normal variation of the other samples, AND if it has low signal on the heatmap, it is probably a technical issue.</p>
+<p><img alt="Outlier" src="../Attachments/da_47.png" /></p>
+<p>The red T01 is at ~ -20 in PC1, compared to the other samples which lie between -4 to +8 on PC1.</p>
 
 
 
