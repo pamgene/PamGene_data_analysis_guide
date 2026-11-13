@@ -758,6 +758,34 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#new-versions-of-csuka" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        New versions of csUKA
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="New versions of csUKA">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#uka-05-06-uka_app-03-2026-nov" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        UKA 0.5 → 0.6 / UKA_app 0.3 (2026 nov)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -911,6 +939,38 @@
 <p>Read about the interpretation (pathway / network analysis) of kinases and phosphosites <a href="../../PamDx%20methods/4.%20Further%20insights%20to%20PamDx%20data/">here</a>.</p>
 <h2 id="csuka-app-details">(cs)UKA app details</h2>
 <p>For information on (cs)UKA_app versions, what exactly changed, or how to fill out the wizard, read the readmes of the <a href="https://github.com/pamgene/UKA_app">UKA_app</a> / <a href="https://github.com/pamgene/csUKA_app">csUKA_app</a>.</p>
+<h2 id="new-versions-of-csuka">New versions of csUKA</h2>
+<h3 id="uka-05-06-uka_app-03-2026-nov">UKA 0.5 → 0.6 / UKA_app 0.3 (2026 nov)</h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>UKA 0.6 (UKAdb 0.6 + cscore change)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Changes</strong></td>
+<td>- UKAdb: new iviv / uniprot db, new KL<br>- The confidence scoring parameters changed for KL. Previously its confidence level was much lower than that of PhosphoNet. Based on our current knowledge, KL is similarly reliable as PhosphoNet.</td>
+</tr>
+<tr>
+<td><strong>How big are changes?</strong></td>
+<td>without KL: noticable, small effect.<br>with KL: lot of extra kinases compared to without KL.</td>
+</tr>
+<tr>
+<td><strong>How does this version perform?</strong></td>
+<td>We benchmarked UKA 0.6 against UKA 0.5 without KL. For a large variety of PTK / STK kinases that were inhibited or activated, we found that:<br>- UKA 0.6 finds the kinase target more times <br>- the top specific kinases were more times "biologically meaningful" which is measured by the density of their connections in the STRING network compared to random kinases.</td>
+</tr>
+<tr>
+<td><strong>Should I change to the new version in ongoing projects?</strong><br></td>
+<td>We suggest to change and maybe even redo recent previous analyses. Since the average change is modest, it is not always necessary, e.g. when close to publication.<br></td>
+</tr>
+<tr>
+<td><strong>How to change back to the old csUKA version?</strong></td>
+<td>Change the operator inside the app to cs_uka_operator 0.0.6!</td>
+</tr>
+</tbody>
+</table>
 
 
 
