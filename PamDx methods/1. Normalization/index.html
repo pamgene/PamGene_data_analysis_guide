@@ -974,7 +974,7 @@ The reason: even without any visible between-sample offset, VSN still corrects b
 <thead>
 <tr>
 <th></th>
-<th>CV*</th>
+<th>Variation*</th>
 <th>Limma**</th>
 <th>Interpretation</th>
 </tr>
@@ -1006,7 +1006,11 @@ The reason: even without any visible between-sample offset, VSN still corrects b
 </tr>
 </tbody>
 </table>
-<p>* CV: up to ~ 30% biological and ~ 20% technical CV (in a condition/group, between replicates) is considered normal.  </p>
+<p>* Variation: </p>
+<ul>
+<li>for technical replicates ~ 20% CV (in a condition/group, between replicates) is considered normal. </li>
+<li>For biological replicates, a proxy for variation of an experiment is the median of the condition-wise median peptide sd (ie calculate median peptide sd per condition and take the median of all conditions). Based on a large variety of PamGene experiments, what we consider too high is above the upper quartile (0.75) which is 0.4, below the variation is within normal range.</li>
+</ul>
 <p>** The definition of substantial significance is very arbitrary and depends on the interpreter. Typically, we suggest that a comparison has substantial significance when there are at least a few (FDR-) significant results (p-value threshold: 0.05; FDR threshold: &lt;0.25). In an experiment, we expect at least 1 comparison to be significant.</p>
 <h3 id="references">References</h3>
 <ul>
